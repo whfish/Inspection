@@ -1,6 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <!--//////////-->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <!--导航选中-->
+    <color name="tab_selected">#ed5831</color>
+    <!--导航未选中-->
+    <color name="tab_unselected">#1a1a1a</color>
+    <!--黑色-->
+    <color name="color_black">#1a1a1a</color>
+    <color name="color_black_light">#333333</color>
+
+    <!--灰色-->
+    <color name="color_gray_dark">#666666</color>
+    <color name="color_gray">#999999</color>
+    <color name="color_gray_light">#cccccc</color>
+    <color name="color_line_gray">#e4e4e4</color>
+    <color name="background">#f1f1f1</color>
+    <color name="background_color">#f5f5f5</color>
+    <!--间隔线-->
+    <!--透明度-->
+    <color name="color_mask">#99000000</color>
+    <color name="trans_black_bg">#a0000000</color>
+    <color name="transparent">#00FFFFFF</color>
+    <!--橘色-->
+    <color name="pink">#ed5831</color>
+    <color name="red_text_ff3333">#ff3333</color>
+    <color name="pink_txt_ff6666">#ff6666</color>
+    <color name="colorAccent">#ed5831</color>
+    <!--按钮中颜色-->
+    <color name="btn_txt">#ed5831</color>
+    <!--按钮中颜色-->
+    <color name="btn_press_txt">#ED3D31</color>
+    <color name="txt_price">#ed5831</color>
+    <color name="btn_background">#ed5831</color>
+    <color name="color_ed5831">#ed5831</color>
+    <color name="color_f04848">#f04848</color>
+    <!--蓝色-->
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="color_005fac">#005fac</color>
+    <color name="btn_text_blue">#0090b3</color>
+
+    <!-- loading-->
+    <array name="g_default_loading_fg">
+        <item>#00bcd4</item>
+        <item>#9c27b0</item>
+        <item>#5677fc</item>
+        <item>#ff9800</item>
+        <item>#e91e63</item>
+    </array>
+
+
 </resources>
