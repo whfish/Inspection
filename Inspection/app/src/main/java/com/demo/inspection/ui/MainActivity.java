@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.EditText;
 
 import com.demo.inspection.R;
+import com.demo.inspection.bl.ComDef;
 import com.demo.inspection.utils.ToastUtil;
 import com.demo.inspection.utils.Tools;
 
@@ -16,6 +18,7 @@ import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
     private EditText text;
+    Tools tools=new Tools();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void afterTextChanged(Editable editable) {
-            Tools tools=new Tools();
+            Log.i(ComDef.TAG,"afterTextChanged(");
             tools.CheckIP(text,MainActivity.this);
 
         }
