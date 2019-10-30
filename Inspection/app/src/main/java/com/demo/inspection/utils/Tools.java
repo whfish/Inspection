@@ -1,22 +1,29 @@
 package com.demo.inspection.utils;
 
-import android.app.Activity;
-import android.widget.EditText;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Tools {
-    public void CheckIP(EditText text,Activity a){
-        String money = text.getText().toString();
+    /**
+     * Check ip.
+     *
+     * @param text :输入需要检测的文本（ip)
+     *             注意：该正则表达式检测0-255的所有ip，不检测是否包含特殊ip
+
+     */
+    public boolean CheckIP(String  text) {
+//        String money = text.getText().toString();
         Pattern p = Pattern.compile("((25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))\\.){3}(25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))");
-        Matcher m = p.matcher(money);
+        Matcher m = p.matcher(text);
         if (m.matches()) {
+
+            //匹配返回真值
+            return true;
 
 
         } else {
-            ToastUtil.toastCenter(a, "请输入正确的IP地址");
-            text.setText("");
+            //格式不匹配返回false
+            return false;
         }
 
     }
