@@ -18,13 +18,22 @@ public interface ComDef {
 
     public static final String URL_PRE = "http://10.52.200.138:8082/";//服务器地址
     public static final String INTF_QUERYSTATIC = "queryStatic";//查询统计数据
+
     public static final String INTF_QUERYDEVICE = "queryDeviceInfo";//查询设备列表
     public static final String INTF_QUERYDEVICEDETAIL = "queryDeviceDetail";//查询设备详情
+
     public static final String INTF_QUERYSYS = "querySysInfo";//查询系统列表
     public static final String INTF_QUERYSYSDETAIL  = "querySysInfoDetail";//查询系统详情
+
+    public static final String INTF_QUERYADMIN  = "queryUserName";//查询账号
+    public static final String INTF_UPDATEADMIN  = "modifyPasswd";//修改密码
+
+    public static final String QUERY_ACCOUNT = "account";//查询日期
 
     public static final String QUERY_DATE = "datetime";//查询日期
     public static final String QUERY_IP = "ip";//查询服务器地址
     public static final String QUERY_INDEX = "id";//查询索引值
+    public static final String QUERY_DEVINDEX = "devid";//查询系统索引值
+    public static final String QUERY_SYSINDEX = "sysid";//查询设备索引值
     public static final String QUERY_STATE = "state";//状查询态
 }
