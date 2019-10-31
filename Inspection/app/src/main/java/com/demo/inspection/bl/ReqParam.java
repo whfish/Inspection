@@ -1,6 +1,7 @@
 package com.demo.inspection.bl;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Path: com.demo.inspection.bl.ReqParam
@@ -19,6 +20,10 @@ public class ReqParam {
 
     public String getUrl() {
         return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public HashMap<String, String> getMap() {

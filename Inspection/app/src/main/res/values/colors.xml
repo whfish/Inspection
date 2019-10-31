@@ -24,12 +24,14 @@
     <color name="trans_black_bg">#a0000000</color>
     <color name="transparent">#00FFFFFF</color>
     <!--橘色-->
-    <color name="pink">#ed5831</color>
+    <color name="orange">#ed5831</color>
     <color name="red_text_ff3333">#ff3333</color>
     <color name="pink_txt_ff6666">#ff6666</color>
     <color name="colorAccent">#ed5831</color>
     <!--按钮中颜色-->
     <color name="btn_txt">#ed5831</color>
+    <color name="btn_press_bfo">#fff04848</color>
+    <color name="btn_press">#80f04848</color>
     <!--按钮中颜色-->
     <color name="btn_press_txt">#ED3D31</color>
     <color name="txt_price">#ed5831</color>

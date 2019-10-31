@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Inspection</string>
+    <!--登录-->
+    <string name="bt_login">登录</string>
+    <string name="tx_input_user_name">请输入用户名</string>
+    <string name="tx_login_hint_psd_Str">请输入密码</string>
+
+    <!--底部标签-->
+    //状态、设备、系统、我的
+
 </resources>

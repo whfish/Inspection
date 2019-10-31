@@ -26,20 +26,78 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
+/**
+ * @Path: com.demo.inspection.bl.MyHttp
+ * @Description: java类作用描述
+ * @Author: 王欢
+ * @CreateDate: 2019/10/30 11:25
+ * @UpdateUser: 更新者：
+ * @UpdateDate: 2019/10/30 11:25
+ * @UpdateRemark: 更新说明：
+ * @Version: 1.0
+ */
 public class MyHttp {
 
-    List<Map<String, String>> list = null;
-
-    private void requestOkHttp(ReqParam reqParam) {
+    public void requestOkHttpSync(ReqParam reqParam) {
+        /**
+         * @method requestOkHttpSync
+         * @description 同步调用
+         * @date: 2019/10/30 14:46
+         * @author: 王欢
+         * @param [reqParam]
+         * @return void
+         */
         OkHttpClient okHttpClient = new OkHttpClient();
-
         //Post
         FormBody.Builder fbody = new FormBody.Builder();
-        HashMap<String,String> map = reqParam.getMap();
+        HashMap<String, String> map = reqParam.getMap();
         if (map != null && !map.isEmpty())
             for (String key : map.keySet()) {
-                if (map.get(key) != null && !(map.get(key).equals(""))){
-                    fbody.add(key,map.get(key));
+                if (map.get(key) != null && !(map.get(key).equals(""))) {
+                    fbody.add(key, map.get(key));
+                }
+            }
+
+        RequestBody body = fbody.build();
+        Request request = new Request.Builder()
+                .url(reqParam.getUrl())
+                .post(body)
+                .build();
+        //创建Call对象
+        Call call = okHttpClient.newCall(request);
+        System.out.print("okHttp开始执行同步调用");
+        ResponseBody rb = null;
+        try {
+            rb = call.execute().body();
+            String result = rb.string();
+            System.out.print("请求结果:" + result);
+
+        } catch (Exception e) {
+            System.out.print("异常：" + e);
+        } finally {
+            //应答体内包含输出流对象，不再使用需要关闭
+            rb.close();
+        }
+    }
+
+    public void requestOkHttpAsync(ReqParam reqParam, Callback callback) {
+       /**
+        * @method  requestOkHttpAsync
+        * @description 描述一下方法的作用
+        * @date: 2019/10/30 16:45
+        * @author: 王欢
+        * @param [reqParam, callback：回调函数]
+        * @return void
+        */
+
+        OkHttpClient okHttpClient = new OkHttpClient();
+        //Post
+        FormBody.Builder fbody = new FormBody.Builder();
+        HashMap<String, String> map = reqParam.getMap();
+        if (map != null && !map.isEmpty())
+            for (String key : map.keySet()) {
+                if (map.get(key) != null && !(map.get(key).equals(""))) {
+                    fbody.add(key, map.get(key));
                 }
             }
 
@@ -52,40 +110,10 @@ public class MyHttp {
         Call call = okHttpClient.newCall(request);
         //执行异步调用
         Log.i(ComDef.TAG, "okHttp开始执行异步调用，进程:" + Thread.currentThread().getName());
-        call.enqueue(new Callback() {
-            @Override
-            public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                Log.i(ComDef.TAG, "请求okHttp失败:" + e);
-            }
+//        System.out.print("okHttp开始执行异步调用，进程:" + Thread.currentThread().getName());
 
-            @Override
-            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                Log.i(ComDef.TAG, "okHttp收到异步回调，进程:" + Thread.currentThread().getName());
-                Log.i(ComDef.TAG, "请求okHttp成功！");
-                //获得应答体
-                ResponseBody rb = response.body();
-                //直接获得应答字符串
-                String result = rb.string();
-                Log.i(ComDef.TAG, "请求结果:" + result);
-                //解析字符串为对象
-                try {
-                    list = string2List(result);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                } finally {
-                    //应答体内包含输出流对象，不再使用需要关闭
-                    rb.close();
-                }
-//                UrlSampleActivity.this.runOnUiThread(() -> {
-//                    Log.i(SysCode.TAG, "2更新UI:" + Thread.currentThread().getName());
-//                    String[] from = {"ID", "CDate", "Content", "UserID"};
-//                    int[] to = {R.id.textViewID, R.id.textViewName, R.id.textViewAge, R.id.textViewUser};
-//                    SimpleAdapter simpleAdapter = new SimpleAdapter(UrlSampleActivity.this, list, R.layout.mylist, from, to);
-//                    listView.setAdapter(simpleAdapter);
-//                });
+        call.enqueue(callback);
 
-            }
-        });
     }
 
     //将响应流转换成字符串
@@ -106,29 +134,18 @@ public class MyHttp {
         }
     }
 
-    //解析字符串为对象
-    private List<Map<String, String>> string2List(String in) throws JSONException {
+
+    public List<Map<String, String>> string2List(String in) throws JSONException {
         List<Map<String, String>> list = new ArrayList<>();
-        JSONObject jb = new JSONObject(in);
-        if (jb.has("Record")) {
-            JSONArray array = jb.getJSONArray("Record");
+        JSONArray array = new JSONArray(in);
             for (int i = 0; i < array.length(); i++) {
                 JSONObject item = (JSONObject) array.get(i);
                 Map<String, String> map = new HashMap<>();
-                map.put("ID", item.getString("ID"));
-                map.put("CDate", item.getString("CDate"));
-                map.put("Content", item.getString("Content"));
-                map.put("UserID", item.getString("UserID"));
+                map.put("id", item.getString("id"));
+                map.put("ip", item.getString("ip"));
+                map.put("devName", item.getString("devName"));
                 list.add(map);
             }
-        } else {
-            Map<String, String> map = new HashMap<>();
-            map.put("ID", jb.getString("ID"));
-            map.put("CDate", jb.getString("CDate"));
-            map.put("Content", jb.getString("Content"));
-            map.put("UserID", jb.getString("UserID"));
-            list.add(map);
-        }
         return list;
     }
 }
