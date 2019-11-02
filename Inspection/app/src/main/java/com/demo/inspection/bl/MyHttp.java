@@ -148,4 +148,19 @@ public class MyHttp {
             }
         return list;
     }
+
+    public List<Map<String, String>> stringEquList(String in) throws JSONException {
+        List<Map<String, String>> Equlist = new ArrayList<>();
+        JSONArray array = new JSONArray(in);
+        for (int i = 0; i < array.length(); i++) {
+            JSONObject item = (JSONObject) array.get(i);
+            Map<String, String> map = new HashMap<>();
+            map.put("id", item.getString("id"));
+            map.put("ip", item.getString("ip"));
+            map.put("score", item.getString("score"));
+            map.put("errlist", item.getString("errlist"));
+            Equlist.add(map);
+        }
+        return Equlist;
+    }
 }
