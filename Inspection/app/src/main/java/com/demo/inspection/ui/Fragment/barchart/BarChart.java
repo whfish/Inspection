@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,10 +28,12 @@ import lecho.lib.hellocharts.view.ColumnChartView;
 
 public class BarChart extends Fragment {
 
+    ColumnChartView columnChartView = null;
+    View view;
     //统计图数据
     private ColumnChartData data;
     //数据标志
-    private float[] numberF = {40,30, 10, 5, 2};
+    private float[] numberF = {40, 30, 10, 5, 2};
     //模拟数据
     private int[] colors = {
             Color.WHITE,
@@ -38,9 +41,7 @@ public class BarChart extends Fragment {
             Color.rgb (20, 20, 20),
             Color.rgb (8, 80, 20),
             Color.rgb (20, 20, 80),};
-    private String[] mold = {"","良好", "正常", "告警", "异常"};
-    ColumnChartView columnChartView = null;
-    View view;
+    private String[] mold = {"", "良好", "正常", "告警", "异常"};
 
     @Nullable
     @Override
@@ -49,6 +50,21 @@ public class BarChart extends Fragment {
 
         columnChartView = view.findViewById (R.id.columnchart);
         generateDefaultData ();
+
+
+        ImageView imageViewPie = view.findViewById (R.id.imageViewPie);
+        imageViewPie.setOnClickListener ((view) -> {
+
+            //传递参数
+            //传递数值
+            PieChart pieChart = new PieChart ();
+            Bundle bundle = new Bundle ();
+            bundle.putFloatArray ("number", numberF);
+            pieChart.setArguments (bundle);
+            getFragmentManager ().beginTransaction ().replace (R.id.barChartFL, pieChart).addToBackStack (null).commit ();
+
+
+        });
 
 
         return view;
@@ -70,7 +86,7 @@ public class BarChart extends Fragment {
         for (int i = 0; i < numColumns; ++i) {
 
             values = new ArrayList<> ();
-            values.add (new SubcolumnValue (numberF[i] , colors[i]));
+            values.add (new SubcolumnValue (numberF[i], colors[i]));
             Column column = new Column (values);
 //            ColumnChartValueFormatter chartValueFormatter = new SimpleColumnChartValueFormatter (0);
 //            column.setFormatter (chartValueFormatter);
