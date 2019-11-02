@@ -12,7 +12,10 @@
             android:id="@+id/textViewDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="日期时间" />
+            android:text="日期时间"
+            android:layout_marginTop="5dp"
+            android:textAlignment="center"
+            android:textSize="26sp" />
 
         <FrameLayout
             android:id="@+id/barChartFL"
