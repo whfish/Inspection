@@ -38,6 +38,9 @@ public class StatusFragment extends Fragment implements View.OnClickListener  {
         textViewDate = view.findViewById (R.id.textViewDate);
         textViewDate.setText (simpleDateFormat.format (date));
         textViewDate.setOnClickListener (this);
+
+
+
         return view;
     }
 //构造数
