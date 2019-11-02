@@ -1,0 +1,25 @@
+
+
+<resources>
+    <!-- 字号 -->
+    <dimen name="size_max_64">32sp</dimen>
+    <dimen name="size_max_60">30sp</dimen>
+    <dimen name="size_max_56">28sp</dimen>
+    <dimen name="size_max_50">25sp</dimen>
+    <dimen name="size_max_48">24sp</dimen>
+    <dimen name="size_max_40">20sp</dimen>
+    <dimen name="size_slll">22sp</dimen>
+    <dimen name="size_lll_36">18sp</dimen>
+    <dimen name="size_lll_34">17sp</dimen>
+    <dimen name="size_ll_32">16sp</dimen>
+    <dimen name="size_ll_30">15sp</dimen>
+    <dimen name="size_l_28">14sp</dimen>
+    <dimen name="size_l_26">13sp</dimen>
+    <dimen name="size_m_24">12sp</dimen>
+    <dimen name="size_m_22">11sp</dimen>
+    <dimen name="size_s_20">10sp</dimen>
+    <dimen name="size_s_18">9sp</dimen>
+    <dimen name="size_s">8sp</dimen>
+    <dimen name="size_ss">7sp</dimen>
+    <dimen name="size_sss">6sp</dimen>
+</resources>
