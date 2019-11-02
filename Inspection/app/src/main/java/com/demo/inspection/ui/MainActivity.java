@@ -46,44 +46,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //跳转到状态页面
-        Button buttonS =findViewById (R.id.buttonToStatus);
-        buttonS.setOnClickListener ((view)->{
-            Intent intent =new Intent ();
-            intent.setClass (this,StatusActivity.class);
-            startActivity (intent);
-        });
-
-
-
-
-        ReqParam req = new ReqParam();
-        HashMap map= new HashMap<String,String>();
-        map.put(ComDef.QUERY_DATE,"2019-10-31");
-//        map.put(ComDef.QUERY_INDEX,"1");//系统ID
-        req.setMap(map);
-        req.setUrl(ComDef.URL_PRE+ComDef.INTF_QUERYDEVICE);
-        myHttp.requestOkHttpAsync(req, new Callback() {
-            @Override
-            public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                Log.i(ComDef.TAG, "请求okHttp失败:" + e);
-            }
-
-            @Override
-            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                ResponseBody rb = response.body();
-                //直接获得应答字符串
-                String result = rb.string();
-                Log.i(ComDef.TAG, "原始返回:" + result);
-                try {
-                    list = myHttp.string2List(result);
-                    Log.i(ComDef.TAG, "解析后返回:" + list.toString());
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                } finally {
-                    rb.close();
-                }
-            }
-        });
+//        Button buttonS =findViewById (R.id.buttonToStatus);
+//        buttonS.setOnClickListener ((view)->{
+//            Intent intent =new Intent ();
+//            intent.setClass (this,StatusActivity.class);
+//            startActivity (intent);
+//        });
 
     }
 
