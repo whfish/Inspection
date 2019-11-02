@@ -13,14 +13,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="670dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:orientation="vertical">
-
-            <!--            <lecho.lib.hellocharts.view.ColumnChartView-->
-            <!--                android:id="@+id/mBarChart"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="360dp"-->
-            <!--                />-->
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/fragment_container"
@@ -37,12 +32,6 @@
             android:layout_alignParentBottom="true"
             android:orientation="vertical">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginBottom="5dp"
-                android:background="#CCCCCC" />
-
             <RadioGroup
                 android:id="@+id/tabs"
                 android:layout_width="match_parent"
@@ -54,9 +43,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:checked="true"
                     android:button="@null"
-                    android:text="RadioButton" />
+                    android:checked="true"
+                    android:text="状态" />
 
                 <RadioButton
                     android:id="@+id/radioBtnEquipment"
@@ -64,7 +53,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:button="@null"
-                    android:text="RadioButton" />
+                    android:text="设备" />
 
                 <RadioButton
                     android:id="@+id/radioBtnSystem"
@@ -72,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:button="@null"
-                    android:text="RadioButton" />
+                    android:text="系统" />
 
                 <RadioButton
                     android:id="@+id/radioBtnMe"
@@ -80,8 +69,14 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:button="@null"
-                    android:text="RadioButton" />
+                    android:text="我的" />
             </RadioGroup>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:background="#CCCCCC" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

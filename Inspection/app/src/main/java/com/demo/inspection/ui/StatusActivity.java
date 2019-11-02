@@ -41,8 +41,8 @@ public class StatusActivity extends AppCompatActivity {
         // init fragment
         mFragments = new ArrayList<> (4);
         mFragments.add (StatusFragment.getInstances ("状态"));
-        mFragments.add (SystemFragment.getInstances ("系统"));
         mFragments.add (EquipmentFragment.getInstances ("设备"));
+        mFragments.add (SystemFragment.getInstances ("系统"));
         mFragments.add (MeFragment.getInstances ("我的"));
         // init view pager
         mAdapter = new MyFragmentPagerAdapter (getSupportFragmentManager (), mFragments);
