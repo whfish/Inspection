@@ -23,7 +23,7 @@ public class ReqParam {
     }
 
     public void setUrl(String url) {
-        this.url = url;
+        this.url = ComDef.URL_PRE+url;
     }
 
     public HashMap<String, String> getMap() {
