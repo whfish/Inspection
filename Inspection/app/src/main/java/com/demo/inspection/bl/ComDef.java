@@ -35,5 +35,5 @@ public interface ComDef {
     public static final String QUERY_INDEX = "id";//查询索引值
     public static final String QUERY_DEVINDEX = "devid";//查询系统索引值
     public static final String QUERY_SYSINDEX = "sysid";//查询设备索引值
-    public static final String QUERY_STATE = "state";//状查询态
+    public static final String QUERY_STATE = "score";//状查询态
 }
