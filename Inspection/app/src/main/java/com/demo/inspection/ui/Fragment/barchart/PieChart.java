@@ -55,7 +55,7 @@ public class PieChart extends Fragment {
         values.add (new SliceValue (number[3], Color.GREEN));
         values.add (new SliceValue (number[4], Color.YELLOW));
         data = new PieChartData (values);
-//样式设置
+        //样式设置
         //是否显示文本内容(默认为false)
         data.setHasLabels (true);
         //是否点击饼模块才显示文本（默认为false,为true时，setHasLabels(true)无效）
