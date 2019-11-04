@@ -28,6 +28,7 @@
         <activity android:name=".ui.StatusActivity" />
         <activity android:name=".ui.NetWorkActivity" />
         <activity android:name=".ui.BaseActivity" />
+        <activity android:name=".SystemDetailsActivity"></activity>
     </application>
 
 </manifest>

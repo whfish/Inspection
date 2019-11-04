@@ -28,11 +28,11 @@
         android:id="@+id/main_bottom"
         android:layout_width="match_parent"
         android:layout_height="58dp"
-        android:background="@color/design_default_color_primary"
+        android:background="@color/white"
         app:itemIconTint="@drawable/main_bottom"
         app:itemTextColor="@drawable/main_bottom"
         app:labelVisibilityMode="labeled"
-        app:menu="@menu/navigation"/>
+        app:menu="@menu/navigation" />
 
 
 

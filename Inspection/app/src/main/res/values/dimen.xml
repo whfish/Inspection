@@ -24,6 +24,7 @@
     <dimen name="size_sss">6sp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="tab_size">10sp</dimen>
 
     <!-- 间距 -->
     <dimen name="interval_20px">10dp</dimen>

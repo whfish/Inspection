@@ -3,11 +3,11 @@ package com.demo.inspection.ui.Fragment;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -16,14 +16,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.demo.inspection.R;
-import com.demo.inspection.SystemAddActivity;
 import com.demo.inspection.SystemDetailsActivity;
-import com.demo.inspection.SystemListActivity;
 import com.demo.inspection.bl.ComDef;
 import com.demo.inspection.bl.GetData;
 import com.demo.inspection.bl.MyHttp;
 import com.demo.inspection.bl.ReqParam;
-import com.demo.inspection.ui.EquipmentActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,10 +33,15 @@ import java.util.Map;
 
 
 public class SystemFragment extends Fragment {
+    private static String TAG = "MainActivity";
 
     MyHttp myHttp = new MyHttp();
     List<Map<String, String>> list = null;
     private ListView listView;
+    private  JSONObject item;
+    private ImageView btn;
+
+
 
 
     @Nullable
@@ -60,7 +62,7 @@ public class SystemFragment extends Fragment {
                 List<Map<String, String>> list = new ArrayList<>();
                 JSONArray array = new JSONArray(result);
                 for (int i = 0; i < array.length(); i++) {
-                    JSONObject item = (JSONObject) array.get(i);
+                     item = (JSONObject) array.get(i);
                     Map<String, String> map = new HashMap<>();
                     map.put("id", item.getString("id"));//获取你自己需要的字段
                     map.put("score", item.getString("score"));//获取你自己需要的字段
@@ -88,63 +90,75 @@ public class SystemFragment extends Fragment {
 
 
 
-//                listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-//                    @Override
-//                    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-//
-//
-//                        new AlertDialog.Builder(getActivity())
-//                                .setTitle("系统")
-//                                .setItems(
-//                                        R.array.Pos_items,
-//                                        (dialog, which) -> {
-//                                            if (which == 0) {//新增
+
+                listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                    @Override
+                    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+
+                        new AlertDialog.Builder(getActivity())
+                                .setTitle("系统")
+                                .setItems(
+                                        R.array.Pos_items,
+                                        (dialog, which) -> {
+                                            if (which == 0) {//新增
+
+                                                Intent intent=new Intent(getActivity(),SystemDetailsActivity.class); //参数1:Fragment所依存的Activity,参数2：要跳转的Activity
+                                                Bundle bundle = new Bundle();
+
+                                                try {
+                                                bundle.putString("id", item.getString("id"));//获取你自己需要的字段
+                                                bundle.putString ("score", item.getString("score"));
+                                                bundle.putString ("sysName",item.getString("sysName"));
+                                                bundle.putString ("detial",item.getString("detial"));
+                                                bundle.putString ("opttime",item.getString("opttime"));
+                                                bundle.putString ("userId",item.getString("userId"));
+
+                                                } catch (JSONException e) {
+                                                    e.printStackTrace();
+                                                }
+//                                                bundle.putString ("score",getString(Integer.valueOf("score")));
+//                                                bundle.putString ("sysName",getString(Integer.valueOf("sysName")));
+//                                                bundle.putString ("detial",getString(Integer.valueOf("detial")));
+//                                                bundle.putString ("opttime",getString(Integer.valueOf("opttime")));
+//                                                bundle.putString ("userId",getString(Integer.valueOf("opttime")));
+                                                intent.putExtras(bundle);
+                                                getActivity().startActivity(intent); //这里一定要获取到所在Activity再startActivity()；
+
+
+                                            } else if (which == 1) {// 修改
 //                                                Bundle bundle = new Bundle();
-//                                                bundle.putString("id", item.getString("id"));
-//                                                bundle.putString("sysName", item.getString("sys_name"));
-//                                                bundle.putString("detial", item.getString("detial"));
-//                                                bundle.putString("opttime", item.getString("opttime"));
-//                                                bundle.putString("userId", item.getString("userId"));
-//                                                Intent it1 = new Intent();
-//                                                it1.putExtras(bundle);
-//                                                it1.setClass(getActivity(), SystemDetailsActivity.class);
-//                                                Log.i("id", id[i]);
-//
-//                                                startActivity(it1);
-//
-//
-//                                            } else if (which == 1) {// 修改
-//                                                Bundle bundle = new Bundle();
-//                                                bundle.putString("id", item.getString("id"));
-//                                                bundle.putString("sysName", item.getString("sys_name"));
-//                                                bundle.putString("detial", item.getString("detial"));
-//                                                bundle.putString("opttime", item.getString("opttime"));
-//                                                bundle.putString("userId", item.getString("userId"));
+//                                                bundle.putString("id", getString(Integer.parseInt("id")));//获取你自己需要的字段
+//                                                bundle.putString ("score",getString(Integer.parseInt("score")));
+//                                                bundle.putString ("sysName",getString(Integer.parseInt("sysName")));
+//                                                bundle.putString ("detial",getString(Integer.parseInt("detial")));
+//                                                bundle.putString ("opttime",getString(Integer.parseInt("opttime")));
+//                                                bundle.putString ("userId",getString(Integer.parseInt("opttime")));
 //                                                Intent it1 = new Intent();
 //                                                it1.putExtras(bundle);
 //                                                it1.setClass(getActivity(), SystemAddActivity.class);
-//                                                Log.i("id", id[i]);
+//
 //
 //                                                startActivity(it1);
-//                                            }else {  //删除
+                                            }else {  //删除
 //                                                Bundle bundle = new Bundle();
-//                                                bundle.putString("id", item.getString("id"));
-//                                                bundle.putString("sysName", item.getString("sys_name"));
-//                                                bundle.putString("detial", item.getString("detial"));
-//                                                bundle.putString("opttime", item.getString("opttime"));
-//                                                bundle.putString("userId", item.getString("userId"));
+//                                                bundle.putString("id", getString(Integer.parseInt("id")));//获取你自己需要的字段
+//                                                bundle.putString ("score",getString(Integer.parseInt("score")));
+//                                                bundle.putString ("sysName",getString(Integer.parseInt("sysName")));
+//                                                bundle.putString ("detial",getString(Integer.parseInt("detial")));
+//                                                bundle.putString ("opttime",getString(Integer.parseInt("opttime")));
+//                                                bundle.putString ("userId",getString(Integer.parseInt("userId")));
 //                                                Intent it1 = new Intent();
 //                                                it1.putExtras(bundle);
-//                                                it1.setClass(getActivity(), SystemAddActivity.class);
-//                                                Log.i("id", id[i]);
+//                                                it1.setClass(getActivity(), SystemAddActivity.class);;
 //
 //                                                startActivity(it1);
-//
-//                                            }
-//                                        }).show();
-//                        return true;
-//                    }
-//                });
+
+                                            }
+                                        }).show();
+                        return true;
+                    }
+                });
 
 
             }
@@ -154,24 +168,122 @@ public class SystemFragment extends Fragment {
 
 
 
+//        ImageView imageViewPie = view.findViewById (R.id.imageView2);
+//        imageViewPie.setOnClickListener ((View view1) -> {
+//
+//            //传递参数
+//            Intent intent=new Intent(getActivity(),SystemDetailsActivity.class); //参数1:Fragment所依存的Activity,参数2：要跳转的Activity
+//            Bundle bundle = new Bundle();
+//
+//            try {
+//                bundle.putString("id", item.getString("id"));//获取你自己需要的字段
+//                bundle.putString ("score", item.getString("score"));
+//                bundle.putString ("sysName",item.getString("sysName"));
+//                bundle.putString ("detial",item.getString("detial"));
+//                bundle.putString ("opttime",item.getString("opttime"));
+//                bundle.putString ("userId",item.getString("userId"));
+//
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//                                                bundle.putString ("score",getString(Integer.valueOf("score")));
+//                                                bundle.putString ("sysName",getString(Integer.valueOf("sysName")));
+//                                                bundle.putString ("detial",getString(Integer.valueOf("detial")));
+//                                                bundle.putString ("opttime",getString(Integer.valueOf("opttime")));
+//                                                bundle.putString ("userId",getString(Integer.valueOf("opttime")));
+   //         intent.putExtras(bundle);
+   //         getActivity().startActivity(intent); //这里一定要获取到所在Activity再startActivity()；
+
+
+   //     });
+
+//        view = inflater.inflate(R.layout.activity_systemlist, null);
+//
+//       btn= view.findViewById(R.id.imageView2);
+
+
+
+
+
         return view;
-    }
-
-    public void imageViewonClick(View v) {
 
 
-        System.out.println(listView.getPositionForView(v));
-        Intent it = new Intent(getActivity(), SystemDetailsActivity.class);
-
-        it.putExtra("id","1");
-        it.putExtra("id","1");
-        it.putExtra("id","1");
-        it.putExtra("id","1");
-        it.putExtra("id","1");
-
-        startActivity(it);
 
     }
+
+
+
+
+
+//        btn.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                // TODO Auto-generated method stub
+//                Log.i (TAG, "操纵取消！");
+//            }
+//        });
+
+
+//        ImageView b1=(ImageView) getActivity().findViewById(R.id.imageView2);
+//        b1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//
+//
+//               Log.i (TAG, "操纵取消！");
+//
+//            }
+//        });
+ //   }
+
+
+
+
+
+
+
+
+//    public void imageViewonClick(View v) {
+//    Intent intent=new Intent(getActivity(),SystemDetailsActivity.class); //参数1:Fragment所依存的Activity,参数2：要跳转的Activity
+//    Bundle bundle = new Bundle();
+//
+//    try {
+//        bundle.putString("id", item.getString("id"));//获取你自己需要的字段
+//        bundle.putString ("score", item.getString("score"));
+//        bundle.putString ("sysName",item.getString("sysName"));
+//        bundle.putString ("detial",item.getString("detial"));
+//        bundle.putString ("opttime",item.getString("opttime"));
+//        bundle.putString ("userId",item.getString("userId"));
+//
+//    } catch (JSONException e) {
+//        e.printStackTrace();
+//    }
+//                                                intent.putExtras(bundle);
+//    getActivity().startActivity(intent); //这里一定要获取到所在Activity再startActivity()；
+//
+//    }
+
+//    public void imageViewonClick(View v) {
+//
+//
+//        System.out.println(listView.getPositionForView(v));
+//        Intent it = new Intent(getActivity(), SystemDetailsActivity.class);
+//
+//        it.putExtra("id","1");
+//        it.putExtra("id","1");
+//        it.putExtra("id","1");
+//        it.putExtra("id","1");
+//        it.putExtra("id","1");
+//
+//        startActivity(it);
+//
+//    }
+
+
+
+
 
     public static SystemFragment getInstances(String name){
         SystemFragment systemFragment = new SystemFragment ();
@@ -180,4 +292,59 @@ public class SystemFragment extends Fragment {
         systemFragment.setArguments(bundle);
         return  systemFragment;
     }
+
+//    @Override
+//    public void onClick(View v) {
+//
+//
+//
+//        btn= view.findViewById(R.id.imageView2);
+//
+//       btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//
+//
+//               Log.i (TAG, "操纵取消！");
+//
+//            }
+//        });
+//
+//
+//    }
+
+//    @Override
+//    public void onClick(View v) {
+//        ImageView imageViewPie = v.findViewById (R.id.imageView2);
+//        imageViewPie.setOnClickListener ((View view1) -> {
+//
+//            //传递参数
+//            Intent intent=new Intent(getActivity(),SystemDetailsActivity.class); //参数1:Fragment所依存的Activity,参数2：要跳转的Activity
+//            Bundle bundle = new Bundle();
+//
+//            try {
+//                bundle.putString("id", item.getString("id"));//获取你自己需要的字段
+//                bundle.putString ("score", item.getString("score"));
+//                bundle.putString ("sysName",item.getString("sysName"));
+//                bundle.putString ("detial",item.getString("detial"));
+//                bundle.putString ("opttime",item.getString("opttime"));
+//                bundle.putString ("userId",item.getString("userId"));
+//
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//                                                bundle.putString ("score",getString(Integer.valueOf("score")));
+//                                                bundle.putString ("sysName",getString(Integer.valueOf("sysName")));
+//                                                bundle.putString ("detial",getString(Integer.valueOf("detial")));
+//                                                bundle.putString ("opttime",getString(Integer.valueOf("opttime")));
+//                                                bundle.putString ("userId",getString(Integer.valueOf("opttime")));
+//                intent.putExtras(bundle);
+//                 getActivity().startActivity(intent); //这里一定要获取到所在Activity再startActivity()；
+//
+//
+//            });
+//
+//
+//    }
 }

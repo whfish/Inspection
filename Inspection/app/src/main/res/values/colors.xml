@@ -52,6 +52,13 @@
     <color name="actionsheet_red">#FD4A2E</color>
     <color name="actionsheet_gray">#8F8F8F</color>
 
+    <!--绿色-->
+
+    <color name="table_green">#41b883</color>
+    <color name="table_red">#e45f5f</color>
+    <color name="table_yellow">#f7c94d</color>
+    <color name="table_blue">#9ab7e0</color>
+    <color name="table_ga">#2ec7c9</color>
     <!-- loading-->
     <array name="g_default_loading_fg">
         <item>#00bcd4</item>
