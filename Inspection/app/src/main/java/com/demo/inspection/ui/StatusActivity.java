@@ -33,6 +33,7 @@ public class StatusActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
         setContentView (R.layout.activity_as);
+        setTitle ("设备状态");
         initView ();
     }
 

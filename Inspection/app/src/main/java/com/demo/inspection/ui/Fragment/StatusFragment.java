@@ -77,7 +77,6 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
 
             case R.id.textViewDate:
                 showDatePickerDialog (getActivity (), 4, textViewDate, calendar);
-
                 break;
 
         }
