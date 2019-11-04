@@ -22,12 +22,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <FrameLayout
                 android:id="@+id/barChartFL"
                 android:layout_width="match_parent"
-                android:layout_height="420dp">
-
-            </FrameLayout>
+                android:layout_height="500dp"></FrameLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
