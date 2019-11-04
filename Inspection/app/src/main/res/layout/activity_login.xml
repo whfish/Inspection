@@ -135,7 +135,7 @@
                 android:layout_marginLeft="40.0dip"
                 android:layout_marginRight="40.0dip"
                 android:background="@drawable/btn_red_big_radius"
-                android:text="@string/bt_mine_upercenter"
+                android:text="@string/bt_mine_login"
                 android:textColor="@color/white"
                 android:textSize="17.0sp"/>
         </RelativeLayout>
