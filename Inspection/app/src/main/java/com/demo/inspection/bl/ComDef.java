@@ -22,7 +22,7 @@ public interface ComDef {
     public static final String INTF_QUERYDEVICE = "queryDeviceInfo";//查询设备列表
     public static final String INTF_QUERYDEVICEDETAIL = "queryDeviceDetail";//查询设备详情
 
-    public static final String INTF_QUERYSYS = "querySysInfo";//查询系统列表
+    public static final String INTF_QUERYSYS = "querySysInfoState";//查询系统列表
     public static final String INTF_QUERYSYSDETAIL  = "querySysInfoDetail";//查询系统详情
 
     public static final String INTF_QUERYADMIN  = "queryUserName";//查询账号
