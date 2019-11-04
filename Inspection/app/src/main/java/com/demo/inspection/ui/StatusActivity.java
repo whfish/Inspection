@@ -20,6 +20,8 @@ import com.demo.inspection.ui.Fragment.SystemFragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.demo.inspection.bl.ComDef.TITLE_NAME;
+
 public class StatusActivity extends AppCompatActivity {
     private ViewPager mViewPager;
     private RadioGroup mTabRadioGroup;
@@ -83,6 +85,7 @@ public class StatusActivity extends AppCompatActivity {
             for (int i = 0; i < group.getChildCount (); i++) {
                 if (group.getChildAt (i).getId () == checkedId) {
                     mViewPager.setCurrentItem (i);
+                    setTitle (TITLE_NAME[i]);
                     return;
                 }
             }

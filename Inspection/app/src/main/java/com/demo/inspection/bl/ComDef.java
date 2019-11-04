@@ -36,4 +36,9 @@ public interface ComDef {
     public static final String QUERY_DEVINDEX = "devid";//查询系统索引值
     public static final String QUERY_SYSINDEX = "sysid";//查询设备索引值
     public static final String QUERY_STATE = "score";//状查询态
+
+    String[] TITLE_NAME={"状态信息","设备展示","系统展示","我的"};
+
+
+
 }
