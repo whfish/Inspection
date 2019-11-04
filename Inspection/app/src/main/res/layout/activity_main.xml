@@ -4,6 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+    <!--<TextView-->
+        <!--android:id="@+id/warning"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="#FEC7DE"-->
+        <!--android:padding="10dp"-->
+        <!--android:textColor="#000"-->
+        <!--android:text="网络不给力,请检查网络设置。"-->
+        <!--android:visibility="gone"/>-->
+
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/main_viewpage"
@@ -23,6 +33,9 @@
         app:itemTextColor="@drawable/main_bottom"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/navigation"/>
+
+
+
 
 
 </LinearLayout>
