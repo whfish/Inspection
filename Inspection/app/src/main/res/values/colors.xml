@@ -43,6 +43,10 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="color_005fac">#005fac</color>
     <color name="btn_text_blue">#0090b3</color>
+    <!--红色-->
+    <color name="colorPrimary_Red">#fff04848</color>
+    <color name="colorPrimaryDark_Red">#DA1607</color>
+    <color name="colorAccent_Red">#009688</color>
 
     <!-- loading-->
     <array name="g_default_loading_fg">
