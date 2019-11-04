@@ -33,15 +33,15 @@ public class BarChart extends Fragment {
     //统计图数据
     private ColumnChartData data;
     //数据标志
-    private float[] numberF = {40, 30, 10, 5, 2};
+    private float[] numberF = {35, 30, 10, 5, 2};
     //模拟数据
     private int[] colors = {
             Color.WHITE,
-            Color.rgb (80, 0, 0),
-            Color.rgb (20, 20, 20),
-            Color.rgb (8, 80, 20),
-            Color.rgb (20, 20, 80),};
-    private String[] mold = {"", "良好", "正常", "告警", "异常"};
+            Color.rgb (76, 175, 80),
+            Color.rgb (228,95,95),
+            Color.rgb (247,201,77),
+            Color.rgb (154,183,224),};
+    private String[] mold = {"", "正常", "告警", "预警", "异常"};
 
     @Nullable
     @Override
@@ -116,14 +116,14 @@ public class BarChart extends Fragment {
         data.setValueLabelBackgroundEnabled (true);
         data.setValueLabelBackgroundAuto (false);
         //柱状图的宽度
-        data.setFillRatio (0.6f);
+        data.setFillRatio (0.65f);
         data.setValueLabelsTextColor (Color.BLACK);
         //定义x轴y轴相应参数
         Axis axisX = new Axis ();
         Axis axisY = new Axis ().setHasLines (true);
-        axisY.setName ("数量");//轴名称
-        axisY.setTextSize (20);
-        axisY.setTextColor (Color.GREEN);
+//        axisY.setName ("数量");//轴名称
+        axisY.setTextSize (15);
+        axisY.setTextColor (Color.GRAY);
         axisY.setLineColor (Color.GRAY);
         axisY.hasLines ();//是否显示网格线
 

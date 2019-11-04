@@ -50,10 +50,10 @@ public class PieChart extends Fragment {
         //初始化数据
         List<SliceValue> values = new ArrayList<SliceValue> ();
 
-        values.add (new SliceValue (number[1], Color.RED));
-        values.add (new SliceValue (number[2], Color.GRAY));
-        values.add (new SliceValue (number[3], Color.GREEN));
-        values.add (new SliceValue (number[4], Color.YELLOW));
+        values.add (new SliceValue (number[1], Color.rgb (76, 175, 80)));
+        values.add (new SliceValue (number[2], Color.rgb (228,95,95)));
+        values.add (new SliceValue (number[3], Color.rgb (247,201,77)));
+        values.add (new SliceValue (number[4], Color.rgb (154,183,224)));
         data = new PieChartData (values);
         //样式设置
         //是否显示文本内容(默认为false)

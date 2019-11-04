@@ -46,8 +46,13 @@
     <!--红色-->
     <color name="colorPrimary_Red">#fff04848</color>
     <color name="colorPrimaryDark_Red">#DA1607</color>
-    <color name="colorAccent_Red">#009688</color>
-
+    <!--绿色-->
+    <color name="colorAccent_Red">#36AD37</color>
+    <color name="table_green">#41b883</color>
+    <color name="table_red">#e45f5f</color>
+    <color name="table_yellow">#f7c94d</color>
+    <color name="table_blue">#9ab7e0</color>
+    <color name="table_ga">#2ec7c9</color>
     <!-- loading-->
     <array name="g_default_loading_fg">
         <item>#00bcd4</item>
@@ -55,6 +60,7 @@
         <item>#5677fc</item>
         <item>#ff9800</item>
         <item>#e91e63</item>
+
     </array>
 
 
