@@ -118,26 +118,29 @@
             android:layout_marginRight="40dp"
             android:background="@color/color_line_gray" />
 
-
-        <TextView
-            android:id="@+id/tv_login"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
             android:layout_marginTop="50dp"
-            android:layout_marginRight="40dp"
-            android:background="@drawable/btn_red_big_radius"
-            android:enabled="true"
-            android:gravity="center"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:shadowColor="#4ded5831"
-            android:shadowDx="0"
-            android:shadowDy="5"
-            android:text="@string/bt_login"
-            android:textColor="@color/white"
-            android:textSize="@dimen/size_ll_30"
-            android:textStyle="bold" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="15dp">
+
+
+            <Button
+                android:id="@+id/tv_login"
+                android:layout_width="fill_parent"
+                android:layout_height="45.0dip"
+                android:layout_marginBottom="16.0dip"
+                android:layout_marginLeft="40.0dip"
+                android:layout_marginRight="40.0dip"
+                android:background="@drawable/btn_red_big_radius"
+                android:text="@string/bt_mine_upercenter"
+                android:textColor="@color/white"
+                android:textSize="17.0sp"/>
+        </RelativeLayout>
+
+
 
     </LinearLayout>
 
