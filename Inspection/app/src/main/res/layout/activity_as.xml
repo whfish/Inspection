@@ -28,7 +28,7 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="80px"
+            android:layout_height="70dp"
             android:layout_alignParentBottom="true"
             android:orientation="vertical">
 
@@ -45,7 +45,9 @@
                     android:layout_weight="1"
                     android:button="@null"
                     android:checked="true"
-                    android:text="状态" />
+                    android:text="状态"
+                    android:gravity="center"
+                    android:drawableTop="@mipmap/icon_state"/>
 
                 <RadioButton
                     android:id="@+id/radioBtnEquipment"
@@ -53,7 +55,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:button="@null"
-                    android:text="设备" />
+                    android:text="设备"
+                    android:gravity="center"
+                    android:drawableTop="@mipmap/icon_device"/>
 
                 <RadioButton
                     android:id="@+id/radioBtnSystem"
@@ -61,7 +65,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:button="@null"
-                    android:text="系统" />
+                    android:text=" 系统"
+                    android:gravity="center"
+                    android:drawableTop="@mipmap/icon_system"/>
 
                 <RadioButton
                     android:id="@+id/radioBtnMe"
@@ -69,7 +75,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:button="@null"
-                    android:text="我的" />
+                    android:text="我的"
+                    android:gravity="center"
+                    android:drawableTop="@mipmap/icon_mine"/>
             </RadioGroup>
 
             <View
