@@ -41,7 +41,7 @@ public class EquipmentActivity extends AppCompatActivity {
     // 声明ListView控件
     private ListView mListView;
     //定义状态
-    String[] Score = new String[]{"1-良好", "2-警告", "3-故障"};
+    String[] Score = new String[]{"1", "2", "3"};//1-良好，2-告警，3-故障
 
 
     @Override
@@ -60,11 +60,14 @@ public class EquipmentActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                System.out.println("选择:" + adapter.getItem(position).toString());
+
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
+
 
         // 创建ListView,设备页面列表
         mListView = findViewById(R.id.listView);
@@ -105,24 +108,51 @@ public class EquipmentActivity extends AppCompatActivity {
             }
         });
 
-//        //绑定搜索框
-//        EditText txt = findViewById(R.id.editText);
-//        //绑定搜索按钮
-//        Button btnGO = findViewById(R.id.buttonGO);
-//        btnGO.setOnClickListener(v -> {
-//
-//            String key = txt.getText().toString();
-//            if(key != null && !key.equals("")) {
-//                //有条件查询
-//                mData = mUserDAO.findByName(key);
-//            }else{
-//                //无条件查询
-//                mData = mUserDAO.findAll();
-//            }
-//
-//            // 绑定数据ListView
-//            bindAdapter();
-//        });
+        //绑定搜索框
+        EditText txt = findViewById(R.id.editText);
+        HashMap map= new HashMap<String,String>();
+        //绑定搜索按钮
+        Button btnGO = findViewById(R.id.buttonGO);
+        btnGO.setOnClickListener(v -> {
+            String key = txt.getText().toString();//获取文本内容
+            map.put(ComDef.QUERY_IP,key);//用IP作为条件
+            req.setMap(map);
+            req.setUrl(ComDef.URL_PRE+ComDef.INTF_QUERYDEVICE);
+
+            myHttp.requestOkHttpAsync(req, new Callback() {
+                @Override
+                public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                    Log.i(ComDef.TAG, "请求okHttp失败:" + e);
+                }
+
+                @Override
+                public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                    ResponseBody rb = response.body();
+                    //直接获得应答字符串
+                    String result = rb.string();
+                    Log.i(ComDef.TAG, "原始返回:" + result);
+                    try {
+                        list = myHttp.stringEquList(result);
+                        Log.i(ComDef.TAG, "解析后返回: "+list.toString());
+
+                        //刷新主界面
+                        EquipmentActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                String[] from = {"id", "ip", "score", "errlist"};  //决定提取哪些值来生成列表项
+                                int[] to = {R.id.textName, R.id.textIP, R.id.textState, R.id.textEvent}; //对应到xml里的名字
+                                SimpleAdapter adapter = new SimpleAdapter(getApplicationContext(), list, R.layout.activity_equipmentlist, from, to);
+                                mListView.setAdapter(adapter);
+                            }
+                        });
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } finally {
+                        rb.close();
+                    }
+                }
+            });
+        });
 
 
 //        // Item点击时跳转详情页面
