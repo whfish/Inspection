@@ -7,11 +7,11 @@
     android:focusable="true"
     android:orientation="vertical"
     android:splitMotionEvents="false">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:background="@drawable/btn_gradient_orange_16">
-    </LinearLayout>
+        android:layout_height="150dp"
+        android:background="@drawable/btn_gradient_orange_16"></LinearLayout>
 
 
     <LinearLayout
@@ -19,7 +19,6 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:layout_marginTop="40dp"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -43,7 +42,7 @@
             android:layout_marginTop="@dimen/vertical_margin_30px"
             android:paddingTop="15dp">
 
-
+            <!-- 姓名 -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -53,24 +52,16 @@
                 android:paddingBottom="15dp"
                 android:visibility="visible">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="@dimen/horizontal_margin_15px"
-                    android:textColor="@color/color_black_light"
-                    android:textSize="@dimen/size_ll_30"
-                    tools:text="@string/bt_mine_name" />
 
                 <TextView
                     android:id="@+id/uname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginLeft="@dimen/horizontal_margin_15px"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="8dp"
                     android:textColor="@color/color_black_light"
                     android:textSize="@dimen/size_ll_30"
-                    tools:text="XXX" />
+                    tools:text="@string/bt_mine_name" />
 
             </RelativeLayout>
             <View
@@ -78,6 +69,7 @@
                 android:layout_height="1dp"
                 android:background="@color/color_line_gray"></View>
 
+            <!-- 账号 -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -86,7 +78,9 @@
                 android:paddingBottom="15dp"
                 android:paddingTop="15dp">
 
+
                 <TextView
+                    android:id="@+id/uid"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
@@ -94,16 +88,6 @@
                     android:textColor="@color/color_black_light"
                     android:textSize="@dimen/size_ll_30"
                     tools:text="@string/bt_mine_acc" />
-
-                <TextView
-                    android:id="@+id/uid"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginLeft="@dimen/horizontal_margin_15px"
-                    android:textColor="@color/color_black_light"
-                    android:textSize="@dimen/size_ll_30"
-                    tools:text="10010" />
             </RelativeLayout>
 
             <View
@@ -111,6 +95,7 @@
                 android:layout_height="1dp"
                 android:background="@color/color_line_gray"></View>
 
+            <!-- 手机 -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -118,7 +103,10 @@
                 android:orientation="horizontal"
                 android:paddingBottom="15dp"
                 android:paddingTop="15dp">
+
+
                 <TextView
+                    android:id="@+id/uphone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
@@ -126,16 +114,6 @@
                     android:textColor="@color/color_black_light"
                     android:textSize="@dimen/size_ll_30"
                     tools:text="@string/bt_mine_num" />
-
-                <TextView
-                    android:id="@+id/uphone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginLeft="@dimen/horizontal_margin_15px"
-                    android:textColor="@color/color_black_light"
-                    android:textSize="@dimen/size_ll_30"
-                    tools:text="18600000000" />
             </RelativeLayout>
 
             <View
@@ -143,6 +121,7 @@
                 android:layout_height="1dp"
                 android:background="@color/color_line_gray"></View>
 
+            <!-- 部门 -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -150,7 +129,9 @@
                 android:orientation="horizontal"
                 android:paddingBottom="15dp"
                 android:paddingTop="15dp">
+
                 <TextView
+                    android:id="@+id/udepart"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
@@ -158,16 +139,6 @@
                     android:textColor="@color/color_black_light"
                     android:textSize="@dimen/size_ll_30"
                     tools:text="@string/bt_mine_part" />
-
-                <TextView
-                    android:id="@+id/udepart"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginLeft="@dimen/horizontal_margin_15px"
-                    android:textColor="@color/color_black_light"
-                    android:textSize="@dimen/size_ll_30"
-                    tools:text="XXX" />
             </RelativeLayout>
 
             <View
@@ -180,42 +151,43 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingBottom="15dp"
-                android:paddingTop="65dp">
+                android:paddingTop="30dp"
+                android:paddingBottom="15dp">
 
 
                 <Button
+                    android:id="@+id/xg_m"
                     android:layout_width="fill_parent"
                     android:layout_height="45.0dip"
-                    android:layout_marginBottom="16.0dip"
                     android:layout_marginLeft="20.0dip"
                     android:layout_marginRight="20.0dip"
+                    android:layout_marginBottom="16.0dip"
                     android:background="@drawable/btn_bind_purple"
                     android:text="@string/bt_mine_change_psw"
                     android:textColor="@color/white"
                     android:textSize="17.0sp" />
             </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingBottom="15dp">
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:paddingBottom="15dp">-->
 
 
-                <Button
-                    android:id="@+id/btn_choose_photo"
-                    android:layout_width="fill_parent"
-                    android:layout_height="45.0dip"
-                    android:layout_marginBottom="16.0dip"
-                    android:layout_marginLeft="20.0dip"
-                    android:layout_marginRight="20.0dip"
-                    android:background="@drawable/btn_bind_purple"
-                    android:text="@string/bt_mine_upercenter"
-                    android:textColor="@color/white"
-                    android:textSize="17.0sp"/>
-            </RelativeLayout>
+<!--                <Button-->
+<!--                    android:id="@+id/btn_choose_photo"-->
+<!--                    android:layout_width="fill_parent"-->
+<!--                    android:layout_height="45.0dip"-->
+<!--                    android:layout_marginBottom="16.0dip"-->
+<!--                    android:layout_marginLeft="20.0dip"-->
+<!--                    android:layout_marginRight="20.0dip"-->
+<!--                    android:background="@drawable/btn_bind_purple"-->
+<!--                    android:text="@string/bt_mine_upercenter"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="17.0sp"/>-->
+<!--            </RelativeLayout>-->
 
         </LinearLayout>
     </LinearLayout>
