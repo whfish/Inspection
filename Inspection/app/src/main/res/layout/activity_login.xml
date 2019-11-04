@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/white">
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,7 +13,7 @@
     <LinearLayout
         android:id="@+id/ll_login"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
 
@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:layout_marginRight="40dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
@@ -51,7 +51,7 @@
                 android:layout_height="20dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/icon_user_invisible"
+                android:src="@mipmap/icon_user_invisible"
                 android:visibility="visible" />
 
             <EditText
@@ -81,7 +81,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="40dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
@@ -92,7 +92,7 @@
                 android:layout_height="20dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/icon_pwd_invisible"
+                android:src="@mipmap/icon_pwd_invisible"
                 android:visibility="visible" />
 
             <EditText
@@ -121,7 +121,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingBottom="15dp">
@@ -130,7 +130,7 @@
             <Button
                 android:id="@+id/tv_login"
                 android:layout_width="fill_parent"
-                android:layout_height="45.0dip"
+                android:layout_height="45dp"
                 android:layout_marginBottom="16.0dip"
                 android:layout_marginLeft="40.0dip"
                 android:layout_marginRight="40.0dip"
