@@ -13,6 +13,7 @@ import com.demo.inspection.R;
 
 
 public class SystemFragment extends Fragment {
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -31,4 +32,6 @@ public class SystemFragment extends Fragment {
         systemFragment.setArguments(bundle);
         return  systemFragment;
     }
+
+
 }
