@@ -1,5 +1,7 @@
 package com.demo.inspection.utils;
 
+import android.widget.EditText;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -26,6 +28,13 @@ public class Tools {
             return false;
         }
 
+    }
+
+    public static boolean CheckHasValue(EditText e) {
+        if(e.getText().toString().isEmpty())
+            return false;
+            else
+            return true;
     }
 
 }

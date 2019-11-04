@@ -20,6 +20,8 @@ import com.demo.inspection.ui.Fragment.SystemFragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.demo.inspection.bl.ComDef.TITLE_NAME;
+
 public class StatusActivity extends AppCompatActivity {
     private ViewPager mViewPager;
     private RadioGroup mTabRadioGroup;
@@ -31,6 +33,7 @@ public class StatusActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
         setContentView (R.layout.activity_as);
+        setTitle ("设备状态");
         initView ();
     }
 
@@ -41,8 +44,8 @@ public class StatusActivity extends AppCompatActivity {
         // init fragment
         mFragments = new ArrayList<> (4);
         mFragments.add (StatusFragment.getInstances ("状态"));
-        mFragments.add (SystemFragment.getInstances ("系统"));
         mFragments.add (EquipmentFragment.getInstances ("设备"));
+        mFragments.add (SystemFragment.getInstances ("系统"));
         mFragments.add (MeFragment.getInstances ("我的"));
         // init view pager
         mAdapter = new MyFragmentPagerAdapter (getSupportFragmentManager (), mFragments);
@@ -83,6 +86,7 @@ public class StatusActivity extends AppCompatActivity {
             for (int i = 0; i < group.getChildCount (); i++) {
                 if (group.getChildAt (i).getId () == checkedId) {
                     mViewPager.setCurrentItem (i);
+                    setTitle (TITLE_NAME[i]);
                     return;
                 }
             }
