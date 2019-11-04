@@ -24,4 +24,17 @@
     <dimen name="size_sss">6sp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- 间距 -->
+    <dimen name="interval_20px">10dp</dimen>
+    <dimen name="horizontal_txt_15px">2dp</dimen>
+    <dimen name="horizontal_margin_15px">8dp</dimen>
+    <dimen name="sides_margin">10dp</dimen>
+    <dimen name="margin_20px">10dp</dimen>
+    <dimen name="vertical_margin_30px">16dp</dimen>
+    <dimen name="btn_padding">10dp</dimen>
+    <dimen name="btn_padding_5">5dp</dimen>
+    <dimen name="shop_favorite_w">64dp</dimen>
+    <dimen name="shop_category_w">40dp</dimen>
+    <dimen name="shop_message_w">40dp</dimen>
 </resources>
