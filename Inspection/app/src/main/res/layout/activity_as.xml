@@ -13,7 +13,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="670dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <!--            <lecho.lib.hellocharts.view.ColumnChartView-->
@@ -24,8 +24,8 @@
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/fragment_container"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_above="@+id/tabs" />
 
 
@@ -33,13 +33,13 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="80px"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:orientation="vertical">
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:background="#CCCCCC" />
 
@@ -53,16 +53,16 @@
                     android:id="@+id/radioBtnStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:checked="true"
+                    android:layout_weight="0"
                     android:button="@null"
+                    android:checked="true"
                     android:text="RadioButton" />
 
                 <RadioButton
                     android:id="@+id/radioBtnEquipment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:button="@null"
                     android:text="RadioButton" />
 
@@ -70,7 +70,7 @@
                     android:id="@+id/radioBtnSystem"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:button="@null"
                     android:text="RadioButton" />
 
@@ -78,7 +78,7 @@
                     android:id="@+id/radioBtnMe"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:button="@null"
                     android:text="RadioButton" />
             </RadioGroup>

@@ -77,7 +77,7 @@ public class SystemListActivity extends Activity {
 
         String[] from = {"id", "input", "output", "weight", "AE", "imageId"};  //决定提取哪些值来生成列表项
         int[] to = {R.id.textViewInput2, R.id.textViewInput,
-                R.id.textViewOutput, R.id.textViewWeight, R.id.textViewAmountExercise, R.id.imageView2}; //决定填充哪些组建
+                R.id.textViewOutput, R.id.textViewWeight, R.id.textViewAmountExercise, R.id.imageView2}; //决定填充哪些组件
         SimpleAdapter adapter = new SimpleAdapter(this, mapList, R.layout.item_list, from, to);
         listView.setAdapter(adapter);
 
