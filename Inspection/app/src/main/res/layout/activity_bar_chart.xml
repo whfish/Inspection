@@ -20,11 +20,12 @@
         <lecho.lib.hellocharts.view.ColumnChartView
             android:id="@+id/columnchart"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:paddingTop="30dp"
             android:layout_marginTop="2dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginRight="30dp"/>
+            android:layout_marginRight="30dp"
+            />
 
     </LinearLayout>
 </LinearLayout>
