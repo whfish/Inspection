@@ -66,6 +66,16 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
         textView_error = view.findViewById (R.id.textView_error);
 
 
+        textView_fine.setOnClickListener ((view1) -> {
+            EquipmentFragment equipmentFragment = new EquipmentFragment ();
+            Bundle bundle = new Bundle ();
+            bundle.putString ("date", dateString);
+            bundle.putInt ("status", 1);
+            equipmentFragment.setArguments (bundle);
+            getFragmentManager ().beginTransaction ().replace (R.id.fragment_container, equipmentFragment);
+        });
+
+
         return view;
     }
 
@@ -152,10 +162,10 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
                 switch (id) {
                     case 0:
 
-                        textView_fine.setText ("良好状态设备:" + numberF[1] + "台");
-                        textView_normal.setText ("正常状态设备:" + numberF[2] + "台");
-                        textView_alarm.setText ("警告状态设备:" + numberF[3] + "台");
-                        textView_error.setText ("异常状态设备:" + numberF[4] + "台");
+                        textView_fine.setText ("良好状态:" + numberF[1] + "台");
+                        textView_normal.setText ("正常状态:" + numberF[2] + "台");
+                        textView_alarm.setText ("警告状态:" + numberF[3] + "台");
+                        textView_error.setText ("异常状态:" + numberF[4] + "台");
 
                         BarChart barChart = new BarChart ();
                         Bundle bundle = new Bundle ();
@@ -174,7 +184,6 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
 
                 }
 
-                //        getChildFragmentManager ().beginTransaction ().add (R.id.barChartFL, new BarChart ()).commit ();
                 Log.i (ComDef.TAG, "解析后返回:" + numberF.toString ());
             }
         };
