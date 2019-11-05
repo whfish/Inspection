@@ -1,60 +1,63 @@
 package com.demo.inspection.ui;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
-import android.widget.Button;
-
 import com.demo.inspection.R;
-import com.demo.inspection.bl.ComDef;
 import com.demo.inspection.bl.MyFragmentPagerAdapter;
-import com.demo.inspection.bl.MyHttp;
-import com.demo.inspection.bl.ReqParam;
 import com.demo.inspection.ui.Fragment.EquipmentFragment;
 import com.demo.inspection.ui.Fragment.MeFragment;
 import com.demo.inspection.ui.Fragment.StatusFragment;
 import com.demo.inspection.ui.Fragment.SystemFragment;
+import com.demo.inspection.ui.NetWork.BaseActivity;
+import com.demo.inspection.ui.NetWork.NetWorkActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONException;
-
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
-
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONException;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
-import okhttp3.ResponseBody;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     BottomNavigationView mainBottom;
     ViewPager mainViewpage;
 
     private ArrayList<Fragment> fList;
+    private TextView mTv;
+    private static final int NETWORK_ID = Menu.FIRST;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        /**
+         * 设置网络连接提示
+         */
+
+//        mTv = (TextView) findViewById(R.id.warning);
+//
+//        //启动时判断网络状态
+//        boolean netConnect = this.isNetConnect();
+//        if (netConnect) {
+//            mTv.setVisibility(View.GONE);
+//        } else {
+//            mTv.setVisibility(View.VISIBLE);
+//        }
+
+
+
+
+        /*
+        * 底部导航菜单栏
+        * */
         mainViewpage = findViewById(R.id.main_viewpage);//ViewPager
         mainBottom = findViewById(R.id.main_bottom);//底部导航栏
 
@@ -83,6 +86,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+
 
     public void userFragmentPagerAdapter() {
         fList = new ArrayList<>();
@@ -120,6 +125,41 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu){
+
+        menu.add(0, NETWORK_ID, 0, R.string.network);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item){
+
+        switch (item.getItemId()) {
+
+            case NETWORK_ID:
+                Intent netWork=new Intent(this, NetWorkActivity.class);
+                startActivity(netWork);
+
+                break;
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+//    @Override
+//    public void onNetChange(int netMobile) {
+//        super.onNetChange(netMobile);
+//        //网络状态变化时的操作
+//        if (netMobile== NetUtils.NETWORK_NONE){
+//            mTv.setVisibility(View.VISIBLE);
+//        }else {
+//            mTv.setVisibility(View.GONE);
+//        }
+//    }
 
 
 }

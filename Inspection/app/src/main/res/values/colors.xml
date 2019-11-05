@@ -46,8 +46,14 @@
     <!--红色-->
     <color name="colorPrimary_Red">#fff04848</color>
     <color name="colorPrimaryDark_Red">#DA1607</color>
+    <color name="colorAccent_Red">#009688</color>
+    <color name="alertdialog_line">#c6c6c6</color>
+    <color name="actionsheet_blue">#037BFF</color>
+    <color name="actionsheet_red">#FD4A2E</color>
+    <color name="actionsheet_gray">#8F8F8F</color>
+
     <!--绿色-->
-    <color name="colorAccent_Red">#36AD37</color>
+
     <color name="table_green">#41b883</color>
     <color name="table_red">#e45f5f</color>
     <color name="table_yellow">#f7c94d</color>
@@ -60,7 +66,6 @@
         <item>#5677fc</item>
         <item>#ff9800</item>
         <item>#e91e63</item>
-
     </array>
 
 
