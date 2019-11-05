@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,6 +35,17 @@ public class PieChart extends Fragment {
         pieChartView = view.findViewById (R.id.piechart);
         number = getArguments ().getIntArray ("number");
         initDatas ();
+
+        TextView textViewP_fine =view.findViewById (R.id.textViewP_fine);
+        TextView textViewP_normal =view.findViewById (R.id.textViewP_normal);
+        TextView textViewP_alarm =view.findViewById (R.id.textViewP_alarm);
+        TextView textViewP_error =view.findViewById (R.id.textViewP_error);
+
+        textViewP_fine.setText ("良好状态:" + number[1] + "台");
+        textViewP_normal.setText ("正常状态:" + number[2] + "台");
+        textViewP_alarm.setText ("告警状态:" + number[3] + "台");
+        textViewP_error.setText ("异常状态:" + number[4] + "台");
+
 
         ImageView imageViewBar = view.findViewById (R.id.imageViewBar);
         imageViewBar.setOnClickListener ((view1) -> {

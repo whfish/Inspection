@@ -95,10 +95,10 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
 
             new Handler ().postDelayed (() -> {
 
-                textView_fine.setText ("良好状态设备:" + numberF[1] + "台");
-                textView_normal.setText ("正常状态设备:" + numberF[2] + "台");
-                textView_alarm.setText ("警告状态设备:" + numberF[3] + "台");
-                textView_error.setText ("异常状态设备:" + numberF[4] + "台");
+                textView_fine.setText ("良好状态:" + numberF[1] + "台");
+                textView_normal.setText ("正常状态:" + numberF[2] + "台");
+                textView_alarm.setText ("告警状态:" + numberF[3] + "台");
+                textView_error.setText ("异常状态:" + numberF[4] + "台");
 
             }, 300);
 
