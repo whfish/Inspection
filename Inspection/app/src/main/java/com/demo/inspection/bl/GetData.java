@@ -18,7 +18,7 @@ import okhttp3.ResponseBody;
  * @ProjectName: Inspection
  * @Package: com.demo.inspection.bl
  * @ClassName: GetData
- * @Description: java类作用描述
+ * @Description: 异步调用封装
  * @Author: 王欢
  * @CreateDate: 2019/11/2 15:58
  * @UpdateUser: 更新者：

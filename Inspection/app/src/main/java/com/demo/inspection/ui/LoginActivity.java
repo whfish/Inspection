@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         EditText account = findViewById(R.id.edt_login_account);
         EditText passwd = findViewById(R.id.edt_login_pwd);
-        TextView login = findViewById(R.id.tv_login);
+        Button login = findViewById(R.id.tv_login);
         login.setOnClickListener((v) -> {
             if (!Tools.CheckHasValue(account)) {
                 ToastUtil.toastCenter(this, "账号不能为空");
@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                             String dbpasswd = item.getString("password");
                             if( passwd.getText().toString().equals(dbpasswd)){
                                 Intent intent = new Intent();
-                                intent.setClass(LoginActivity.this, StatusActivity.class);
+                                intent.setClass(LoginActivity.this, MainActivity.class);
                                 startActivity(intent);
                             }else{
                                 LoginActivity.this.runOnUiThread(() -> {
