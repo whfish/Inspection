@@ -33,7 +33,7 @@ public class BarChart extends Fragment {
     //统计图数据
     private ColumnChartData data;
     //数据标志
-    private float[] numberF = {35, 30, 10, 5, 2};
+    private int[] numberF;
     //模拟数据
     private int[] colors = {
             Color.WHITE,
@@ -49,6 +49,9 @@ public class BarChart extends Fragment {
         view = inflater.inflate (R.layout.activity_bar_chart, container, false);
 
         columnChartView = view.findViewById (R.id.columnchart);
+
+        //获取数据
+        numberF=getArguments ().getIntArray ("number");
         generateDefaultData ();
 
 
@@ -59,7 +62,7 @@ public class BarChart extends Fragment {
             //传递数值
             PieChart pieChart = new PieChart ();
             Bundle bundle = new Bundle ();
-            bundle.putFloatArray ("number", numberF);
+            bundle.putIntArray ("number", numberF);
             pieChart.setArguments (bundle);
             getFragmentManager ().beginTransaction ().replace (R.id.barChartFL, pieChart).addToBackStack (null).commit ();
 

@@ -24,7 +24,7 @@ import lecho.lib.hellocharts.view.PieChartView;
 public class PieChart extends Fragment {
     private PieChartView pieChartView;
     private PieChartData data;
-    private float[] number;
+    private int[] number;
 
 
     @Nullable
@@ -32,8 +32,7 @@ public class PieChart extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate (R.layout.activity_pie_chart, container, false);
         pieChartView = view.findViewById (R.id.piechart);
-
-
+        number = getArguments ().getIntArray ("number");
         initDatas ();
 
         ImageView imageViewBar = view.findViewById (R.id.imageViewBar);
@@ -46,7 +45,7 @@ public class PieChart extends Fragment {
     }
 
     private void initDatas() {
-        number = getArguments ().getFloatArray ("number");
+
         //初始化数据
         List<SliceValue> values = new ArrayList<SliceValue> ();
 
