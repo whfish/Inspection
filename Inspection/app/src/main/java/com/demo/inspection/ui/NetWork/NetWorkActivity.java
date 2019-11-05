@@ -1,9 +1,14 @@
-package com.demo.inspection.ui;
+package com.demo.inspection.ui.NetWork;
+
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
+
 import com.demo.inspection.R;
+
 import com.demo.inspection.utils.NetworkInformation;
 
 /**
@@ -28,6 +33,16 @@ public class NetWorkActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.network);
+
+        //androidx,必须使用getSupportActionBar，而不是getActionBar
+        ActionBar actionBar = getSupportActionBar();
+        // 显示返回按钮
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        // 去掉logo图标
+        actionBar.setDisplayShowHomeEnabled(false);
+        actionBar.setTitle("返回");
+
+
         TextView textView = findViewById(R.id.netconnect);
         TextView nettype = findViewById(R.id.nettype);
         TextView ipaddress = findViewById(R.id.ipaddress);
@@ -44,6 +59,15 @@ public class NetWorkActivity extends BaseActivity {
     }
 
 
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:   //返回键的id
+                this.finish();
+                return false;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }
 

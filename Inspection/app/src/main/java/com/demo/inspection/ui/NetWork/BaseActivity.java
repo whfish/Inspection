@@ -1,6 +1,5 @@
-package com.demo.inspection.ui;
+package com.demo.inspection.ui.NetWork;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
@@ -82,7 +81,7 @@ public class BaseActivity extends AppCompatActivity implements NetBroadcastRecei
         this.netMobile = netMobile;
         if (!isNetConnect()) {
             showNetDialog();
-           toastUtil.toastCenter(this, getString(R.string.nonetwork));
+//           toastUtil.toastCenter(this, getString(R.string.nonetwork));
         } else {
             hideNetDialog();
             toastUtil.toastCenter(this, getString(R.string.succnetwork));

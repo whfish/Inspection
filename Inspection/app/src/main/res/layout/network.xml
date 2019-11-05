@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.NetWorkActivity">
+    tools:context=".ui.NetWork.NetWorkActivity">
 
     <View
         android:layout_width="match_parent"

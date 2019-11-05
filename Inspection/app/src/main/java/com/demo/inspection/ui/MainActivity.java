@@ -2,10 +2,8 @@ package com.demo.inspection.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,7 +16,8 @@ import com.demo.inspection.ui.Fragment.EquipmentFragment;
 import com.demo.inspection.ui.Fragment.MeFragment;
 import com.demo.inspection.ui.Fragment.StatusFragment;
 import com.demo.inspection.ui.Fragment.SystemFragment;
-import com.demo.inspection.utils.NetUtils;
+import com.demo.inspection.ui.NetWork.BaseActivity;
+import com.demo.inspection.ui.NetWork.NetWorkActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -142,7 +141,7 @@ public class MainActivity extends BaseActivity {
         switch (item.getItemId()) {
 
             case NETWORK_ID:
-                Intent netWork=new Intent(this,NetWorkActivity.class);
+                Intent netWork=new Intent(this, NetWorkActivity.class);
                 startActivity(netWork);
 
                 break;

@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 
-import com.demo.inspection.ui.BaseActivity;
+import com.demo.inspection.ui.NetWork.BaseActivity;
 import com.demo.inspection.utils.NetUtils;
 
 

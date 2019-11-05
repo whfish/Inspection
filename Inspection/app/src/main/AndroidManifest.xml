@@ -26,8 +26,8 @@
         </activity>
         <activity android:name=".ui.MainActivity"></activity>
         <activity android:name=".ui.StatusActivity" />
-        <activity android:name=".ui.NetWorkActivity" />
-        <activity android:name=".ui.BaseActivity" />
+        <activity android:name=".ui.NetWork.NetWorkActivity" />
+        <activity android:name=".ui.NetWork.BaseActivity" />
         <activity android:name=".SystemDetailsActivity"></activity>
     </application>
 
