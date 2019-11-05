@@ -3,6 +3,7 @@ package com.demo.inspection.ui.Fragment;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,6 +42,11 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
     SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat ("yyyy年MM月dd日");
     int[] numberF;
     String dateString;
+    TextView textView_fine;
+    TextView textView_normal;
+    TextView textView_alarm;
+    TextView textView_error;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -50,8 +56,15 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
         textViewDate = view.findViewById (R.id.textViewDate);
         textViewDate.setText (simpleDateFormat1.format (date));
         textViewDate.setOnClickListener (this);
-        dateString=simpleDateFormat.format (date);
-        getData(0);
+        dateString = simpleDateFormat.format (date);
+        getData (0);
+
+
+        textView_fine = view.findViewById (R.id.textView_fine);
+        textView_normal = view.findViewById (R.id.textView_normal);
+        textView_alarm = view.findViewById (R.id.textView_alarm);
+        textView_error = view.findViewById (R.id.textView_error);
+
 
         return view;
     }
@@ -72,14 +85,22 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
         new DatePickerDialog (activity, themeResId, (view, year, monthOfYear, dayOfMonth) -> {
 
             monthOfYear++;
-            StringBuffer sb = new StringBuffer();
-            sb.append(String.format("%d-%02d-%02d", year, monthOfYear, dayOfMonth));
-            Log.i(ComDef.TAG, "选择了：" + sb.toString());
-            textViewDate.setText((year + "年" + (monthOfYear ) + "月" + dayOfMonth + "日"));
-            dateString=sb.toString();
-            getData(1);
+            StringBuffer sb = new StringBuffer ();
+            sb.append (String.format ("%d-%02d-%02d", year, monthOfYear, dayOfMonth));
+            Log.i (ComDef.TAG, "选择了：" + sb.toString ());
+            textViewDate.setText ((year + "年" + (monthOfYear) + "月" + dayOfMonth + "日"));
+            dateString = sb.toString ();
+            getData (1);
 
 
+            new Handler ().postDelayed (() -> {
+
+                textView_fine.setText ("良好状态设备:" + numberF[1] + "台");
+                textView_normal.setText ("正常状态设备:" + numberF[2] + "台");
+                textView_alarm.setText ("警告状态设备:" + numberF[3] + "台");
+                textView_error.setText ("异常状态设备:" + numberF[4] + "台");
+
+            }, 300);
 
         }
                 // 设置初始日期
@@ -100,7 +121,7 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
     }
 
 
-    public void getData(int id){
+    public void getData(int id) {
 
         /**调用后台方法参考
          * 请安步骤修改为自己的方法
@@ -123,25 +144,35 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
                     int index = item.getString ("score").equals ("") ? 4 : Integer.parseInt (item.getString ("score"));
                     int count = Integer.parseInt (item.getString ("count"));
                     numberF[index] = count;
+
                 }
                 numberF[0] = numberF[1] + 5;
 
-               switch (id){
-                   case 0:
-                       BarChart barChart= new BarChart ();
-                       Bundle bundle=new Bundle ();
-                       bundle.putIntArray ("number",numberF);
-                       barChart.setArguments (bundle);
-                       getChildFragmentManager ().beginTransaction ().add (R.id.barChartFL,barChart).commit ();
-                       break;
-                   case 1:
-                       BarChart barChart1= new BarChart ();
-                       Bundle bundle1=new Bundle ();
-                       bundle1.putIntArray ("number",numberF);
-                       barChart1.setArguments (bundle1);
-                       getChildFragmentManager ().beginTransaction ().replace (R.id.barChartFL,barChart1).commit ();
 
-               }
+                switch (id) {
+                    case 0:
+
+                        textView_fine.setText ("良好状态设备:" + numberF[1] + "台");
+                        textView_normal.setText ("正常状态设备:" + numberF[2] + "台");
+                        textView_alarm.setText ("警告状态设备:" + numberF[3] + "台");
+                        textView_error.setText ("异常状态设备:" + numberF[4] + "台");
+
+                        BarChart barChart = new BarChart ();
+                        Bundle bundle = new Bundle ();
+                        bundle.putIntArray ("number", numberF);
+                        barChart.setArguments (bundle);
+                        getChildFragmentManager ().beginTransaction ().add (R.id.barChartFL, barChart).commit ();
+                        break;
+                    case 1:
+
+
+                        BarChart barChart1 = new BarChart ();
+                        Bundle bundle1 = new Bundle ();
+                        bundle1.putIntArray ("number", numberF);
+                        barChart1.setArguments (bundle1);
+                        getChildFragmentManager ().beginTransaction ().replace (R.id.barChartFL, barChart1).commit ();
+
+                }
 
                 //        getChildFragmentManager ().beginTransaction ().add (R.id.barChartFL, new BarChart ()).commit ();
                 Log.i (ComDef.TAG, "解析后返回:" + numberF.toString ());
