@@ -58,9 +58,7 @@ public class MeFragment extends Fragment implements View.OnClickListener{
             startActivity(intent);
 
 
-
             /*XgPwd xgPwd = new XgPwd ();
-            Log.i("XXXX","tiaozhuan");
 
             getFragmentManager ().beginTransaction ().replace (R.id., xgPwd).addToBackStack (null).commit ();*/
         });
@@ -69,7 +67,6 @@ public class MeFragment extends Fragment implements View.OnClickListener{
         TextView uid = view.findViewById(R.id.uid);
         TextView phone = view.findViewById(R.id.uphone);
         TextView depart = view.findViewById(R.id.udepart);
-
 
 
       /*  MyHttp myHttp = new MyHttp();
