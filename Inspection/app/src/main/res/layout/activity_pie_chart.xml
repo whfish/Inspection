@@ -17,7 +17,7 @@
 
             <lecho.lib.hellocharts.view.PieChartView
                 android:id="@+id/piechart"
-                android:layout_width="350dp"
+                android:layout_width="300dp"
                 android:layout_height="400dp"
                 android:layout_gravity="top"
                 android:layout_marginTop="50dp"
@@ -33,7 +33,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-
                     android:orientation="vertical">
 
                     <ImageView
@@ -53,7 +52,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical"
-                    android:layout_marginTop="220dp">
+                    android:layout_marginTop="140dp">
 
                     <TextView
                         android:id="@+id/textViewP_fine"

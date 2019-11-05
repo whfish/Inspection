@@ -35,7 +35,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/vertical_margin_25px"
-                    android:hint="网络是否连接"
+                    android:hint="@string/net_1"
                     android:textColor="@color/black"
                     android:textSize="@dimen/size_ll_30" />
 
@@ -61,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/vertical_margin_25px"
-                    android:hint="网络连接类型"
+                    android:hint="@string/net_2"
                     android:textColor="@color/black"
                     android:textSize="@dimen/size_ll_30" />
 
@@ -87,7 +87,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/vertical_margin_25px"
-                    android:hint="网络地址"
+                    android:hint="@string/net_3"
                     android:textColor="@color/black"
                     android:textSize="@dimen/size_ll_30" />
 

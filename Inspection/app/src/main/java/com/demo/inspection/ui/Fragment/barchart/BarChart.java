@@ -113,7 +113,7 @@ public class BarChart extends Fragment {
 
         //创建一个带有之前圆柱对象column集合的ColumnChartData
         data = new ColumnChartData (columns);
-        data.setValueLabelTextSize (20);
+        data.setValueLabelTextSize (15);
         data.setValueLabelBackgroundColor (Color.parseColor ("#00000000"));
 //        data.setValueLabelTypeface(Typeface.DEFAULT);// 设置数据文字样式
         data.setValueLabelBackgroundEnabled (true);
@@ -134,7 +134,7 @@ public class BarChart extends Fragment {
         axisX.hasLines ();
         axisX.setTextColor (Color.parseColor ("#525252"));
         axisX.setValues (axisValues);
-        axisX.setTextSize (13);
+        axisX.setTextSize (11);
         axisX.setTextColor (Color.GRAY);
         axisX.setLineColor (Color.RED);
         axisX.setHasSeparationLine (false);
