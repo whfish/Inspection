@@ -14,6 +14,7 @@
             android:id="@+id/imageViewPie"
             android:layout_width="60dp"
             android:layout_height="50dp"
+            android:layout_marginRight="20dp"
             app:srcCompat="@drawable/pie"
             android:layout_gravity="right"/>
 
@@ -21,10 +22,10 @@
             android:id="@+id/columnchart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="30dp"
+            android:paddingTop="40dp"
             android:layout_marginTop="2dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginRight="15dp"
             />
 
     </LinearLayout>
