@@ -3,4 +3,81 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="设备详情页"
+        android:textSize="30sp"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/textID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="ID:21" />
+
+    <TextView
+        android:id="@+id/textName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="设备名:麒麟服务器" />
+
+    <TextView
+        android:id="@+id/textIP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="IP:10.2.1.102" />
+
+    <TextView
+        android:id="@+id/textScore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="状态:故障" />
+
+    <TextView
+        android:id="@+id/textCpu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="CPU:良好" />
+
+    <TextView
+        android:id="@+id/textMemory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="内存:故障" />
+
+    <TextView
+        android:id="@+id/textHard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="硬盘:良好" />
+
+    <TextView
+        android:id="@+id/textRadiator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="散热器:良好" />
+
+    <TextView
+        android:id="@+id/textElec"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="电源:良好" />
+
+    <TextView
+        android:id="@+id/textDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="描述:自主研发核心处理器，如遇故障请拨打10010转9" />
 </LinearLayout>
