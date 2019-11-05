@@ -28,6 +28,11 @@
     <string name="bt_mine_num">手机</string>
     <string name="bt_mine_part">部门</string>
 
+    <!--网络状态-->
+    <string name="network">网络状态</string>
+    <string name="nonetwork">网络异常，请检查网络</string>
+    <string name="succnetwork">网络已连接</string>
+
 
 
 </resources>
