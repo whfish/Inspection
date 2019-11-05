@@ -33,6 +33,7 @@
     <dimen name="sides_margin">10dp</dimen>
     <dimen name="margin_20px">10dp</dimen>
     <dimen name="vertical_margin_30px">16dp</dimen>
+    <dimen name="vertical_margin_25px">25dp</dimen>
     <dimen name="btn_padding">10dp</dimen>
     <dimen name="btn_padding_5">5dp</dimen>
     <dimen name="shop_favorite_w">64dp</dimen>

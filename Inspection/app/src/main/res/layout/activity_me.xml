@@ -39,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="@dimen/vertical_margin_30px"
+            android:layout_marginTop="@dimen/shop_category_w"
             android:paddingTop="15dp">
 
             <!-- 姓名 -->
@@ -151,7 +151,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingTop="20dp"
+                android:paddingTop="50dp"
                 >
 
 
