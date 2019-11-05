@@ -33,6 +33,13 @@
         android:text="IP:10.2.1.102" />
 
     <TextView
+        android:id="@+id/textSystem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="所属系统：人力资源2.0" />
+
+    <TextView
         android:id="@+id/textScore"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
