@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.widget.Button;
 
 import com.demo.inspection.R;
@@ -31,7 +33,7 @@ public class TempActivity extends AppCompatActivity {
         Button buttonS = findViewById(R.id.buttonToStatus);
         buttonS.setOnClickListener((view) -> {
             Intent intent = new Intent();
-            intent.setClass(this, StatusActivity.class);
+            intent.setClass(this, MainActivity.class);
             startActivity(intent);
         });
 
@@ -39,25 +41,35 @@ public class TempActivity extends AppCompatActivity {
  * 请安步骤修改为自己的方法
  */
         ReqParam req = new ReqParam();
-        req.setUrl(ComDef.INTF_QUERYDEVICE);//修改为实际接口
+        req.setUrl(ComDef.INTF_QUERYSTATIC);//修改为实际接口
         HashMap map = new HashMap<String, String>();
-        map.put(ComDef.QUERY_DATE, "2019-11-02");//修改为实际请求参数
-        map.put(ComDef.QUERY_INDEX, "1");//修改为实际请求参数
+//        map.put(ComDef.QUERY_DATE, "2019-11-02");//修改为实际请求参数
+//        map.put(ComDef.QUERY_INDEX, "1");//修改为实际请求参数
         req.setMap(map);
         new GetData(req) {
             @Override
             public void dealResult(String result) throws JSONException {
-                List<Map<String, String>> list = new ArrayList<>();
                 JSONArray array = new JSONArray(result);
+//                List<Map<String, String>> list = new ArrayList<>();
+//                for (int i = 0; i < array.length(); i++) {
+//                    JSONObject item = (JSONObject) array.get(i);
+//                    Map<String, String> map = new HashMap<>();
+//                    map.put("id", item.getString("id"));//获取你自己需要的字段
+//                    map.put("ip", item.getString("ip"));//获取你自己需要的字段
+//                    map.put("devName", item.getString("devName"));//获取你自己需要的字段
+//                    list.add(map);
+//                }
+//                Log.i(ComDef.TAG, "解析后返回:" + list.toString());
+                int[] numberF = {40, 0, 0, 0, 0};
                 for (int i = 0; i < array.length(); i++) {
                     JSONObject item = (JSONObject) array.get(i);
-                    Map<String, String> map = new HashMap<>();
-                    map.put("id", item.getString("id"));//获取你自己需要的字段
-                    map.put("ip", item.getString("ip"));//获取你自己需要的字段
-                    map.put("devName", item.getString("devName"));//获取你自己需要的字段
-                    list.add(map);
+                    int index = item.getString("score").equals("")?4:Integer.parseInt(item.getString("score"));
+                    int count = Integer.parseInt(item.getString("count"));
+                    numberF[index]= count;
                 }
-                Log.i(ComDef.TAG, "解析后返回:" + list.toString());
+                Log.i(ComDef.TAG, "解析后返回:" +  numberF.toString());
+
+
             }
         };
     }
