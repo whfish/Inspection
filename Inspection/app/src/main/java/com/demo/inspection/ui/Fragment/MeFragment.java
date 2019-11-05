@@ -57,6 +57,8 @@ public class MeFragment extends Fragment implements View.OnClickListener{
             Intent intent = new Intent(getActivity(),XgPwd.class);
             startActivity(intent);
 
+
+
             /*XgPwd xgPwd = new XgPwd ();
             Log.i("XXXX","tiaozhuan");
 

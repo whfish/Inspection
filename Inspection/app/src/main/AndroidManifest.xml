@@ -29,6 +29,7 @@
         <activity android:name=".ui.NetWork.NetWorkActivity" />
         <activity android:name=".ui.NetWork.BaseActivity" />
         <activity android:name=".SystemDetailsActivity"></activity>
+        <activity android:name=".ui.Fragment.barchart.XgPwd"></activity>
     </application>
 
 </manifest>

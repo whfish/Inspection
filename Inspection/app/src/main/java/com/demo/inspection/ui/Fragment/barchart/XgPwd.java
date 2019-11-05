@@ -29,22 +29,19 @@ public class XgPwd extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView (R.layout.activity_xgpwd);
 
-        Log.i("xgmm","jinruxiugai");
+//        Log.i("xgmm","jinruxiugai");
         //View view = inflater.inflate (R.layout.activity_xgpwd, container, false);
-        Log.i("xgmm","aaaaaaaaa");
+//        Log.i("xgmm","aaaaaaaaa");
 
     }
 
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Log.i("xgmm","jinruxiugai");
-        View view = inflater.inflate (R.layout.activity_xgpwd, container, false);
-        Log.i("xgmm","aaaaaaaaa");
-
-
-
-
-        return view;
-    }
+//    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+////        Log.i("xgmm","jinruxiugai");
+//        View view = inflater.inflate (R.layout.activity_xgpwd, container, false);
+////        Log.i("xgmm","aaaaaaaaa");
+//
+//        return view;
+//    }
 
 
 
