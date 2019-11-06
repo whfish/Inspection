@@ -1,5 +1,7 @@
 package com.demo.inspection.bl;
 
+import android.graphics.Color;
+
 /**
  * @ProjectName: Inspection
  * @Package: com.demo.inspection.bl
@@ -23,10 +25,10 @@ public interface ComDef {
     public static final String INTF_QUERYDEVICEDETAIL = "queryDeviceDetail";//查询设备详情
 
     public static final String INTF_QUERYSYS = "querySysInfoState";//查询系统列表
-    public static final String INTF_QUERYSYSDETAIL  = "querySysInfoDetail";//查询系统详情
+    public static final String INTF_QUERYSYSDETAIL = "querySysInfoDetail";//查询系统详情
 
-    public static final String INTF_QUERYADMIN  = "queryUserName";//查询账号
-    public static final String INTF_UPDATEADMIN  = "modifyPasswd";//修改密码
+    public static final String INTF_QUERYADMIN = "queryUserName";//查询账号
+    public static final String INTF_UPDATEADMIN = "modifyPasswd";//修改密码
 
     public static final String QUERY_ACCOUNT = "account";//查询日期
 
@@ -36,9 +38,12 @@ public interface ComDef {
     public static final String QUERY_DEVINDEX = "devid";//查询系统索引值
     public static final String QUERY_SYSINDEX = "sysid";//查询设备索引值
     public static final String QUERY_STATE = "score";//状查询态
+    public static final String MODIFY_PW = "password";//密码
 
-    String[] TITLE_NAME={"状态信息","设备展示","系统展示","我的"};
-
+    public static final String[] TITLE_NAME = {"状态信息", "设备展示", "系统展示", "我的"};
+    public static final int[] MY_COLORS = {Color.GREEN, Color.YELLOW, Color.BLUE, Color.CYAN, Color.GRAY, Color.LTGRAY};
+    public static final String[] XSTRS = new String[]{"1", "2", "3", "4", "5", "6", "7"};
+    public static final int PRE_INDEX = 10010;
 
 
 }
