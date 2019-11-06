@@ -3,42 +3,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_color"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/activity_horizontal_margin">
 
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/system_details"
+            android:textColor="@color/color_black_light"
+            android:textSize="@dimen/size_ll_30" />
+
+    </LinearLayout>
 
     <ScrollView
         android:id="@+id/scrollview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white">
+        android:layout_height="200dp"
+        android:background="@color/white"
+        android:fillViewport="true">
 
         <LinearLayout
             android:id="@+id/ll_content"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="200dp"
             android:background="@color/white"
             android:orientation="vertical"
             android:visibility="visible">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="@dimen/activity_horizontal_margin"
-                android:background="@color/background_color">
 
 
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="@string/system_details"
-                    android:textColor="@color/color_black_light"
-                    android:textSize="@dimen/size_ll_30" />
-
-            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -63,11 +66,12 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="16dp"
                     android:layout_toRightOf="@+id/tv_name_title"
-                    android:paddingBottom="15dp"
-                    android:paddingTop="15dp"
-                    android:textColor="@color/color_black_light"
                     android:hint="@string/sys_name"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:textColor="@color/color_black_light"
                     android:textSize="@dimen/size_ll_30" />
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -100,11 +104,12 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="16dp"
                     android:layout_toRightOf="@+id/tv_phone_title"
-                    android:paddingBottom="15dp"
+                    android:hint="@string/sys_exp"
                     android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
                     android:textColor="@color/color_black_light"
-                    android:textSize="@dimen/size_ll_30"
-                    android:hint="@string/sys_exp"/>
+                    android:textSize="@dimen/size_ll_30" />
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -112,6 +117,7 @@
                     android:background="@color/color_line_gray" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -137,17 +143,19 @@
                     android:layout_marginRight="16dp"
                     android:layout_toRightOf="@+id/tv_device_title"
                     android:hint="@string/sys_time"
-                    android:paddingBottom="15dp"
                     android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
                     android:textColor="@color/color_black_light"
                     android:textColorHint="@color/color_gray"
                     android:textSize="@dimen/size_ll_30" />
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_alignParentBottom="true"
                     android:background="@color/color_line_gray" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -173,41 +181,53 @@
                     android:layout_marginRight="16dp"
                     android:layout_toRightOf="@+id/tv__title4"
                     android:hint="@string/sys_manager"
-                    android:paddingBottom="15dp"
                     android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
                     android:textColor="@color/color_black_light"
                     android:textColorHint="@color/color_gray"
                     android:textSize="@dimen/size_ll_30" />
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_alignParentBottom="true"
                     android:background="@color/color_line_gray" />
             </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:background="@color/background_color">
+
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/sys_list"
+            android:textColor="@color/color_black_light"
+            android:textSize="@dimen/size_ll_30" />
+
+    </LinearLayout>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="@dimen/activity_horizontal_margin"
-                android:background="@color/background_color">
-
-
-                <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="@string/sys_list"
-                    android:textColor="@color/color_black_light"
-                    android:textSize="@dimen/size_ll_30" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="600dp"
                 android:descendantFocusability="blocksDescendants"
                 android:background="@color/background_color">
 
@@ -215,15 +235,14 @@
                 <ListView
                     android:id="@+id/ListView1"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/background_color"/>
+                    android:layout_height="wrap_content"
+                    android:background="@color/background_color" />
 
             </LinearLayout>
-
-
+    </LinearLayout>
+</ScrollView>
 
         </LinearLayout>
 
-    </ScrollView>
+    <!--</ScrollView>-->
 
-</LinearLayout>

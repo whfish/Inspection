@@ -27,9 +27,7 @@
         <activity android:name=".ui.TempActivity">
 
         </activity>
-        <activity android:name=".ui.TempActivity">
 
-        </activity>
         <activity android:name=".ui.MainActivity"
             android:launchMode="singleTask"></activity>
         <activity android:name=".ui.StatusActivity" />
