@@ -22,6 +22,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+        <activity android:name=".ui.TempActivity">
+
         </activity>
         <activity android:name=".ui.TempActivity">
 
@@ -33,6 +37,7 @@
         <activity android:name=".ui.EquipmentDetailsActivity"></activity>
         <activity android:name=".ui.Fragment.barchart.XgPwd"></activity>
         <activity android:name=".ui.NetWork.NetWorkActivity"></activity>
+
 
 
     </application>
