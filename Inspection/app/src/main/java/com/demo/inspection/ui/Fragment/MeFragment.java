@@ -34,7 +34,7 @@ import java.util.Map;
 public class MeFragment extends Fragment implements View.OnClickListener {
     View view;
     static Bundle bundle = new Bundle();
-    String dept, id, telphone, username;
+    String dept, account, telphone, username;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -74,13 +74,13 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                 JSONArray array = new JSONArray(result);
                 JSONObject item = (JSONObject) array.get(0);
                 dept = item.getString("dept");
-                id = item.getString("id");
+                account = item.getString("account");
                 username = item.getString("username");
                 telphone = item.getString("phone");
 
                 getActivity().runOnUiThread(() -> {
                     name.setText(username);
-                    uid.setText(id);
+                    uid.setText(account);
                     phone.setText(telphone);
                     depart.setText(dept);
 
