@@ -31,6 +31,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -45,12 +46,21 @@ public class EquipmentFragment extends Fragment {
     ReqParam req = new ReqParam();
     //初始化map
     HashMap map= new HashMap<String,String>();
+    //设置对应选项
+    String str1 = "全部状态";
+    String str2 = "正常";
+    String str3 = "告警";
+    String str4 = "预警";
+    String str5 = "异常";
     //定义状态
-    String[] Score = new String[]{"1", "2", "3"};//1-良好，2-告警，3-故障
+    String[] Score = new String[]{str1,str2,str3,str4,str5};//1-正常，2-告警，3-预警,"null"-异常
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate (R.layout.activity_equipment,container,false);
+
+
 
         // 第一大块，创建ListView,设备页面列表
         mListView = view.findViewById(R.id.listView);
@@ -67,19 +77,35 @@ public class EquipmentFragment extends Fragment {
                     Map<String, String> map = new HashMap<>();
                     map.put("id", item.getString("id"));
                     map.put("ip", item.getString("ip"));
-                    map.put("score", item.getString("score"));
+                    //判断状态
+                    switch (item.getString("score")) {
+                        case "1":
+                            map.put("score", str2);
+                            break;
+                        case "2":
+                            map.put("score", str3);
+                            break;
+                        case "3":
+                            map.put("score", str4);
+                            break;
+                        case "":
+                            map.put("score", str5);
+                    }
                     map.put("errlist", item.getString("errlist"));
-                    map.put("dev_name",item.getString("dev_name"));
+                    map.put("dev_Name",item.getString("devName"));
                     map.put("detail",item.getString("detail"));
+                    map.put("sysname",item.getString("sysname"));
+
+
                     Equlist.add(map);
                 }
-                Log.i(ComDef.TAG, "解析后返回:" + Equlist.toString());
+                Log.i(ComDef.TAG, "解析设备列表后返回:" + Equlist.toString());
                 //刷新主界面
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        String[] from = {"id", "ip", "score", "errlist"};  //决定提取哪些值来生成列表项
-                        int[] to = {R.id.textName, R.id.textIP, R.id.textState, R.id.textEvent}; //对应到xml里的名字
+                        String[] from = {"sysname", "ip", "score"};  //决定提取哪些值来生成列表项
+                        int[] to = {R.id.textName, R.id.textIP, R.id.textState}; //对应到xml里的名字
                         SimpleAdapter adapter = new SimpleAdapter(getActivity(), Equlist, R.layout.activity_equipmentlist, from, to);
                         mListView.setAdapter(adapter);
                     }
@@ -100,7 +126,7 @@ public class EquipmentFragment extends Fragment {
                     bundle.putString ("ip", item.getString("ip"));
                     bundle.putString ("score", item.getString("score"));
                     bundle.putString ("errlist", item.getString("errlist"));
-                    bundle.putString ("dev_name",item.getString("dev_name"));
+                    bundle.putString ("dev_Name",item.getString("dev_Name"));
                     bundle.putString ("detail",item.getString("detail"));
 
                 } catch (JSONException e) {
@@ -111,7 +137,6 @@ public class EquipmentFragment extends Fragment {
 
             }
         });
-
 
         //第二大块搜索，绑定搜索框
         EditText txt = view.findViewById(R.id.editText);
@@ -134,17 +159,33 @@ public class EquipmentFragment extends Fragment {
                         Map<String, String> map = new HashMap<>();
                         map.put("id", item.getString("id"));
                         map.put("ip", item.getString("ip"));
-                        map.put("score", item.getString("score"));
+                        //判断状态
+                        switch (item.getString("score")) {
+                            case "1":
+                                map.put("score", str2);
+                                break;
+                            case "2":
+                                map.put("score", str3);
+                                break;
+                            case "3":
+                                map.put("score", str4);
+                                break;
+                            case "":
+                                map.put("score", str5);
+                        }
                         map.put("errlist", item.getString("errlist"));
+                        map.put("dev_Name",item.getString("devName"));
+                        map.put("detail",item.getString("detail"));
+                        map.put("sysname",item.getString("sysname"));
                         Equlist.add(map);
                     }
-                    Log.i(ComDef.TAG, "解析后返回:" + Equlist.toString());
+                    Log.i(ComDef.TAG, "解析谁备搜索后返回:" + Equlist.toString());
                     //刷新主界面
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            String[] from = {"id", "ip", "score", "errlist"};  //决定提取哪些值来生成列表项
-                            int[] to = {R.id.textName, R.id.textIP, R.id.textState, R.id.textEvent}; //对应到xml里的名字
+                            String[] from = {"sysname", "ip", "score"};  //决定提取哪些值来生成列表项
+                            int[] to = {R.id.textName, R.id.textIP, R.id.textState}; //对应到xml里的名字
                             SimpleAdapter adapter = new SimpleAdapter(getActivity(), Equlist, R.layout.activity_equipmentlist, from, to);
                             mListView.setAdapter(adapter);
                         }
@@ -153,58 +194,6 @@ public class EquipmentFragment extends Fragment {
             };
         });
 
-        //第三大块，设置下拉。      准备适配器
-        final ArrayAdapter<CharSequence> adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, Score);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //设置Spinner下拉列表
-        Spinner spinner = view.findViewById(R.id.spinner);
-        spinner.setAdapter(adapter);
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-                System.out.println("选择:" + adapter.getItem(position).toString());
-
-                ReqParam req = new ReqParam();
-                HashMap map= new HashMap<String,String>();
-                String key = adapter.getItem(position).toString();//获取列表内容
-                map.put(ComDef.QUERY_STATE,key);//用状态作为条件
-                req.setMap(map);
-                req.setUrl(ComDef.INTF_QUERYDEVICE);
-
-                new GetData(req) {
-                    @Override
-                    public void dealResult(String result) throws JSONException {
-                        List<Map<String, String>> Equlist = new ArrayList<>();
-                        JSONArray array = new JSONArray(result);
-                        for (int i = 0; i < array.length(); i++) {
-                            JSONObject item = (JSONObject) array.get(i);
-                            Map<String, String> map = new HashMap<>();
-                            map.put("id", item.getString("id"));
-                            map.put("ip", item.getString("ip"));
-                            map.put("score", item.getString("score"));
-                            map.put("errlist", item.getString("errlist"));
-                            Equlist.add(map);
-                        }
-                        Log.i(ComDef.TAG, "解析后返回:" + Equlist.toString());
-                        //刷新主界面
-                        getActivity().runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                String[] from = {"id", "ip", "score", "errlist"};  //决定提取哪些值来生成列表项
-                                int[] to = {R.id.textName, R.id.textIP, R.id.textState, R.id.textEvent}; //对应到xml里的名字
-                                SimpleAdapter adapter = new SimpleAdapter(getActivity(), Equlist, R.layout.activity_equipmentlist, from, to);
-                                mListView.setAdapter(adapter);
-                            }
-                        });
-                    }
-                };
-
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-            }
-        });
         return view;
     }
 
