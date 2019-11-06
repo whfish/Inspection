@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -101,8 +102,6 @@ public class EquipmentFragment extends Fragment {
                     map.put("dev_Name",item.getString("devName"));
                     map.put("detail",item.getString("detail"));
                     map.put("sysname",item.getString("sysname"));
-
-
                     Equlist.add(map);
                 }
                 Log.i(ComDef.TAG, "解析设备列表后返回:" + Equlist.toString());
@@ -124,20 +123,14 @@ public class EquipmentFragment extends Fragment {
             @Override
             public  void onItemClick(AdapterView<?> arg0, View view, int i, long l) {
 
+
                 Intent intent = new Intent(getActivity(), EquipmentDetailsActivity.class); //参数1:Fragment所依存的Activity,参数2：要跳转的Activity
                 Bundle bundle = new Bundle();
 
-                try {
-                    bundle.putString("id", item.getString("id"));//获取你自己需要的字段
-                    bundle.putString ("ip", item.getString("ip"));
-                    bundle.putString ("score", item.getString("score"));
-                    bundle.putString ("errlist", item.getString("errlist"));
-                    bundle.putString ("dev_Name",item.getString("dev_Name"));
-                    bundle.putString ("detail",item.getString("detail"));
+                TextView textIP = view.findViewById(R.id.textIP);
+                String strIP= textIP.getText().toString();
+                bundle.putString("IP",strIP);
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
                 intent.putExtras(bundle);
                 getActivity().startActivity(intent); //这里一定要获取到所在Activity再startActivity()；
 
