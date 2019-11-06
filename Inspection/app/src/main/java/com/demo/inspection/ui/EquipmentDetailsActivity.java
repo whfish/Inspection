@@ -15,6 +15,7 @@ public class EquipmentDetailsActivity extends AppCompatActivity {
 
 
         Bundle bundle = this.getIntent ().getExtras ();
+        String id = bundle.getString ("id");
 
         TextView textID = findViewById (R.id.textID);
         TextView textName = findViewById (R.id.textName);
@@ -22,11 +23,11 @@ public class EquipmentDetailsActivity extends AppCompatActivity {
         TextView textScore = findViewById (R.id.textScore);
         TextView textDetail = findViewById (R.id.textDetail);
 
-        textID.setText ("ID:"+bundle.getString ("id"));
-        textName.setText ("设备名:"+bundle.getString ("dev_name"));
-        textIP.setText ("IP:"+bundle.getString ("ip"));
-        textScore.setText ("状态："+bundle.getString ("score"));
-        textDetail.setText ("描述："+bundle.getString ("detail"));
+        textID.setText (bundle.getString ("id"));
+        textName.setText (bundle.getString ("dev_name"));
+        textIP.setText (bundle.getString ("ip"));
+        textScore.setText (bundle.getString ("score"));
+        textDetail.setText (bundle.getString ("detail"));
 
     }
 }
