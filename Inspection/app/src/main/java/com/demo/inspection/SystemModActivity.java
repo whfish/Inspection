@@ -14,7 +14,7 @@ public class SystemModActivity extends AppCompatActivity {
         String id = bundle.getString ("_id");
 
         EditText editTextInput = findViewById (R.id.editTextInput);
-        EditText editTextOutput = findViewById (R.id.editTextOutput);
+        EditText editTextOutput = findViewById (R.id.editTextOutput001);
         EditText editTextWeight = findViewById (R.id.editTextWeight);
         EditText editTextAE = findViewById (R.id.editTextAmountExercise);
 

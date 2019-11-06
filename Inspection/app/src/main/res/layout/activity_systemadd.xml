@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:background="#43BBEB"
         android:gravity="center"
-        android:text="添加系统"
+        android:text="系统修改"
         android:textColor="#FFFFFF"
         android:textSize="18sp" />
 
@@ -22,7 +22,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="系统名称：" />
+            android:text="系统名称" />
 
         <EditText
             android:id="@+id/editTextInput"
@@ -34,7 +34,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="系统介绍：" />
+            android:text="系统修改" />
 
         <EditText
             android:id="@+id/editTextOutput001"
@@ -58,7 +58,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="系统维护人员：" />
+            android:text="系统管理员" />
 
         <EditText
             android:id="@+id/editTextAmountExercise"

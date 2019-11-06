@@ -13,9 +13,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.demo.inspection.R;
+import com.demo.inspection.SystemAddActivity;
 import com.demo.inspection.SystemDetailsActivity;
 import com.demo.inspection.bl.ComDef;
 import com.demo.inspection.bl.GetData;
@@ -77,8 +79,8 @@ public class SystemFragment extends Fragment {
                     @Override
                     public void run() {
                         String[] from = {"id", "score", "sysName", "opttime"};  //决定提取哪些值来生成列表项
-                        int[] to = {R.id.textViewInput2, R.id.textViewInput,
-                                R.id.textViewOutput, R.id.textViewWeight}; //决定填充哪些组建
+                        int[] to = {R.id.textViewSBid, R.id.textViewSBip,
+                                R.id.textViewSBscore, R.id.textViewSBsysname}; //决定填充哪些组建
                         SimpleAdapter adapter = new SimpleAdapter(getActivity(), list, R.layout.item_list, from, to);
                         listView.setAdapter(adapter);
                     }
@@ -90,15 +92,15 @@ public class SystemFragment extends Fragment {
                         Intent intent = new Intent(getActivity(), SystemDetailsActivity.class); //参数1:Fragment所依存的Activity,参数2：要跳转的Activity
 
                         Bundle bundle = new Bundle();
-                        TextView one = view.findViewById(R.id.textViewInput2);
+                        TextView one = view.findViewById(R.id.textViewSBid);
                         String id= one.getText().toString();
                         bundle.putString("id",id);
 
-                        TextView two = view.findViewById(R.id.textViewOutput);
+                        TextView two = view.findViewById(R.id.textViewSBscore);
                         String sysname= two.getText().toString();
                         bundle.putString("sysName",sysname);
 
-                        TextView four = view.findViewById(R.id.textViewWeight);
+                        TextView four = view.findViewById(R.id.textViewSBsysname);
                         String opttime=four.getText().toString();
                         bundle.putString("opttime",opttime);
                         intent.putExtras(bundle);
@@ -145,74 +147,70 @@ public class SystemFragment extends Fragment {
               //  });
 
 
-//                listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-//                    @Override
-//                    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-//
-//
-//                        new AlertDialog.Builder(getActivity())
-//                                .setTitle("系统")
-//                                .setItems(
-//                                        R.array.Pos_items,
-//                                        (dialog, which) -> {
-//                                            if (which == 0) {//新增
-//
-//                                                Intent intent = new Intent(getActivity(), SystemDetailsActivity.class); //参数1:Fragment所依存的Activity,参数2：要跳转的Activity
-//                                                Bundle bundle = new Bundle();
-//
-//                                                try {
-//                                                    bundle.putString("id", item.getString("id"));//获取你自己需要的字段
-//                                                    bundle.putString("score", item.getString("score"));
-//                                                    bundle.putString("sysName", item.getString("sysName"));
-//                                                    bundle.putString("detial", item.getString("detial"));
-//                                                    bundle.putString("opttime", item.getString("opttime"));
-//                                                    bundle.putString("userId", item.getString("userId"));
-//
-//                                                } catch (JSONException e) {
-//                                                    e.printStackTrace();
-//                                                }
-//                                                bundle.putString ("score",getString(Integer.valueOf("score")));
-//                                                bundle.putString ("sysName",getString(Integer.valueOf("sysName")));
-//                                                bundle.putString ("detial",getString(Integer.valueOf("detial")));
-//                                                bundle.putString ("opttime",getString(Integer.valueOf("opttime")));
-//                                                bundle.putString ("userId",getString(Integer.valueOf("opttime")));
- //                                               intent.putExtras(bundle);
-//                                                getActivity().startActivity(intent); //这里一定要获取到所在Activity再startActivity()；
+                listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                    @Override
+                    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
 
 
-//                                            } else if (which == 1) {// 修改
-//                                                Bundle bundle = new Bundle();
-//                                                bundle.putString("id", getString(Integer.parseInt("id")));//获取你自己需要的字段
-//                                                bundle.putString ("score",getString(Integer.parseInt("score")));
-//                                                bundle.putString ("sysName",getString(Integer.parseInt("sysName")));
-//                                                bundle.putString ("detial",getString(Integer.parseInt("detial")));
-//                                                bundle.putString ("opttime",getString(Integer.parseInt("opttime")));
-//                                                bundle.putString ("userId",getString(Integer.parseInt("opttime")));
-//                                                Intent it1 = new Intent();
-//                                                it1.putExtras(bundle);
-//                                                it1.setClass(getActivity(), SystemAddActivity.class);
-//
-//
-//                                                startActivity(it1);
-//                                            } else {  //删除
-//                                                Bundle bundle = new Bundle();
-//                                                bundle.putString("id", getString(Integer.parseInt("id")));//获取你自己需要的字段
-//                                                bundle.putString ("score",getString(Integer.parseInt("score")));
-//                                                bundle.putString ("sysName",getString(Integer.parseInt("sysName")));
-//                                                bundle.putString ("detial",getString(Integer.parseInt("detial")));
-//                                                bundle.putString ("opttime",getString(Integer.parseInt("opttime")));
-//                                                bundle.putString ("userId",getString(Integer.parseInt("userId")));
-//                                                Intent it1 = new Intent();
-//                                                it1.putExtras(bundle);
-//                                                it1.setClass(getActivity(), SystemAddActivity.class);;
-//
-//                                                startActivity(it1);
-//
- //                                           }
- //                                       }).show();
- //                       return true;
-  //                  }
- //               });
+                        new AlertDialog.Builder(getActivity())
+                                .setTitle("系统")
+                                .setItems(
+                                        R.array.Pos_items,
+                                        (dialog, which) -> {
+                                            if (which == 0) {//新增
+
+                                                Intent intent = new Intent(getActivity(), SystemAddActivity.class); //参数1:Fragment所依存的Activity,参数2：要跳转的Activity
+
+
+                                                Bundle bundle = new Bundle();
+                                                TextView one = view.findViewById(R.id.textViewSBid);
+                                                String id= one.getText().toString();
+                                                bundle.putString("id",id);
+
+                                                TextView two = view.findViewById(R.id.textViewSBscore);
+                                                String sysname= two.getText().toString();
+                                                bundle.putString("sysName",sysname);
+
+                                                TextView four = view.findViewById(R.id.textViewSBsysname);
+                                                String opttime=four.getText().toString();
+                                                bundle.putString("opttime",opttime);
+                                                intent.putExtras(bundle);
+                                                getActivity().startActivity(intent); //这里一定要获取到所在Activity再startActivity()；
+
+
+                                            } else if (which == 1) {// 修改
+                                                Bundle bundle = new Bundle();
+                                                bundle.putString("id", getString(Integer.parseInt("id")));//获取你自己需要的字段
+                                                bundle.putString ("score",getString(Integer.parseInt("score")));
+                                                bundle.putString ("sysName",getString(Integer.parseInt("sysName")));
+                                                bundle.putString ("detial",getString(Integer.parseInt("detial")));
+                                                bundle.putString ("opttime",getString(Integer.parseInt("opttime")));
+                                                bundle.putString ("userId",getString(Integer.parseInt("opttime")));
+                                                Intent it1 = new Intent();
+                                                it1.putExtras(bundle);
+                                                it1.setClass(getActivity(), SystemAddActivity.class);
+
+
+                                                startActivity(it1);
+                                            } else {  //删除
+                                                Bundle bundle = new Bundle();
+                                                bundle.putString("id", getString(Integer.parseInt("id")));//获取你自己需要的字段
+                                                bundle.putString ("score",getString(Integer.parseInt("score")));
+                                                bundle.putString ("sysName",getString(Integer.parseInt("sysName")));
+                                                bundle.putString ("detial",getString(Integer.parseInt("detial")));
+                                                bundle.putString ("opttime",getString(Integer.parseInt("opttime")));
+                                                bundle.putString ("userId",getString(Integer.parseInt("userId")));
+                                                Intent it1 = new Intent();
+                                                it1.putExtras(bundle);
+                                                it1.setClass(getActivity(), SystemAddActivity.class);;
+
+                                                startActivity(it1);
+
+                                            }
+                                        }).show();
+                        return true;
+                    }
+                });
 
 
                 //item的点击事件，里面可以设置跳转并传值
