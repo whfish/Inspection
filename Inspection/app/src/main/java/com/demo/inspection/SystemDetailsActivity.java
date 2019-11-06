@@ -62,8 +62,8 @@ public class SystemDetailsActivity extends AppCompatActivity {
         String id = bundle.getString("id");
         string = bundle.getString("sysName");
 
-        EditText editTextInput = findViewById(R.id.editTextInput);
-        EditText editTextWeight = findViewById(R.id.editTextWeight);
+        TextView editTextInput = findViewById(R.id.editTextInput);
+        TextView editTextWeight = findViewById(R.id.editTextWeight);
 
         editTextInput.setText(bundle.getString("sysName"));
         editTextWeight.setText(bundle.getString("opttime"));
