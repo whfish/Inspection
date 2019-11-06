@@ -15,11 +15,13 @@ package com.demo.inspection;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.EditText;
+import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.demo.inspection.bl.ComDef;
@@ -43,8 +45,14 @@ public class SystemDetailsActivity extends AppCompatActivity {
 
     // 声明ListView控件
     private ListView mListView;
+    //设置对应选项
+    String str1 = "全部状态";
+    String str2 = "正常";
+    String str3 = "告警";
+    String str4 = "预警";
+    String str5 = "异常";
     //定义状态
-    String[] Score = new String[]{"1-良好", "2-警告", "3-故障"};
+    String[] Score = new String[]{str1,str2,str3,str4,str5};//1-正常，2-告警，3-预警,"null"-异常
 
     String string = "";
 
@@ -52,6 +60,12 @@ public class SystemDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_systemdetails);
+
+        ActionBar actionBar = getSupportActionBar();
+
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         /**
          *
@@ -147,7 +161,20 @@ public class SystemDetailsActivity extends AppCompatActivity {
                     JSONObject item = (JSONObject) arrayS.get(i);
                     Map<String, String> map1 = new HashMap<>();
                     map1.put("id", item.getString("id"));//获取你自己需要的字段
-                    map1.put("score", item.getString("score"));//获取你自己需要的字段
+ //                   map1.put("score", item.getString("score"));//获取你自己需要的字段
+                    switch (item.getString("score")) {
+                        case "1":
+                            map1.put("score", str2);
+                            break;
+                        case "2":
+                            map1.put("score", str3);
+                            break;
+                        case "3":
+                            map1.put("score", str4);
+                            break;
+                        case "":
+                            map1.put("score", str5);
+                    }
                     Log.i("item----------", item.getString("score"));
                     map1.put("sysname", item.getString("sysname"));//获取你自己需要的字段
                     Log.i("item----------", item.getString("detail"));
@@ -173,6 +200,14 @@ public class SystemDetailsActivity extends AppCompatActivity {
         };
 
     }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {//返回前一页
+            finish();
+        }
+        return true;
+    }
+
 
 
 }
