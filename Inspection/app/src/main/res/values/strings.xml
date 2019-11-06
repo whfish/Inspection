@@ -32,7 +32,41 @@
     <string name="network">网络状态</string>
     <string name="nonetwork">网络异常，请检查网络</string>
     <string name="succnetwork">网络已连接</string>
+    <string name="searching">请输入IP进行查询</string>
 
+    <!--设备-->
+    <string name="e_id">对应系统</string>
+    <string name="e_ip">IP</string>
+    <string name="e_state">状态</string>
+    <string name="e_problem">故障问题</string>
+
+    <!--设备-->
+    <string name="el_id">ID</string>
+    <string name="el_stateName">设备名</string>
+    <string name="el_3">IP</string>
+    <string name="el_4">所属系统</string>
+    <string name="el_5">状态</string>
+    <string name="el_6">CPU</string>
+    <string name="el_7">内容</string>
+    <string name="el_8">硬盘</string>
+    <string name="el_9">描述</string>
+    <string name="el_10">设备详情</string>
+
+    <!--网络-->
+    <string name="net_1">网络是否连接</string>
+    <string name="net_2">网络连接类型</string>
+    <string name="net_3">网络地址</string>
+
+    <!--修改密码-->
+    <string name="pwd_acc">请输入用户名</string>
+    <string name="pwd_old">请输入旧密码</string>
+    <string name="pwd_new">请输入新密码</string>
+    <string name="pwd_new2">请确认新密码</string>
+    <string name="pwd_acc_t">用户名</string>
+    <string name="pwd_old_t">旧密码</string>
+    <string name="pwd_new_t">新密码</string>
+    <string name="bt_yes">确定</string>
+    <string name="bt_no">取消</string>
 
 
 </resources>

@@ -66,14 +66,15 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
         textView_error = view.findViewById (R.id.textView_error);
 
 
-        textView_fine.setOnClickListener ((view1) -> {
-            EquipmentFragment equipmentFragment = new EquipmentFragment ();
-            Bundle bundle = new Bundle ();
-            bundle.putString ("date", dateString);
-            bundle.putInt ("status", 1);
-            equipmentFragment.setArguments (bundle);
-            getFragmentManager ().beginTransaction ().replace (R.id.fragment_container, equipmentFragment);
-        });
+
+//            textView_fine.setOnClickListener ((view1) -> {
+//            EquipmentFragment equipmentFragment = new EquipmentFragment ();
+//            Bundle bundle = new Bundle ();
+//            bundle.putString ("date", dateString);
+//            bundle.putInt ("status", 1);
+//            equipmentFragment.setArguments (bundle);
+//            getFragmentManager ().beginTransaction ().replace (R.id.fragment_container, equipmentFragment);
+//        });
 
 
         return view;

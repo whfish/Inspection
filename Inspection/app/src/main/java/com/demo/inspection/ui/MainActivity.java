@@ -22,6 +22,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
+import static com.demo.inspection.bl.ComDef.TITLE_NAME;
+
 public class MainActivity extends BaseActivity {
     BottomNavigationView mainBottom;
     ViewPager mainViewpage;
@@ -37,6 +39,7 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle (TITLE_NAME[0]);
 
         /**
          * 设置网络连接提示
@@ -107,15 +110,19 @@ public class MainActivity extends BaseActivity {
                 switch (position) {
                     case 0:
                         mainBottom.setSelectedItemId(R.id.main_state);
+                        setTitle (TITLE_NAME[0]);
                         break;
                     case 1:
                         mainBottom.setSelectedItemId(R.id.main_dev);
+                        setTitle (TITLE_NAME[1]);
                         break;
                     case 2:
                         mainBottom.setSelectedItemId(R.id.main_sys);
+                        setTitle (TITLE_NAME[2]);
                         break;
                     case 3:
                         mainBottom.setSelectedItemId(R.id.main_my);
+                        setTitle (TITLE_NAME[3]);
                         break;
                 }
             }

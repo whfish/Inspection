@@ -39,8 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="@dimen/shop_category_w"
-            android:paddingTop="15dp">
+            android:layout_marginTop="@dimen/shop_category_w">
 
             <!-- 姓名 -->
             <RelativeLayout
@@ -151,7 +150,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingTop="50dp"
+                android:paddingTop="30dp"
                 >
 
 

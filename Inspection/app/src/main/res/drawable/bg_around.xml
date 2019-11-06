@@ -10,7 +10,7 @@
         <shape android:shape="oval">
             <gradient
                 android:angle="45"
-                android:endColor="#fff04848"
+                android:endColor="#ed5831"
                 android:startColor="#fff97e7e"
                 android:type="linear"
                 android:useLevel="true" />
