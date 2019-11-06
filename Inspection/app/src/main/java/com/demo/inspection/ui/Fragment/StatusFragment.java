@@ -3,6 +3,7 @@ package com.demo.inspection.ui.Fragment;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,6 +24,7 @@ import com.demo.inspection.R;
 import com.demo.inspection.bl.ComDef;
 import com.demo.inspection.bl.GetData;
 import com.demo.inspection.bl.ReqParam;
+import com.demo.inspection.ui.EquipmentDetailsActivity;
 import com.demo.inspection.ui.Fragment.barchart.BarChart;
 import com.demo.inspection.ui.StatusActivity;
 
@@ -285,9 +287,15 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
     }
 
     private void myAlerDialog(String[] listDate, int a) {
+
+
         AlertDialog dialog = new AlertDialog.Builder (getActivity ())
                 .setTitle ("服务器地址:")
                 .setItems (listDate, (DialogInterface.OnClickListener) (dialogInterface, i) -> {
+
+                    Bundle bundle =new Bundle ();
+//                    bundle.putString ();
+                    Intent intent = new Intent(getActivity(), EquipmentDetailsActivity.class);
 
                 })
                 .setCancelable (true)
