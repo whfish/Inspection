@@ -30,6 +30,8 @@ public interface ComDef {
     public static final String INTF_QUERYADMIN = "queryUserName";//查询账号
     public static final String INTF_UPDATEADMIN = "modifyPasswd";//修改密码
 
+    public static final String INTF_QUERYQRDD = "queryQRDeviceDetail";//查询设备近7日详情
+
     public static final String QUERY_ACCOUNT = "account";//查询日期
 
     public static final String QUERY_DATE = "datetime";//查询日期
@@ -39,6 +41,17 @@ public interface ComDef {
     public static final String QUERY_SYSINDEX = "sysid";//查询设备索引值
     public static final String QUERY_STATE = "score";//状查询态
     public static final String MODIFY_PW = "password";//密码
+
+    //系统信息增删改
+    public static final String INTF_SYSADD = "addSysInfo";//新增系统
+    public static final String INTF_SYSMOD = "modifySysInfo";//修改系统
+    public static final String INTF_SYSDEL = "deleteSysInfo";//删除系统
+
+    public static final String SYS_NAME ="sysname";
+    public static final String SYS_DETIAL ="detial";//非必填
+    public static final String SYS_LINKMAN ="linkman";//非必填
+    public static final String SYS_PHONE ="phone";//非必填
+
 
     public static final String[] TITLE_NAME = {"状态信息", "设备展示", "系统展示", "我的"};
     public static final int[] MY_COLORS = {Color.GREEN, Color.YELLOW, Color.BLUE, Color.CYAN, Color.GRAY, Color.LTGRAY};
