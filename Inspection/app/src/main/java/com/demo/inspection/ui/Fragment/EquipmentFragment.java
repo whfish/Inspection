@@ -24,6 +24,7 @@ import com.demo.inspection.bl.ComDef;
 import com.demo.inspection.bl.GetData;
 import com.demo.inspection.bl.ReqParam;
 import com.demo.inspection.ui.EquipmentDetailsActivity;
+import com.demo.inspection.utils.ScreenUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -58,6 +59,11 @@ public class EquipmentFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+//        ScreenUtil screenUtil=new ScreenUtil();
+//        int dpi=screenUtil.getScreenDPI(this);
+//        screenUtil.adapterScreen(this,dpi,false);
+
         View view=inflater.inflate (R.layout.activity_equipment,container,false);
 
 

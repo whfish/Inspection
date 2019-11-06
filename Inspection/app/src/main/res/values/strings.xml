@@ -34,6 +34,9 @@
     <string name="succnetwork">网络已连接</string>
     <string name="searching">请输入IP进行查询</string>
 
+    <!--退出-->
+    <string name="exit">退出系统</string>
+
     <!--设备-->
     <string name="e_id">对应系统</string>
     <string name="e_ip">IP</string>
