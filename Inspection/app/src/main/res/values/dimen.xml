@@ -5,6 +5,7 @@
     <dimen name="size_max_64">32sp</dimen>
     <dimen name="size_max_60">30sp</dimen>
     <dimen name="size_max_56">28sp</dimen>
+    <dimen name="size_max_54">26sp</dimen>
     <dimen name="size_max_50">25sp</dimen>
     <dimen name="size_max_48">24sp</dimen>
     <dimen name="size_max_40">20sp</dimen>

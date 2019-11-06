@@ -38,7 +38,7 @@
                 android:singleLine="true"
                 android:textColor="@color/color_black_light"
                 android:textColorHint="@color/color_gray_light"
-                android:textSize="@dimen/size_ll_30" />
+                android:textSize="@dimen/size_l_28" />
 
 
 
@@ -155,7 +155,7 @@
                 android:background="@drawable/btn_bind_purple"
                 android:text="@string/bt_yes"
                 android:textColor="@color/white"
-                android:textSize="17.0sp"
+                android:textSize="@dimen/size_lll_34"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:onClick="sure_to_reset"/>
@@ -180,7 +180,7 @@
                 android:background="@drawable/btn_bind_purple"
                 android:text="@string/bt_no"
                 android:textColor="@color/white"
-                android:textSize="17.0sp"
+                android:textSize="@dimen/size_lll_34"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:onClick="not_to_reset"/>
