@@ -38,7 +38,7 @@ import okhttp3.ResponseBody;
  */
 public class MyHttp {
 
-    public void requestOkHttpSync(ReqParam reqParam) {
+    public String requestOkHttpSync(ReqParam reqParam) {
         /**
          * @method requestOkHttpSync
          * @description 同步调用
@@ -67,17 +67,21 @@ public class MyHttp {
         Call call = okHttpClient.newCall(request);
         System.out.print("okHttp开始执行同步调用");
         ResponseBody rb = null;
+        String result="";
         try {
             rb = call.execute().body();
-            String result = rb.string();
+            result = rb.string();
             System.out.print("请求结果:" + result);
-
         } catch (Exception e) {
             System.out.print("异常：" + e);
         } finally {
             //应答体内包含输出流对象，不再使用需要关闭
-            rb.close();
+            if(rb!=null) {
+                rb.close();
+            }
         }
+        return result;
+
     }
 
     public void requestOkHttpAsync(ReqParam reqParam, Callback callback) {

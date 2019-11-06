@@ -26,7 +26,7 @@ import okhttp3.ResponseBody;
  * @UpdateRemark: 更新说明：
  * @Version: 1.0
  */
-public abstract  class GetData {
+public abstract class GetData {
     MyHttp myHttp = new MyHttp();
     List<Map<String, String>> list = null;
     ReqParam req;
@@ -36,13 +36,15 @@ public abstract  class GetData {
         getList();
     }
 
-    public void getList(){
+
+    public void getList() {
         myHttp.requestOkHttpAsync(req, new Callback() {
 
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
                 Log.i(ComDef.TAG, "请求okHttp失败:" + e);
             }
+
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 ResponseBody rb = response.body();
@@ -59,5 +61,6 @@ public abstract  class GetData {
             }
         });
     }
-    public abstract  void  dealResult(String result) throws JSONException ;
+
+    public abstract void dealResult(String result) throws JSONException;
 }
