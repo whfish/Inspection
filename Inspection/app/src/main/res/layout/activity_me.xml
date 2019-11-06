@@ -164,7 +164,7 @@
                     android:background="@drawable/btn_bind_purple"
                     android:text="@string/bt_mine_change_psw"
                     android:textColor="@color/white"
-                    android:textSize="17.0sp" />
+                    android:textSize="@dimen/size_ll_32" />
             </RelativeLayout>
 
 <!--            <RelativeLayout-->

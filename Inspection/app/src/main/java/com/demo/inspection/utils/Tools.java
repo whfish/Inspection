@@ -33,7 +33,7 @@ public class Tools {
     public static boolean CheckHasValue(EditText e) {
         if(e.getText().toString().isEmpty())
             return false;
-            else
+        else
             return true;
     }
 

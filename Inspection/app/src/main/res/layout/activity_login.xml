@@ -63,9 +63,10 @@
                 android:hint="@string/tx_input_user_name"
                 android:imeOptions="actionNext"
                 android:singleLine="true"
+                android:text="admin"
                 android:textColor="@color/color_black_light"
                 android:textColorHint="@color/color_gray_light"
-                android:textSize="@dimen/size_l_28" />
+                android:textSize="@dimen/size_ll_30" />
         </LinearLayout>
 
         <View
@@ -105,9 +106,10 @@
                 android:imeOptions="actionDone"
                 android:inputType="textPassword"
                 android:singleLine="true"
+                android:text="123"
                 android:textColor="@color/color_black_light"
                 android:textColorHint="@color/color_gray_light"
-                android:textSize="@dimen/size_l_28" />
+                android:textSize="@dimen/size_ll_30" />
 
         </LinearLayout>
 
@@ -136,7 +138,7 @@
                 android:background="@drawable/btn_red_big_radius"
                 android:text="@string/bt_mine_login"
                 android:textColor="@color/white"
-                android:textSize="17.0sp" />
+                android:textSize="@dimen/size_lll_34" />
         </RelativeLayout>
 
 

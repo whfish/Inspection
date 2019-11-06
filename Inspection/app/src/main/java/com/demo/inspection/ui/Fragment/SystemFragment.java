@@ -19,10 +19,12 @@ import androidx.fragment.app.Fragment;
 import com.demo.inspection.R;
 import com.demo.inspection.SystemAddActivity;
 import com.demo.inspection.SystemDetailsActivity;
+import com.demo.inspection.SystemModActivity;
 import com.demo.inspection.bl.ComDef;
 import com.demo.inspection.bl.GetData;
 import com.demo.inspection.bl.MyHttp;
 import com.demo.inspection.bl.ReqParam;
+import com.demo.inspection.utils.ToastUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,6 +37,16 @@ import java.util.Map;
 
 
 public class SystemFragment extends Fragment {
+
+    //设置对应选项
+    String str1 = "全部状态";
+    String str2 = "正常";
+    String str3 = "告警";
+    String str4 = "预警";
+    String str5 = "异常";
+    //定义状态
+    String[] Score = new String[]{str1, str2, str3, str4, str5};//1-正常，2-告警，3-预警,"null"-异常
+
     private static String TAG = "MainActivity";
 
     MyHttp myHttp = new MyHttp();
@@ -65,12 +77,26 @@ public class SystemFragment extends Fragment {
                     JSONObject item = (JSONObject) array.get(i);
                     Map<String, String> map = new HashMap<>();
                     map.put("id", item.getString("id"));//获取你自己需要的字段
-                    map.put("score", item.getString("score"));//获取你自己需要的字段
+                    //                   map.put("score", item.getString("score"));//获取你自己需要的字段
+                    //判断状态
+                    switch (item.getString("score")) {
+                        case "1":
+                            map.put("score", str2);
+                            break;
+                        case "2":
+                            map.put("score", str3);
+                            break;
+                        case "3":
+                            map.put("score", str4);
+                            break;
+                        case "":
+                            map.put("score", str5);
+                    }
                     map.put("sysName", item.getString("sysName"));//获取你自己需要的字段
                     map.put("detial", item.getString("detial"));//获取你自己需要的字段
                     map.put("opttime", item.getString("opttime"));//获取你自己需要的字段
                     map.put("userId", item.getString("userId"));//获取你自己需要的字段
-    //           //   map.put("imageId", String.valueOf(R.drawable.ic_launcher));
+                    //           //   map.put("imageId", String.valueOf(R.drawable.ic_launcher));
                     list.add(map);
                 }
 
@@ -86,23 +112,23 @@ public class SystemFragment extends Fragment {
                     }
                 });
 
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         Intent intent = new Intent(getActivity(), SystemDetailsActivity.class); //参数1:Fragment所依存的Activity,参数2：要跳转的Activity
 
                         Bundle bundle = new Bundle();
                         TextView one = view.findViewById(R.id.textViewSBid);
-                        String id= one.getText().toString();
-                        bundle.putString("id",id);
+                        String id = one.getText().toString();
+                        bundle.putString("id", id);
 
                         TextView two = view.findViewById(R.id.textViewSBscore);
-                        String sysname= two.getText().toString();
-                        bundle.putString("sysName",sysname);
+                        String sysname = two.getText().toString();
+                        bundle.putString("sysName", sysname);
 
                         TextView four = view.findViewById(R.id.textViewSBsysname);
-                        String opttime=four.getText().toString();
-                        bundle.putString("opttime",opttime);
+                        String opttime = four.getText().toString();
+                        bundle.putString("opttime", opttime);
                         intent.putExtras(bundle);
                         getActivity().startActivity(intent); //这里一定要获取到所在Activity再startActivity()；
 
@@ -143,15 +169,13 @@ public class SystemFragment extends Fragment {
 //                        intent.putExtras(bundle);
 //                        getActivity().startActivity(intent); //这里一定要获取到所在Activity再startActivity()；
 //
-             //       }
-              //  });
+                //       }
+                //  });
 
 
                 listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                     @Override
                     public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-
                         new AlertDialog.Builder(getActivity())
                                 .setTitle("系统")
                                 .setItems(
@@ -164,47 +188,48 @@ public class SystemFragment extends Fragment {
 
                                                 Bundle bundle = new Bundle();
                                                 TextView one = view.findViewById(R.id.textViewSBid);
-                                                String id= one.getText().toString();
-                                                bundle.putString("id",id);
-
-                                                TextView two = view.findViewById(R.id.textViewSBscore);
-                                                String sysname= two.getText().toString();
-                                                bundle.putString("sysName",sysname);
-
-                                                TextView four = view.findViewById(R.id.textViewSBsysname);
-                                                String opttime=four.getText().toString();
-                                                bundle.putString("opttime",opttime);
+                                                String id = one.getText().toString();
+                                                bundle.putString("id", id);
                                                 intent.putExtras(bundle);
                                                 getActivity().startActivity(intent); //这里一定要获取到所在Activity再startActivity()；
 
 
                                             } else if (which == 1) {// 修改
+                                                Intent intent = new Intent(getActivity(), SystemModActivity.class); //参数1:Fragment所依存的Activity,参数2：要跳转的Activity
+
+
                                                 Bundle bundle = new Bundle();
-                                                bundle.putString("id", getString(Integer.parseInt("id")));//获取你自己需要的字段
-                                                bundle.putString ("score",getString(Integer.parseInt("score")));
-                                                bundle.putString ("sysName",getString(Integer.parseInt("sysName")));
-                                                bundle.putString ("detial",getString(Integer.parseInt("detial")));
-                                                bundle.putString ("opttime",getString(Integer.parseInt("opttime")));
-                                                bundle.putString ("userId",getString(Integer.parseInt("opttime")));
-                                                Intent it1 = new Intent();
-                                                it1.putExtras(bundle);
-                                                it1.setClass(getActivity(), SystemAddActivity.class);
+                                                TextView one = view.findViewById(R.id.textViewSBid);
+                                                String id = one.getText().toString();
+                                                bundle.putString("id", id);
+                                                intent.putExtras(bundle);
+                                                getActivity().startActivity(intent); //这里一定要获取到所在Activity再startActivity()；
 
 
-                                                startActivity(it1);
                                             } else {  //删除
-                                                Bundle bundle = new Bundle();
-                                                bundle.putString("id", getString(Integer.parseInt("id")));//获取你自己需要的字段
-                                                bundle.putString ("score",getString(Integer.parseInt("score")));
-                                                bundle.putString ("sysName",getString(Integer.parseInt("sysName")));
-                                                bundle.putString ("detial",getString(Integer.parseInt("detial")));
-                                                bundle.putString ("opttime",getString(Integer.parseInt("opttime")));
-                                                bundle.putString ("userId",getString(Integer.parseInt("userId")));
-                                                Intent it1 = new Intent();
-                                                it1.putExtras(bundle);
-                                                it1.setClass(getActivity(), SystemAddActivity.class);;
 
-                                                startActivity(it1);
+                                                ReqParam req = new ReqParam();
+                                                req.setUrl(ComDef.INTF_SYSDEL);//从INTF_SYSDEL接口删除数据
+                                                HashMap map1 = new HashMap<String, String>();
+
+                                                TextView one = view.findViewById(R.id.textViewSBid);
+                                                String id1 = one.getText().toString();
+
+
+                                                map1.put(ComDef.QUERY_SYSINDEX, id1); //获取需要的字段：sysName, editTextXTMCInput.getText().toString()); //获取需要的字段：sysName
+
+                                                req.setMap(map1);
+
+                                                new GetData(req) {
+                                                    @Override
+                                                    public void dealResult(String result) throws JSONException {
+                                                        getActivity().runOnUiThread(() -> {
+                                                            ToastUtil.toastCenter(getActivity(), result);
+                                                        });
+                                                    }
+
+                                                };
+
 
                                             }
                                         }).show();

@@ -25,7 +25,7 @@
             android:text="系统名称" />
 
         <EditText
-            android:id="@+id/editTextInput"
+            android:id="@+id/editTextADXTMC"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -34,10 +34,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="系统修改" />
+            android:text="系统介绍" />
 
         <EditText
-            android:id="@+id/editTextOutput001"
+            android:id="@+id/editTextADXTXQ"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -49,7 +49,7 @@
             android:text="上线时间" />
 
         <EditText
-            android:id="@+id/editTextWeight"
+            android:id="@+id/editTextADOT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -61,7 +61,7 @@
             android:text="系统管理员" />
 
         <EditText
-            android:id="@+id/editTextAmountExercise"
+            android:id="@+id/editTextADUserid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -75,14 +75,14 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/buttonOK"
+            android:id="@+id/buttonOKS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@android:string/VideoView_error_button" />
 
         <Button
-            android:id="@+id/buttonCancel"
+            android:id="@+id/buttonCanceS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

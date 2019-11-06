@@ -1,10 +1,15 @@
 package com.demo.inspection.ui;
 
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -18,6 +23,7 @@ import com.demo.inspection.ui.Fragment.StatusFragment;
 import com.demo.inspection.ui.Fragment.SystemFragment;
 import com.demo.inspection.ui.NetWork.BaseActivity;
 import com.demo.inspection.ui.NetWork.NetWorkActivity;
+import com.demo.inspection.utils.ScreenUtil;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -27,19 +33,42 @@ import static com.demo.inspection.bl.ComDef.TITLE_NAME;
 public class MainActivity extends BaseActivity {
     BottomNavigationView mainBottom;
     ViewPager mainViewpage;
+    String username ;
+    // 定义一个变量，来标识是否退出
+    private boolean isExit= false;
 
     private ArrayList<Fragment> fList;
     private TextView mTv;
     private static final int NETWORK_ID = Menu.FIRST;
+    private static final int Exit_ID = Menu.FIRST+1;
+    Bundle bundle=new Bundle();
 
 
 
 
+//    Handler mHandler = new Handler() {
+//
+//        @Override
+//        public void handleMessage(Message msg) {
+//            super.handleMessage(msg);
+//            isExit = false;
+//        }
+//    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+//        ScreenUtil screenUtil=new ScreenUtil();
+//        int dpi=screenUtil.getScreenDPI(this);
+//        screenUtil.adapterScreen(this,dpi,false);
         setContentView(R.layout.activity_main);
         setTitle (TITLE_NAME[0]);
+
+        Intent intent = getIntent();
+         bundle = intent.getExtras();
+        username = bundle.getString("username");
+
+
 
         /**
          * 设置网络连接提示
@@ -93,11 +122,14 @@ public class MainActivity extends BaseActivity {
 
 
     public void userFragmentPagerAdapter() {
+
         fList = new ArrayList<>();
         fList.add(StatusFragment.getInstances("状态"));
         fList.add(EquipmentFragment.getInstances("设备"));
         fList.add(SystemFragment.getInstances("系统"));
         fList.add(MeFragment.getInstances("我的"));
+        MeFragment.getUserName(username);
+
         MyFragmentPagerAdapter adapter = new MyFragmentPagerAdapter(fList, getSupportFragmentManager());
         mainViewpage.setAdapter(adapter);
         mainViewpage.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -137,6 +169,7 @@ public class MainActivity extends BaseActivity {
     public boolean onCreateOptionsMenu (Menu menu){
 
         menu.add(0, NETWORK_ID, 0, R.string.network);
+        menu.add(0, Exit_ID, 0, R.string.exit);
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -152,6 +185,8 @@ public class MainActivity extends BaseActivity {
                 startActivity(netWork);
 
                 break;
+            case Exit_ID:
+                System.exit(0);
 
         }
 
@@ -168,5 +203,31 @@ public class MainActivity extends BaseActivity {
 //        }
 //    }
 
+
+    /**
+     * 双击返回键退出
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (isExit) {
+                this.finish();
+
+            } else {
+                Toast.makeText(this, "再按一次退出", Toast.LENGTH_SHORT).show();
+                isExit = true;
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        isExit= false;
+                    }
+                }, 2000);
+            }
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
+    }
 
 }

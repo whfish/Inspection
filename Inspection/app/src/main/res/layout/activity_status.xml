@@ -10,9 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="日期时间"
+        android:text="@string/status_time"
         android:textAlignment="center"
-        android:textSize="26sp" />
+        android:textSize="@dimen/size_max_54" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -38,10 +38,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="系统状态"
+                android:text="@string/status_sys"
                 android:textAlignment="center"
                 android:textAllCaps="false"
-                android:textSize="18sp"
+                android:textSize="@dimen/size_lll_36"
                 android:layout_marginTop="10dp"/>
 
             <LinearLayout
@@ -56,18 +56,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView"
                     android:textAlignment="center"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/size_ll_32" />
 
                 <TextView
                     android:id="@+id/textView_normal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView"
                     android:textAlignment="center"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/size_ll_32" />
             </LinearLayout>
 
             <LinearLayout
@@ -82,18 +80,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView"
                     android:textAlignment="center"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/size_ll_32" />
 
                 <TextView
                     android:id="@+id/textView_error"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView"
                     android:textAlignment="center"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/size_ll_32" />
             </LinearLayout>
         </LinearLayout>
 

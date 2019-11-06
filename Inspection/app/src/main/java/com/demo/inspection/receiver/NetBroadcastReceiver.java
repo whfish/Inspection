@@ -16,10 +16,10 @@ public class NetBroadcastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         if (intent.getAction().equals(ConnectivityManager.CONNECTIVITY_ACTION)) {
-            int netWorkState = NetUtils.getNetWorkState(context);
-            if(evevt !=null)
-            // 接口回调传过去状态的类型
-            evevt.onNetChange(netWorkState);
+                int netWorkState = NetUtils.getNetWorkState(context);
+                if(evevt !=null)
+                    // 接口回调传过去状态的类型
+                    evevt.onNetChange(netWorkState);
         }
     }
 
