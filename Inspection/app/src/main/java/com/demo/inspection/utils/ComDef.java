@@ -17,11 +17,13 @@ import android.graphics.Color;
 public interface ComDef {
 
     public static final String TAG = "demolog";//日志标识
+    public static final String DATEFORMAT="YYYY-MM-dd";//日期格式
 
     public static final String URL_PRE = "http://10.52.200.138:8082/";//服务器地址
     public static final String INTF_QUERYSTATIC = "queryStatic";//查询统计数据
 
     public static final String INTF_QUERYDEVICE = "queryDeviceInfo";//查询设备列表
+    public static final String INTF_QUERYDEVICEPAGE = "queryDeviceInfoPage";//查询设备列表(分页)
     public static final String INTF_QUERYDEVICEDETAIL = "queryDeviceDetail";//查询设备详情
 
     public static final String INTF_QUERYSYS = "querySysInfoState";//查询系统列表
@@ -52,8 +54,11 @@ public interface ComDef {
     public static final String SYS_LINKMAN ="linkman";//非必填
     public static final String SYS_PHONE ="phone";//非必填
 
+    public static final String PAGENUM="pageNum";//分页页码，从1开始
+    public static final String PAGESIZE="pageSize";//每次最多查询条数
 
-    public static final String[] TITLE_NAME = {"状态信息", "设备展示", "系统展示", "我的"};
+
+    public static final String[] TITLE_NAME = {"状态信息", "设备列表", "系统列表", "我的"};
     public static final int[] MY_COLORS = {Color.GREEN, Color.YELLOW, Color.BLUE, Color.CYAN, Color.GRAY, Color.LTGRAY};
     public static final String[] XSTRS = new String[]{"1", "2", "3", "4", "5", "6", "7"};
     public static final int PRE_INDEX = 10010;
