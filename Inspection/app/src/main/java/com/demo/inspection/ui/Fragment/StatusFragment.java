@@ -65,7 +65,10 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
     List<String> listError;
 
 
-    int[] color = {Color.GREEN, Color.YELLOW, Color.RED, Color.BLUE};
+    int[] color = {Color.rgb (76, 175, 80),
+            Color.rgb (247,201,77),
+            Color.rgb (228,95,95),
+            Color.rgb (154,183,224)};
 
     @Nullable
     @Override

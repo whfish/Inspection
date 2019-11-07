@@ -25,6 +25,13 @@
             android:orientation="horizontal">
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/e_txt"
+                android:textColor="@color/color_gray_dark"
+                android:textSize="@dimen/size_max_48"/>
+
+            <TextView
                 android:id="@+id/textViewSBip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

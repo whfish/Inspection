@@ -33,7 +33,6 @@ import java.util.Map;
 
 public class DevStateActivity extends AppCompatActivity implements View.OnClickListener {
     private LinearLayout mContainer;
-    Spinner spinner;
     private LineChart lineChart;
     DealLineChart dealLineChart;
     List<CheckBox> mCheckBoxList;

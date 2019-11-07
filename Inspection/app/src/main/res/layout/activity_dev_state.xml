@@ -11,13 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="近7日统计" />
+        android:text="@string/line_7"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:textSize="@dimen/size_ll_30"
+        android:textColor="@color/color_black_light"/>
 
-    <TextView
-        android:id="@+id/tv_devstateip"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="设备IP:" />
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -27,7 +26,16 @@
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tv_devstateip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/line_ip"
+                android:textSize="@dimen/size_ll_30"
+                android:textColor="@color/color_black_light"/>
 
 
             <com.github.mikephil.charting.charts.LineChart
