@@ -1,6 +1,11 @@
 package com.demo.inspection.bl;
 
+import android.app.Activity;
+import android.content.Context;
 import android.util.Log;
+
+import com.demo.inspection.utils.ComDef;
+import com.demo.inspection.utils.ToastUtil;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
@@ -26,23 +31,39 @@ import okhttp3.ResponseBody;
  * @UpdateRemark: 更新说明：
  * @Version: 1.0
  */
-public abstract  class GetData {
+public abstract class GetData {
     MyHttp myHttp = new MyHttp();
     List<Map<String, String>> list = null;
     ReqParam req;
+    Activity activity = null;
 
     public GetData(ReqParam req) {
         this.req = req;
         getList();
     }
 
-    public void getList(){
+    public GetData(ReqParam req, Activity activity) {
+        this.req = req;
+        this.activity  = activity ;
+        getList();
+    }
+
+
+    public void getList() {
         myHttp.requestOkHttpAsync(req, new Callback() {
 
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
                 Log.i(ComDef.TAG, "请求okHttp失败:" + e);
+                if(activity !=null){
+                    activity.runOnUiThread(()->{
+                        ToastUtil.toastCenter(activity ,"登录失败,请检查网络");
+                    });
+                }
+
+
             }
+
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 ResponseBody rb = response.body();
@@ -59,5 +80,6 @@ public abstract  class GetData {
             }
         });
     }
-    public abstract  void  dealResult(String result) throws JSONException ;
+
+    public abstract void dealResult(String result) throws JSONException;
 }

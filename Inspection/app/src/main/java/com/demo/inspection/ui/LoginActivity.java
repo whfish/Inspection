@@ -4,13 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.demo.inspection.R;
-import com.demo.inspection.bl.ComDef;
+import com.demo.inspection.utils.ComDef;
 import com.demo.inspection.bl.GetData;
 import com.demo.inspection.bl.ReqParam;
 import com.demo.inspection.ui.Fragment.MeFragment;
@@ -56,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
                 req.setMap(map);
                 bundle.putString("username", account.getText().toString());
 
-                new GetData(req) {
+                new GetData(req,LoginActivity.this) {
                     @Override
                     public void dealResult(String result) throws JSONException {
                         if(result.equals("[null]")){

@@ -25,7 +25,7 @@
             android:text="系统名称：" />
 
         <EditText
-            android:id="@+id/editTextInput"
+            android:id="@+id/editTextXTMC1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -37,19 +37,7 @@
             android:text="系统介绍：" />
 
         <EditText
-            android:id="@+id/editTextOutput001"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="上线时间" />
-
-        <EditText
-            android:id="@+id/editTextWeight"
+            android:id="@+id/editTextXTXQ1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -61,7 +49,19 @@
             android:text="系统维护人员：" />
 
         <EditText
-            android:id="@+id/editTextAmountExercise"
+            android:id="@+id/editTextOT1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="系统维护人员电话：" />
+
+        <EditText
+            android:id="@+id/editTextUserid1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"

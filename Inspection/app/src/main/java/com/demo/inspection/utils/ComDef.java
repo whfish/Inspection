@@ -1,4 +1,4 @@
-package com.demo.inspection.bl;
+package com.demo.inspection.utils;
 
 import android.graphics.Color;
 
