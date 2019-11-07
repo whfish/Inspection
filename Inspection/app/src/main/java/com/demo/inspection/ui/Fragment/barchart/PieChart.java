@@ -42,8 +42,8 @@ public class PieChart extends Fragment {
         TextView textViewP_alarm =view.findViewById (R.id.textViewP_alarm);
         TextView textViewP_error =view.findViewById (R.id.textViewP_error);
 
-        textViewP_fine.setText ("良好状态:" + (number[1]*100/total) + "%");
-        textViewP_normal.setText ("正常状态:" +(number[2]*100/total) + "%");
+        textViewP_fine.setText ("正常状态:" + (number[1]*100/total) + "%");
+        textViewP_normal.setText ("预警状态:" +(number[2]*100/total) + "%");
         textViewP_alarm.setText ("告警状态:" + (number[3]*100/total) + "%");
         textViewP_error.setText ("异常状态:" + (number[4]*100/total) + "%");
 
