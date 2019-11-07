@@ -1,17 +1,31 @@
+
+/**
+ * @ProjectName: Inspection
+ * @Package: com.demo.inspection
+ * @ClassName: SystemFragment
+ * @Description:添加系统数据至系统列表
+ * @Author: 张文普
+ * @CreateDate: 2019/11/6 9:37
+ * @UpdateUser: 更新者：
+ * @UpdateDate: 2019/11/6 9:37
+ * @UpdateRemark: 更新说明：
+ * @Version: 1.0
+ */
+
 package com.demo.inspection;
+
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
-
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.demo.inspection.utils.ComDef;
 import com.demo.inspection.bl.GetData;
 import com.demo.inspection.bl.ReqParam;
 import com.demo.inspection.utils.ToastUtil;
-
 import org.json.JSONException;
-
 import java.util.HashMap;
 
 public class SystemAddActivity extends AppCompatActivity {
@@ -19,6 +33,11 @@ public class SystemAddActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_systemadd);
+        ActionBar actionBar = getSupportActionBar();
+
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
 
         Button buttonok = findViewById(R.id.buttonOKS);
@@ -84,17 +103,24 @@ public class SystemAddActivity extends AppCompatActivity {
 //                }
 //            };
 
-            finish ();
+            finish();
 
         });
 
         Button buttonCancel = findViewById(R.id.buttonCanceS);
         buttonCancel.setOnClickListener((view) -> {
+            finish ();
 
         });
 
 
+    }
 
-
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {//返回前一页
+            finish();
+        }
+        return true;
     }
 }
