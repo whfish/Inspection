@@ -121,10 +121,14 @@ public class PieChart extends Fragment {
         pieChartView.setPieChartData (data);
     }
 
-//    @Override
-//    public void onDestroyView() {
-//        super.onDestroyView ();
-//        getChildFragmentManager ().popBackStack ();
-//    }
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView ();
+        BarChart barChart = new BarChart ();
+        Bundle bundle = new Bundle ();
+        bundle.putIntArray ("number", number);
+        barChart.setArguments (bundle);
+        getFragmentManager ().beginTransaction ().replace (R.id.barChartFL, barChart). commitAllowingStateLoss();
+    }
 }
 
