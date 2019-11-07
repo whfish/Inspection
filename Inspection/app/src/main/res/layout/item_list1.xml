@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/e_txt"
                 android:textColor="@color/color_gray_dark"
-                android:textSize="@dimen/size_max_48"/>
+                android:textSize="@dimen/size_max_40"/>
 
             <TextView
                 android:id="@+id/textViewSBip"
@@ -38,7 +38,7 @@
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:textColor="@color/color_gray_dark"
-                android:textSize="@dimen/size_max_48"
+                android:textSize="@dimen/size_max_40"
                 tools:hint="@string/sys_list_ip" />
 
         </LinearLayout>

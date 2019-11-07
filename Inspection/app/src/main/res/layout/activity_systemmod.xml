@@ -5,89 +5,228 @@
     android:orientation="vertical"
     android:gravity="center">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#43BBEB"
-        android:gravity="center"
-        android:text="添加系统"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:background="@color/background_color"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/activity_horizontal_margin">
+
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="系统名称：" />
-
-        <EditText
-            android:id="@+id/editTextXTMC1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="系统介绍：" />
-
-        <EditText
-            android:id="@+id/editTextXTXQ1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="系统维护人员：" />
-
-        <EditText
-            android:id="@+id/editTextOT1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="系统维护人员电话：" />
-
-        <EditText
-            android:id="@+id/editTextUserid1"
-            android:layout_width="match_parent"
-            android:phoneNumber="true"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName" />
+            android:layout_marginLeft="10dp"
+            android:text="@string/sys_add_txt"
+            android:textColor="@color/color_black_light"
+            android:textSize="@dimen/size_ll_30" />
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_name_title"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/sys_name"
+                android:textColor="@color/color_black_light"
+                android:textSize="@dimen/size_ll_30" />
+
+            <EditText
+                android:id="@+id/editTextXTMC1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="16dp"
+                android:layout_toRightOf="@+id/tv_name_title"
+                android:hint="@string/sys_name"
+                android:paddingTop="15dp"
+                android:textColor="@color/color_black_light"
+                android:textSize="@dimen/size_ll_30"
+                android:inputType="textPersonName" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/color_line_gray" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_phone_title"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/sys_exp"
+                android:textColor="@color/color_black_light"
+                android:textSize="@dimen/size_ll_30" />
+
+            <EditText
+                android:id="@+id/editTextXTXQ1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="16dp"
+                android:layout_toRightOf="@+id/tv_phone_title"
+                android:hint="@string/sys_exp"
+                android:paddingTop="15dp"
+                android:textColor="@color/color_black_light"
+                android:textSize="@dimen/size_ll_30"
+                android:inputType="textPersonName" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/color_line_gray" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_device_title"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/sys_time"
+                android:textColor="@color/color_black_light"
+                android:textSize="@dimen/size_ll_30" />
+
+            <EditText
+                android:id="@+id/editTextOT1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="16dp"
+                android:layout_toRightOf="@+id/tv_device_title"
+                android:hint="@string/sys_time"
+                android:paddingTop="15dp"
+                android:textColor="@color/color_black_light"
+                android:textColorHint="@color/color_gray"
+                android:textSize="@dimen/size_ll_30"
+                android:inputType="textPersonName" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/color_line_gray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv__title4"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/sys_manager"
+                android:textColor="@color/color_black_light"
+                android:textSize="@dimen/size_ll_30" />
+
+            <EditText
+                android:id="@+id/editTextUserid1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="16dp"
+                android:layout_toRightOf="@+id/tv__title4"
+                android:hint="@string/sys_manager"
+                android:paddingTop="15dp"
+                android:textColor="@color/color_black_light"
+                android:textColorHint="@color/color_gray"
+                android:textSize="@dimen/size_ll_30"
+                android:inputType="textPersonName"
+                android:phoneNumber="true"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/color_line_gray" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="40dp">
 
         <Button
             android:id="@+id/buttonOK"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@android:string/VideoView_error_button" />
+            android:layout_marginLeft="20.0dip"
+            android:layout_marginRight="20.0dip"
+            android:layout_marginBottom="16.0dip"
+            android:background="@drawable/btn_bind_purple"
+            android:text="@string/sys_btn_ok"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_ll_32" />
 
         <Button
             android:id="@+id/buttonCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@android:string/cancel" />
+            android:layout_marginLeft="20.0dip"
+            android:layout_marginRight="20.0dip"
+            android:layout_marginBottom="16.0dip"
+            android:background="@drawable/btn_bind_purple"
+            android:text="@string/sys_btn_cancle"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_ll_32" />
+
+
     </LinearLayout>
 
 </LinearLayout>
