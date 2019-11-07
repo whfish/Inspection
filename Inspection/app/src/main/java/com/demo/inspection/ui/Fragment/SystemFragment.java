@@ -1,3 +1,17 @@
+
+/**
+ * @ProjectName: Inspection
+ * @Package: com.demo.inspection
+ * @ClassName: SystemFragment
+ * @Description: 系统列表数据展示
+ * @Author: 张文普
+ * @CreateDate: 2019/11/6 9:37
+ * @UpdateUser: 更新者：
+ * @UpdateDate: 2019/11/6 9:37
+ * @UpdateRemark: 更新说明：
+ * @Version: 1.0
+ */
+
 package com.demo.inspection.ui.Fragment;
 
 import android.content.Intent;
@@ -6,7 +20,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -20,10 +33,9 @@ import com.demo.inspection.R;
 import com.demo.inspection.SystemAddActivity;
 import com.demo.inspection.SystemDetailsActivity;
 import com.demo.inspection.SystemModActivity;
-import com.demo.inspection.utils.ComDef;
 import com.demo.inspection.bl.GetData;
-import com.demo.inspection.bl.MyHttp;
 import com.demo.inspection.bl.ReqParam;
+import com.demo.inspection.utils.ComDef;
 import com.demo.inspection.utils.ToastUtil;
 
 import org.json.JSONArray;
@@ -35,28 +47,40 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 public class SystemFragment extends Fragment {
 
-    //设置对应选项
-    String str1 = "全部状态";
-    String str2 = "正常";
-    String str3 = "告警";
-    String str4 = "预警";
-    String str5 = "异常";
-    //定义状态
-    String[] Score = new String[]{str1, str2, str3, str4, str5};//1-正常，2-告警，3-预警,"null"-异常
+    //定义系统状态
+    String str1 = "正常";
+    String str2 = "告警";
+    String str3 = "预警";
+    String str4 = "异常";
 
-    private static String TAG = "MainActivity";
-
-    MyHttp myHttp = new MyHttp();
-    List<Map<String, String>> list = null;
     private ListView listView;
 
-    private ImageView btn;
+    public static SystemFragment getInstances(String name) {
 
+        SystemFragment systemFragment = new SystemFragment();
 
-    @Nullable
+        Bundle bundle = new Bundle();
+        bundle.putString("name", name);
+        systemFragment.setArguments(bundle);
+        return systemFragment;
+
+        //                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                    @Override
+//                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                        if (view instanceof TextView) {
+//                            System.out.println("点击文本");
+//                        } else if (view instanceof ImageView) {
+//                            System.out.println("点击图片");
+//                        }
+//                        Toast.makeText(getActivity(), "第" + i + "行", Toast.LENGTH_LONG).show();
+//                    }
+//                });
+
+        
+    }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_systemlist, container, false);
@@ -81,16 +105,16 @@ public class SystemFragment extends Fragment {
                     //判断状态
                     switch (item.getString("score")) {
                         case "1":
-                            map.put("score", str2);
+                            map.put("score", str1);
                             break;
                         case "2":
-                            map.put("score", str3);
+                            map.put("score", str2);
                             break;
                         case "3":
-                            map.put("score", str4);
+                            map.put("score", str3);
                             break;
                         case "":
-                            map.put("score", str5);
+                            map.put("score", str4);
                     }
                     map.put("sysName", item.getString("sysName"));//获取你自己需要的字段
                     map.put("detial", item.getString("detial"));//获取你自己需要的字段
@@ -106,9 +130,9 @@ public class SystemFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        String[] from = { "id","score", "sysName", "linkman","phone"};  //决定提取哪些值来生成列表项
+                        String[] from = {"id", "score", "sysName", "linkman", "phone"};  //决定提取哪些值来生成列表项
                         int[] to = {R.id.textViewSBid, R.id.textViewSBip,
-                                R.id.textViewSBscore, R.id.textViewSBsysname,R.id.textViewAmountExercise}; //决定填充哪些组建
+                                R.id.textViewSBscore, R.id.textViewSBsysname, R.id.textViewAmountExercise}; //决定填充哪些组建
                         SimpleAdapter adapter = new SimpleAdapter(getActivity(), list, R.layout.item_list, from, to);
                         listView.setAdapter(adapter);
                     }
@@ -295,91 +319,6 @@ public class SystemFragment extends Fragment {
         return view;
 
 
-    }
-
-
-//    public void onActivityCreated(Bundle savedInstanceState) {
-//        super.onActivityCreated(savedInstanceState);
-//        getActivity().setContentView(R.layout.item_list);
-//        btn = (ImageView) getActivity().findViewById(R.id.imageView2);
-//
-//        btn.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                Log.i(TAG, "操纵取消！");
-//            }
-//        });
-//    }
-
-
-//        btn.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                // TODO Auto-generated method stub
-//                Log.i (TAG, "操纵取消！");
-//            }
-//        });
-
-
-//        ImageView b1=(ImageView) getActivity().findViewById(R.id.imageView2);
-//        b1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//
-//
-//                Intent intent=new Intent(getActivity(),SystemDetailsActivity.class);
-//
-//            }
-//        });
-    //   }
-
-
-//    public void imageViewonClick(View v) {
-//    Intent intent=new Intent(getActivity(),SystemDetailsActivity.class); //参数1:Fragment所依存的Activity,参数2：要跳转的Activity
-//    Bundle bundle = new Bundle();
-//
-//    try {
-//        bundle.putString("id", item.getString("id"));//获取你自己需要的字段
-//        bundle.putString ("score", item.getString("score"));
-//        bundle.putString ("sysName",item.getString("sysName"));
-//        bundle.putString ("detial",item.getString("detial"));
-//        bundle.putString ("opttime",item.getString("opttime"));
-//        bundle.putString ("userId",item.getString("userId"));
-//
-//    } catch (JSONException e) {
-//        e.printStackTrace();
-//    }
-//                                                intent.putExtras(bundle);
-//    getActivity().startActivity(intent); //这里一定要获取到所在Activity再startActivity()；
-//
-//    }
-
-//    public void imageViewonClick(View v) {
-//
-//
-//        System.out.println(listView.getPositionForView(v));
-//        Intent it = new Intent(getActivity(), SystemDetailsActivity.class);
-//
-//        it.putExtra("id","1");
-//        it.putExtra("id","1");
-//        it.putExtra("id","1");
-//        it.putExtra("id","1");
-//        it.putExtra("id","1");
-//
-//        startActivity(it);
-//
-//    }
-
-
-    public static SystemFragment getInstances(String name) {
-        SystemFragment systemFragment = new SystemFragment();
-        Bundle bundle = new Bundle();
-        bundle.putString("name", name);
-        systemFragment.setArguments(bundle);
-        return systemFragment;
     }
 
 //    @Override
