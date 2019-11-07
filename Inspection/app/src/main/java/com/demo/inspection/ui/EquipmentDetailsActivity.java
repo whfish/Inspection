@@ -10,15 +10,19 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.demo.inspection.R;
-import com.demo.inspection.utils.ComDef;
 import com.demo.inspection.bl.GetData;
 import com.demo.inspection.bl.ReqParam;
+import com.demo.inspection.utils.ComDef;
+import com.demo.inspection.utils.NetworkInformation;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class EquipmentDetailsActivity extends AppCompatActivity {
 
@@ -48,18 +52,9 @@ public class EquipmentDetailsActivity extends AppCompatActivity {
         TextView textDetail = findViewById (R.id.textDetail);
         TextView textSevenDays = findViewById (R.id.qiri);
 
-        //取EquipmentFragment传过来的ip
+        //接收EquipmentFragment和StatusFragment传过来的ip
         Bundle bundle = this.getIntent ().getExtras ();
         String ip = bundle.getString ("IP");
-        String devId = bundle.getString ("devId");
-
-        textSevenDays.setOnClickListener((v)->{
-            Intent intent = new Intent(this, DevStateActivity.class);
-            intent.putExtra("ip",ip);
-            intent.putExtra("devId",devId);
-            startActivity(intent);
-        });
-
 
         //以ip为条件查询数据
         ReqParam req = new ReqParam();
@@ -75,6 +70,7 @@ public class EquipmentDetailsActivity extends AppCompatActivity {
                     JSONObject item = (JSONObject) array.get(i);
                     //将查询到的数据写入页面控件
                     textID.setText (item.getString("id"));
+                    String id = textID.getText().toString();//取到写入的id 值，给查询设备硬件状态和七日情况传参使用
                     textName.setText(item.getString("devName"));
                     textIP.setText (item.getString ("ip"));
                     textSystem.setText(item.getString("sysname"));
@@ -84,10 +80,10 @@ public class EquipmentDetailsActivity extends AppCompatActivity {
                             textScore.setText("正常");
                             break;
                         case "2":
-                            textScore.setText("告警");
+                            textScore.setText("预警");
                             break;
                         case "3":
-                            textScore.setText("预警");
+                            textScore.setText("告警");
                             break;
                         case "":
                             textScore.setText("异常");
@@ -98,8 +94,6 @@ public class EquipmentDetailsActivity extends AppCompatActivity {
                     ReqParam req2 = new ReqParam();
                     req2.setUrl(ComDef.INTF_QUERYDEVICEDETAIL);//修改为实际接口,查询设备详情
                     HashMap map2 = new HashMap<String, String>();
-                    String id = textID.getText().toString();//获取设备的id
-                    Log.i(ComDef.TAG, "获取设备idxxxxxxxxxxxxx:" +  textID.getText().toString());
                     map2.put(ComDef.QUERY_INDEX,id);//修改为实际请求参数
                     req2.setMap(map2);
                     new GetData(req2) {
@@ -111,23 +105,29 @@ public class EquipmentDetailsActivity extends AppCompatActivity {
                                 //判断硬件名称
                                 switch (item.getString("name")) {
                                     case "cpu":
-                                        textCpu.setText(item.getString("detail")+item.getString("rule")+item.getString("data_type"));
+                                        textCpu.setText(item.getString("detail")+item.getString("data")+item.getString("data_type"));
                                         break;
                                     case "内存":
-                                        textMemory.setText(item.getString("detail")+item.getString("rule")+item.getString("data_type"));
+                                        textMemory.setText(item.getString("detail")+item.getString("data")+item.getString("data_type"));
                                         break;
                                     case "磁盘":
-                                        textHard.setText(item.getString("detail")+item.getString("rule")+item.getString("data_type"));
+                                        textHard.setText(item.getString("detail")+item.getString("data")+item.getString("data_type"));
                                         break;
                                 }
                             }
                         }
                     };
+
+                    //查询最近七日情况
+                    textSevenDays.setOnClickListener((v)->{
+                        Intent intent = new Intent(EquipmentDetailsActivity.this, DevStateActivity.class);
+                        intent.putExtra("ip",ip);
+                        intent.putExtra("devId",id);
+                        startActivity(intent);
+                    });
                 }
             }
         };
-
-
 
     }
 

@@ -46,6 +46,8 @@
     <string name="e_ip">IP</string>
     <string name="e_state">状态</string>
     <string name="e_problem">故障问题</string>
+    <string name="e_txt">服务器IP：</string>
+
 
 
 
@@ -60,6 +62,17 @@
     <string name="sys_state">设备状态</string>
     <string name="sys_ip">IP</string>
     <string name="sys_people">维护人员</string>
+
+
+    <!--系统主页面列表-->
+    <string name="sys_main_id">系统ID</string>
+    <string name="sys_main_state">系统状态</string>
+    <string name="sys_main_name">系统名称</string>
+    <string name="sys_contact_name">负责人</string>
+    <string name="sys_contact_number">负责人电话</string>
+    <string name="sys_txt">系统ID：</string>
+    <string name="sys_main_list">系统列表</string>
+
 
     //IP 状态 设备名称 id
     <!--系统列表-->
@@ -84,6 +97,7 @@
     <string name="el_10">设备详情</string>
     <string name="el_check_ip">请输入IP进行查询</string>
     <string name="el_btn_search">搜索</string>
+    <string name="el_null">无</string>
 
     <!--网络-->
     <string name="net_1">网络是否连接</string>
@@ -100,6 +114,10 @@
     <string name="pwd_new_t">新密码</string>
     <string name="bt_yes">确定</string>
     <string name="bt_no">取消</string>
+
+    <!--线状图-->
+    <string name="line_7">近7日统计</string>
+    <string name="line_ip">设备IP:</string>
 
 
 </resources>

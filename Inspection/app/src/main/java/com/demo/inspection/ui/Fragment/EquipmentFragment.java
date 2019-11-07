@@ -46,11 +46,11 @@ public class EquipmentFragment extends Fragment {
     //设置对应选项
     String str1 = "全部状态";
     String str2 = "正常";
-    String str3 = "告警";
-    String str4 = "预警";
+    String str3 = "预警";
+    String str4 = "告警";
     String str5 = "异常";
     //定义状态
-    String[] Score = new String[]{str1,str2,str3,str4,str5};//1-正常，2-告警，3-预警,"null"-异常
+    String[] Score = new String[]{str1,str2,str3,str4,str5};//1-正常，2-预警，3-告警,"null"-异常
 
     @Nullable
     @Override
