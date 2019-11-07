@@ -35,16 +35,17 @@ public class PieChart extends Fragment {
         pieChartView = view.findViewById (R.id.piechart);
         number = getArguments ().getIntArray ("number");
         initDatas ();
+        int total = number[1]+number[2]+number[3]+number[4];
 
         TextView textViewP_fine =view.findViewById (R.id.textViewP_fine);
         TextView textViewP_normal =view.findViewById (R.id.textViewP_normal);
         TextView textViewP_alarm =view.findViewById (R.id.textViewP_alarm);
         TextView textViewP_error =view.findViewById (R.id.textViewP_error);
 
-        textViewP_fine.setText ("良好状态:" + number[1] + "台");
-        textViewP_normal.setText ("正常状态:" + number[2] + "台");
-        textViewP_alarm.setText ("告警状态:" + number[3] + "台");
-        textViewP_error.setText ("异常状态:" + number[4] + "台");
+        textViewP_fine.setText ("良好状态:" + (number[1]*100/total) + "%");
+        textViewP_normal.setText ("正常状态:" +(number[2]*100/total) + "%");
+        textViewP_alarm.setText ("告警状态:" + (number[3]*100/total) + "%");
+        textViewP_error.setText ("异常状态:" + (number[4]*100/total) + "%");
 
 
         ImageView imageViewBar = view.findViewById (R.id.imageViewBar);
