@@ -26,12 +26,6 @@
 
     </LinearLayout>
 
-    <ScrollView
-        android:id="@+id/scrollview"
-        android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:background="@color/white"
-        android:fillViewport="true">
 
         <LinearLayout
             android:id="@+id/ll_content"
@@ -190,9 +184,10 @@
                     android:layout_alignParentBottom="true"
                     android:background="@color/color_line_gray" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="40dp"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:orientation="horizontal">
@@ -214,9 +209,8 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="16dp"
                     android:layout_toRightOf="@+id/tv__title4"
-                    android:hint="@string/sys_manager"
+                    android:hint="@string/sys_managerphone"
                     android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
                     android:textColor="@color/color_black_light"
                     android:textColorHint="@color/color_gray"
                     android:textSize="@dimen/size_ll_30" />
@@ -228,13 +222,14 @@
                     android:background="@color/color_line_gray" />
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="52dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/background_color"
         android:orientation="horizontal"
-        android:padding="@dimen/activity_horizontal_margin"
-        android:background="@color/background_color">
+        android:padding="@dimen/activity_horizontal_margin">
 
 
         <TextView
@@ -247,7 +242,8 @@
             android:textSize="@dimen/size_ll_30" />
 
     </LinearLayout>
-<ScrollView
+
+    <ScrollView
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
