@@ -104,8 +104,8 @@ public class EquipmentFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        String[] from = {"sysname", "ip", "score"};  //决定提取哪些值来生成列表项
-                        int[] to = {R.id.textName, R.id.textIP, R.id.textState}; //对应到xml里的名字
+                        String[] from = {"sysname", "ip", "score","id"};  //决定提取哪些值来生成列表项
+                        int[] to = {R.id.textName, R.id.textIP, R.id.textState,R.id.tv_disabled}; //对应到xml里的名字
                         SimpleAdapter adapter = new SimpleAdapter(getActivity(), Equlist, R.layout.activity_equipmentlist, from, to);
                         mListView.setAdapter(adapter);
                     }
@@ -126,6 +126,8 @@ public class EquipmentFragment extends Fragment {
                 String strIP= textIP.getText().toString();
                 bundle.putString("IP",strIP);
 
+                TextView textID = view.findViewById(R.id.tv_disabled);
+                bundle.putString("devId",textID.getText().toString());
                 intent.putExtras(bundle);
                 getActivity().startActivity(intent); //这里一定要获取到所在Activity再startActivity()；
 

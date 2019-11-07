@@ -38,10 +38,10 @@ public class BarChart extends Fragment {
     private int[] colors = {
             Color.WHITE,
             Color.rgb (76, 175, 80),
-            Color.rgb (228,95,95),
             Color.rgb (247,201,77),
+            Color.rgb (228,95,95),
             Color.rgb (154,183,224),};
-    private String[] mold = {"", "正常", "告警", "预警", "异常"};
+    private String[] mold = {"", "正常", "预警", "告警", "异常"};
 
     @Nullable
     @Override

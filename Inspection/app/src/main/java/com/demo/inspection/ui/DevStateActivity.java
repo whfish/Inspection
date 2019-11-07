@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.demo.inspection.R;
 import com.demo.inspection.utils.ComDef;
@@ -35,26 +36,37 @@ public class DevStateActivity extends AppCompatActivity implements View.OnClickL
     Spinner spinner;
     private LineChart lineChart;
     DealLineChart dealLineChart;
-    List<CheckBox> mCheckBoxList = new ArrayList<>();
-    List<String> mItems = new ArrayList<>();
-    List<String> mMaxItems = new ArrayList<>();
-    Map<String, int[]> mData = new HashMap<>();
+    List<CheckBox> mCheckBoxList;
+    List<String> mItems;
+    List<String> mMaxItems;
+    Map<String, int[]> mData;
+    TextView tvIp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dev_state);
+        tvIp = findViewById(R.id.tv_devstateip);
+        lineChart = findViewById(R.id.lineChart);
+        mContainer = findViewById(R.id.container);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-        int devId = 1;//传值
-        lineChart = findViewById(R.id.lineChart);
-        mContainer = findViewById(R.id.container);
+        Bundle bundle = this.getIntent().getExtras();
+        String ip = bundle.getString("ip");
+        String devId = bundle.getString("devId");//传值
+        Log.i(ComDef.TAG, "onCreate: " + "设备id：" + devId);
+        tvIp.setText("设备IP：" + ip);
         dealLineChart = new DealLineChart(this);
         dealLineChart.initLineChart(lineChart);
-        setLineChartData();
-        Legend temp  = lineChart.getLegend();
+        setLineChartData(devId);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i(ComDef.TAG, "onStart: ");
     }
 
     @Override
@@ -63,13 +75,13 @@ public class DevStateActivity extends AppCompatActivity implements View.OnClickL
         showLine(index);
     }
 
-    private void setLineChartData() {
+    private void setLineChartData(String devId) {
         //填充数据，在这里换成自己的数据源
         List<Integer> mList1 = new ArrayList<>();
         ReqParam req = new ReqParam();
         req.setUrl(ComDef.INTF_QUERYQRDD);//修改为实际接口
         HashMap map = new HashMap<String, String>();
-        map.put(ComDef.QUERY_INDEX, "1");//修改为实际请求参数
+        map.put(ComDef.QUERY_INDEX, devId);//修改为实际请求参数
         req.setMap(map);
         new GetData(req) {
             @Override
@@ -78,11 +90,14 @@ public class DevStateActivity extends AppCompatActivity implements View.OnClickL
                 //获取最新一条记录的指标集合
                 JSONObject newItem = (JSONObject) array.get(0);
                 JSONArray newData = newItem.getJSONArray("data");
+                mItems = new ArrayList<>();
+                mMaxItems = new ArrayList<>();
+                mData = new HashMap<>();
                 for (int k = 0; k < newData.length(); k++) {
                     JSONObject o = (JSONObject) newData.get(k);
                     String keyName = o.getString("name");
                     mItems.add(keyName);
-                    mMaxItems.add(o.getString("detail")+" (阀值："+o.getString("rule")+o.getString("data_type")+")");
+                    mMaxItems.add(o.getString("detail") + " (阀值：" + o.getString("rule") + o.getString("data_type") + ")");
                     int[] valueList = {0, 0, 0, 0, 0, 0, 0};
                     mData.put(keyName, valueList);
                 }
@@ -106,6 +121,7 @@ public class DevStateActivity extends AppCompatActivity implements View.OnClickL
 
                 DevStateActivity.this.runOnUiThread(() -> {
                     //动态添加checkBox
+                    mCheckBoxList = new ArrayList<>();
                     for (int i = 0; i < mItems.size(); i++) {
                         CheckBox checkbox = new CheckBox(DevStateActivity.this);
                         checkbox.setId(ComDef.PRE_INDEX + i);
@@ -114,9 +130,9 @@ public class DevStateActivity extends AppCompatActivity implements View.OnClickL
                         mCheckBoxList.add(checkbox);
                         mContainer.addView(checkbox);
                     }
-                    for (int i = 0; i < mItems.size();i++){
+                    for (int i = 0; i < mItems.size(); i++) {
                         String tag = mItems.get(i);
-                        Log.i(ComDef.TAG, "dealResult: "+tag);
+                        Log.i(ComDef.TAG, "dealResult: " + tag);
                         dealLineChart.createLine(mData.get(tag), tag, ComDef.MY_COLORS[i], lineChart);
                     }
 

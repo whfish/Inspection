@@ -14,10 +14,10 @@
         android:text="近7日统计" />
 
     <TextView
-        android:id="@+id/tv_ip"
+        android:id="@+id/tv_devstateip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="设备ip:127.0.0.1" />
+        android:text="设备IP:" />
 
     <ScrollView
         android:layout_width="match_parent"

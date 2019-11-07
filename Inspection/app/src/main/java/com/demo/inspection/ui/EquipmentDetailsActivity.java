@@ -1,5 +1,6 @@
 package com.demo.inspection.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -45,10 +46,19 @@ public class EquipmentDetailsActivity extends AppCompatActivity {
         TextView textMemory = findViewById (R.id.textMemory);
         TextView textHard = findViewById (R.id.textHard);
         TextView textDetail = findViewById (R.id.textDetail);
+        TextView textSevenDays = findViewById (R.id.qiri);
 
         //取EquipmentFragment传过来的ip
         Bundle bundle = this.getIntent ().getExtras ();
         String ip = bundle.getString ("IP");
+        String devId = bundle.getString ("devId");
+
+        textSevenDays.setOnClickListener((v)->{
+            Intent intent = new Intent(this, DevStateActivity.class);
+            intent.putExtra("ip",ip);
+            intent.putExtra("devId",devId);
+            startActivity(intent);
+        });
 
 
         //以ip为条件查询数据
