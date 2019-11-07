@@ -112,7 +112,7 @@ public class MyHttp {
         //创建Call对象
         Call call = okHttpClient.newCall(request);
         //执行异步调用
-        Log.i(ComDef.TAG, "okHttp开始执行异步调用，进程:" + Thread.currentThread().getName());
+        Log.i(ComDef.TAG, "okHttp开始执行异步调用，url:" + reqParam.getUrl());
 //        System.out.print("okHttp开始执行异步调用，进程:" + Thread.currentThread().getName());
 
         call.enqueue(callback);

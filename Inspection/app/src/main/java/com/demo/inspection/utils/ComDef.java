@@ -18,6 +18,7 @@ public interface ComDef {
 
     public static final String TAG = "demolog";//日志标识
     public static final String DATEFORMAT="YYYY-MM-dd";//日期格式
+    public static final int QRY_NUM = 10;//分页使用，最大查询条数
 
     public static final String URL_PRE = "http://10.52.200.138:8082/";//服务器地址
     public static final String INTF_QUERYSTATIC = "queryStatic";//查询统计数据

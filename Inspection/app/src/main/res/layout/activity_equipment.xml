@@ -49,7 +49,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/color_line_gray" />
 
-    <ListView
+    <com.demo.inspection.ui.MyListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
