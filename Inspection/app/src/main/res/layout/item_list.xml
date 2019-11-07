@@ -107,7 +107,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:descendantFocusability="blocksDescendants"
-                android:focusable="false"
+
+                android:clickable="true"
                 android:onClick="imageViewonClick"
                 app:srcCompat="@mipmap/icon_system" />
 

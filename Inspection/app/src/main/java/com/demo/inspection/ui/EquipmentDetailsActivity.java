@@ -2,9 +2,7 @@ package com.demo.inspection.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
@@ -14,16 +12,12 @@ import com.demo.inspection.R;
 import com.demo.inspection.bl.GetData;
 import com.demo.inspection.bl.ReqParam;
 import com.demo.inspection.utils.ComDef;
-import com.demo.inspection.utils.NetworkInformation;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class EquipmentDetailsActivity extends AppCompatActivity {
 

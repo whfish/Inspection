@@ -36,6 +36,7 @@
         <activity android:name=".ui.NetWork.NetWorkActivity"></activity>
         <activity android:name=".SystemModActivity"></activity>
         <activity android:name=".SystemAddActivity"></activity>
+        <activity android:name=".SystemListActivity"></activity>
 
 
     </application>

@@ -23,12 +23,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
-
 import com.demo.inspection.R;
 import com.demo.inspection.SystemAddActivity;
 import com.demo.inspection.SystemDetailsActivity;
@@ -37,11 +35,9 @@ import com.demo.inspection.bl.GetData;
 import com.demo.inspection.bl.ReqParam;
 import com.demo.inspection.utils.ComDef;
 import com.demo.inspection.utils.ToastUtil;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -85,13 +81,10 @@ public class SystemFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_systemlist, container, false);
 
-        listView = view.findViewById(R.id.ListView);   //绑定xml
+        listView = view.findViewById(R.id.ListView);//绑定xml
         ReqParam req = new ReqParam();
-        req.setUrl(ComDef.INTF_QUERYSYS);//修改为实际接口
-//        HashMap map = new HashMap<String, String>();
-//        map.put(ComDef.QUERY_DEVINDEX, "2019-11-02");//修改为实际请求参数
-//        map.put(ComDef.QUERY_STATE, "1");//修改为实际请求参数
-//        req.setMap(map);
+        req.setUrl(ComDef.INTF_QUERYSYS);//通过INTF_QUERYSYS接口查询系统列表详情
+
         new GetData(req) {
             @Override
             public void dealResult(String result) throws JSONException {
