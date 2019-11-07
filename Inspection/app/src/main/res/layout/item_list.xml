@@ -33,14 +33,14 @@
                 android:textSize="@dimen/size_max_48"/>
 
             <TextView
-                android:id="@+id/textViewSBid"
+                android:id="@+id/textViewSBscore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:textColor="@color/color_gray_dark"
                 android:textSize="@dimen/size_max_48"
-                tools:hint="@string/sys_main_id" />
+                tools:hint="@string/sys_main_name" />
 
         </LinearLayout>
 
@@ -62,14 +62,18 @@
                 android:textColor="@color/color_gray"
                 android:textSize="@dimen/size_ll_32" />
 
+
+
+
+
             <TextView
-                android:id="@+id/textViewSBscore"
+                android:id="@+id/textViewAmountExercise"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:text="@string/sys_main_name"
+                android:text="@string/sys_contact_number"
                 android:textColor="@color/color_gray"
                 android:textSize="@dimen/size_ll_32" />
 
@@ -86,13 +90,14 @@
 
 
             <TextView
-                android:id="@+id/textViewAmountExercise"
+                android:id="@+id/textViewSBid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:text="@string/sys_contact_number"
+                android:text="@string/sys_main_id"
+                android:visibility="invisible"
                 android:textColor="@color/color_gray"
                 android:textSize="@dimen/size_ll_32" />
 

@@ -5,18 +5,25 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textViewDate"
-        android:layout_width="225dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:text="@string/status_time"
-        android:textAlignment="center"
-        android:textColor="@color/color_black_light"
-        android:textSize="@dimen/size_max_54"
-        android:background="@color/white"
-        android:shadowColor="@color/black"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/background_color"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textViewDate"
+            android:layout_width="225dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btn_bind_cancel"
+            android:text="@string/status_time"
+            android:textAlignment="center"
+            android:textColor="@color/color_gray_dark"
+            android:textSize="@dimen/size_max_54" />
+
+    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -57,6 +64,12 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="24dp">
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="20dp"
+                    android:src="@mipmap/green"/>
+
                 <TextView
                     android:id="@+id/textView_fine"
                     android:layout_width="wrap_content"
@@ -65,6 +78,12 @@
                     android:textAlignment="center"
                     android:textColor="@color/color_black_light"
                     android:textSize="@dimen/size_ll_32" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:src="@mipmap/yellow" />
 
                 <TextView
                     android:id="@+id/textView_normal"
@@ -84,6 +103,12 @@
                 android:orientation="horizontal"
                 android:layout_marginBottom="15dp">
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="20dp"
+                    android:src="@mipmap/red" />
+
                 <TextView
                     android:id="@+id/textView_alarm"
                     android:layout_width="wrap_content"
@@ -92,6 +117,12 @@
                     android:textAlignment="center"
                     android:textColor="@color/color_black_light"
                     android:textSize="@dimen/size_ll_32" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:src="@mipmap/blue" />
 
                 <TextView
                     android:id="@+id/textView_error"

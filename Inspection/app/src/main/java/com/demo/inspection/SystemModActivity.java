@@ -1,22 +1,35 @@
+
+/**
+ * @ProjectName: Inspection
+ * @Package: com.demo.inspection
+ * @ClassName: SystemFragment
+ * @Description: 修改系统列表数据
+ * @Author: 张文普
+ * @CreateDate: 2019/11/6 9:37
+ * @UpdateUser: 更新者：
+ * @UpdateDate: 2019/11/6 9:37
+ * @UpdateRemark: 更新说明：
+ * @Version: 1.0
+ */
+
 package com.demo.inspection;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.demo.inspection.bl.GetData;
 import com.demo.inspection.bl.ReqParam;
 import com.demo.inspection.utils.ComDef;
 import com.demo.inspection.utils.ToastUtil;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,6 +41,11 @@ public class SystemModActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_systemmod);
+        ActionBar actionBar = getSupportActionBar();
+
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         Bundle bundle = this.getIntent().getExtras();
         String id = bundle.getString("id");
@@ -205,5 +223,13 @@ public class SystemModActivity extends AppCompatActivity {
 
 
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {//返回前一页
+            finish();
+        }
+        return true;
     }
 }
