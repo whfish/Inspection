@@ -131,10 +131,12 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
 
             new Handler ().postDelayed (() -> {
 
-                textView_fine.setText ("良好状态:" + numberF[1] + "台");
-                textView_normal.setText ("正常状态:" + numberF[2] + "台");
+                getIP (dateString);
+                textView_fine.setText ("正常状态:" + numberF[1] + "台");
+                textView_normal.setText ("预警状态:" + numberF[2] + "台");
                 textView_alarm.setText ("告警状态:" + numberF[3] + "台");
                 textView_error.setText ("异常状态:" + numberF[4] + "台");
+
 
             }, 300);
 
@@ -187,12 +189,15 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
 
                 switch (id) {
                     case 0:
-
-                        textView_fine.setText ("良好状态:" + numberF[1] + "台");
-                        textView_normal.setText ("正常状态:" + numberF[2] + "台");
-                        textView_alarm.setText ("警告状态:" + numberF[3] + "台");
-                        textView_error.setText ("异常状态:" + numberF[4] + "台");
-
+                        getActivity ().runOnUiThread (new Runnable () {
+                            @Override
+                            public void run() {
+                                textView_fine.setText ("正常状态:" + numberF[1] + "台");
+                                textView_normal.setText ("预警状态:" + numberF[2] + "台");
+                                textView_alarm.setText ("告警状态:" + numberF[3] + "台");
+                                textView_error.setText ("异常状态:" + numberF[4] + "台");
+                            }
+                        });
                         BarChart barChart = new BarChart ();
                         Bundle bundle = new Bundle ();
                         bundle.putIntArray ("number", numberF);
@@ -206,7 +211,7 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
                         Bundle bundle1 = new Bundle ();
                         bundle1.putIntArray ("number", numberF);
                         barChart1.setArguments (bundle1);
-                        getChildFragmentManager ().beginTransaction ().replace (R.id.barChartFL, barChart1).commit ();
+                        getChildFragmentManager ().beginTransaction ().replace (R.id.barChartFL, barChart1).addToBackStack (null).commit ();
 
                 }
 
@@ -221,7 +226,7 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
         ReqParam req = new ReqParam ();
         req.setUrl (ComDef.INTF_QUERYDEVICE);//修改为实际接口
         HashMap map = new HashMap<String, String> ();
-        map.put (ComDef.QUERY_DATE, "2019-11-06");//修改为实际请求参数
+        map.put (ComDef.QUERY_DATE, date);//修改为实际请求参数
 
         req.setMap (map);
         new GetData (req) {
@@ -260,7 +265,7 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
                             listAlarm.add (list.get (i).get ("ip"));
                             break;
 
-                            default:
+                        default:
                             listError.add (list.get (i).get ("ip"));
                             break;
 
@@ -291,10 +296,11 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
                 .setTitle ("服务器地址:")
                 .setItems (listDate, (DialogInterface.OnClickListener) (dialogInterface, i) -> {
 
-                    Bundle bundle =new Bundle ();
-//                    bundle.putString ();
-                    Intent intent = new Intent(getActivity(), EquipmentDetailsActivity.class);
-
+                    Bundle bundle = new Bundle ();
+                    bundle.putString ("IP", listDate[i]);
+                    Intent intent = new Intent (getActivity (), EquipmentDetailsActivity.class);
+                    intent.putExtras (bundle);
+                    getActivity ().startActivity (intent);
                 })
                 .setCancelable (true)
                 .create ();
