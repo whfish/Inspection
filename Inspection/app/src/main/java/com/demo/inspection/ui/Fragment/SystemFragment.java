@@ -96,6 +96,8 @@ public class SystemFragment extends Fragment {
                     map.put("detial", item.getString("detial"));//获取你自己需要的字段
                     map.put("opttime", item.getString("opttime"));//获取你自己需要的字段
                     map.put("userId", item.getString("userId"));//获取你自己需要的字段
+                    map.put("phone", item.getString("phone"));//获取你自己需要的字段：userId
+                    map.put("linkman", item.getString("linkman"));//获取你自己需要的字段：userId
                     //           //   map.put("imageId", String.valueOf(R.drawable.ic_launcher));
                     list.add(map);
                 }
@@ -104,9 +106,9 @@ public class SystemFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        String[] from = {"id", "score", "sysName", "opttime"};  //决定提取哪些值来生成列表项
+                        String[] from = { "id","score", "sysName", "linkman","phone"};  //决定提取哪些值来生成列表项
                         int[] to = {R.id.textViewSBid, R.id.textViewSBip,
-                                R.id.textViewSBscore, R.id.textViewSBsysname}; //决定填充哪些组建
+                                R.id.textViewSBscore, R.id.textViewSBsysname,R.id.textViewAmountExercise}; //决定填充哪些组建
                         SimpleAdapter adapter = new SimpleAdapter(getActivity(), list, R.layout.item_list, from, to);
                         listView.setAdapter(adapter);
                     }

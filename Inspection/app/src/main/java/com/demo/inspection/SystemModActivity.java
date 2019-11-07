@@ -28,6 +28,7 @@ import java.util.Map;
 public class SystemModActivity extends AppCompatActivity {
 
    // String regex = "^((13[0-9])|(14[5,7,9])|(15([0-3]|[5-9]))|(166)|(17[0,1,3,5,6,7,8])|(18[0-9])|(19[8|9]))\\d{8}$";
+    String EditText;
 
     String shoujihao ="^0?(13|14|15|18|17)[0-9]{9}";
     @Override
@@ -102,6 +103,34 @@ public class SystemModActivity extends AppCompatActivity {
             }
         };
 
+
+
+        EditText editTextUseridInput = findViewById(R.id.editTextUserid1);
+        editTextUseridInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                //输入文字前触发
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //text改变过程中，一般在此加入监听事件。
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+
+                if (editTextUseridInput.getText().toString().matches(shoujihao)){
+                    EditText editText = findViewById(R.id.editTextUserid1);
+                }else {
+                    Toast.makeText(SystemModActivity.this, "输入电话号码不正确！", Toast.LENGTH_SHORT).show();
+                }
+                //输入后触发
+            }
+        });
+
+
         Button buttonok = findViewById(R.id.buttonOK);
         buttonok.setOnClickListener((view) -> {
             ReqParam req1 = new ReqParam();
@@ -121,31 +150,10 @@ public class SystemModActivity extends AppCompatActivity {
             map1.put(ComDef.SYS_LINKMAN, editTextOTInput.getText().toString());//获取需要的字段联系人
 
 
-            EditText editTextUseridInput = findViewById(R.id.editTextUserid1);
-
-            editTextUseridInput.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                    //输入文字前触发
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    //text改变过程中，一般在此加入监听事件。
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
+  //         EditText editTextUseridInput = findViewById(R.id.editTextUserid1);
+            map1.put(ComDef.SYS_PHONE, editTextUseridInput.getText().toString());//获取你自己需要的字段联系人电话
 
 
-                    if (editTextUseridInput.getText().toString().equals(shoujihao)){
-                        map1.put(ComDef.SYS_PHONE, editTextUseridInput.getText().toString());//获取你自己需要的字段联系人电话
-                    }else {
-                        Toast.makeText(SystemModActivity.this, "输入电话号码不正确！", Toast.LENGTH_SHORT).show();
-                    }
-                    //输入后触发
-                }
-            });
 
 
 
