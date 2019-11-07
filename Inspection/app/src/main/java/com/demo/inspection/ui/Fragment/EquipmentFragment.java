@@ -185,6 +185,7 @@ public class EquipmentFragment extends Fragment {
                     @Override
                     public void run() {
                        mListView.getMyAdapter().notifyDataSetChanged();
+                        mListView.getMyAdapter().notifyDataSetInvalidated();
                         mListView.loadComplete(array.length());
                     }
                 });

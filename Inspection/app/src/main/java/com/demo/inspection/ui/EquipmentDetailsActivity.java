@@ -78,15 +78,19 @@ public class EquipmentDetailsActivity extends AppCompatActivity {
                             switch (item.getString("score")) {
                                 case "1":
                                     textScore.setText("正常");
+                                    textScore.setTextColor(ComDef.STATE_COLORS[1]);
                                     break;
                                 case "2":
                                     textScore.setText("预警");
+                                    textScore.setTextColor(ComDef.STATE_COLORS[2]);
                                     break;
                                 case "3":
                                     textScore.setText("告警");
+                                    textScore.setTextColor(ComDef.STATE_COLORS[3]);
                                     break;
                                 case "":
                                     textScore.setText("异常");
+                                    textScore.setTextColor(ComDef.STATE_COLORS[4]);
                             }
                             textDetail.setText(item.getString("detail"));
 
@@ -100,17 +104,46 @@ public class EquipmentDetailsActivity extends AppCompatActivity {
                                 @Override
                                 public void dealResult(String result) throws JSONException {
                                     JSONArray array = new JSONArray(result);
+                                    int data;
+                                    int rule;
                                     for (int i = 0; i < array.length(); i++) {
                                         JSONObject item = (JSONObject) array.get(i);
                                         //判断硬件名称
                                         switch (item.getString("name")) {
                                             case "cpu":
+                                                data = Integer.valueOf(item.getString("data"));
+                                                rule = Integer.valueOf(item.getString("rule"));
+                                                if(data > rule){
+                                                    textCpu.setTextColor(ComDef.STATE_COLORS[3]);
+                                                }else if(data==  rule){
+                                                    textCpu.setTextColor(ComDef.STATE_COLORS[2]);
+                                                }else if(data <  rule){
+                                                    textCpu.setTextColor(ComDef.STATE_COLORS[1]);
+                                                }
                                                 textCpu.setText(item.getString("detail") + item.getString("data") + item.getString("data_type"));
                                                 break;
                                             case "内存":
+                                                data = Integer.valueOf(item.getString("data"));
+                                                rule = Integer.valueOf(item.getString("rule"));
+                                                if(data > rule){
+                                                    textMemory.setTextColor(ComDef.STATE_COLORS[3]);
+                                                }else if(data==  rule){
+                                                    textMemory.setTextColor(ComDef.STATE_COLORS[2]);
+                                                }else if(data <  rule){
+                                                    textMemory.setTextColor(ComDef.STATE_COLORS[1]);
+                                                }
                                                 textMemory.setText(item.getString("detail") + item.getString("data") + item.getString("data_type"));
                                                 break;
                                             case "磁盘":
+                                                data = Integer.valueOf(item.getString("data"));
+                                                rule = Integer.valueOf(item.getString("rule"));
+                                                if(data > rule){
+                                                    textHard.setTextColor(ComDef.STATE_COLORS[3]);
+                                                }else if(data==  rule){
+                                                    textHard.setTextColor(ComDef.STATE_COLORS[2]);
+                                                }else if(data <  rule){
+                                                    textHard.setTextColor(ComDef.STATE_COLORS[1]);
+                                                }
                                                 textHard.setText(item.getString("detail") + item.getString("data") + item.getString("data_type"));
                                                 break;
                                         }

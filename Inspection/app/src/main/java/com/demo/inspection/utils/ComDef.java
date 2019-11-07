@@ -64,5 +64,12 @@ public interface ComDef {
     public static final String[] XSTRS = new String[]{"1", "2", "3", "4", "5", "6", "7"};
     public static final int PRE_INDEX = 10010;
 
+    public int[] STATE_COLORS = {
+            Color.WHITE,
+            Color.rgb (76, 175, 80),
+            Color.rgb (247, 201, 77),
+            Color.rgb (228, 95, 95),
+            Color.rgb (154, 183, 224)};
+
 
 }

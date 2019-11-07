@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.demo.inspection.R;
+import com.demo.inspection.utils.ComDef;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,12 +36,7 @@ public class BarChart extends Fragment {
     //数据标志
     private int[] numberF;
     //模拟数据
-    private int[] colors = {
-            Color.WHITE,
-            Color.rgb (76, 175, 80),
-            Color.rgb (247, 201, 77),
-            Color.rgb (228, 95, 95),
-            Color.rgb (154, 183, 224),};
+    private int[] colors = ComDef.STATE_COLORS;
     private String[] mold = {"", "正常", "预警", "告警", "异常"};
 
     @Nullable

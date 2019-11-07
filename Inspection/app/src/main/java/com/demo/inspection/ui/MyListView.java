@@ -1,6 +1,7 @@
 package com.demo.inspection.ui;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 
 import com.demo.inspection.R;
 import com.demo.inspection.utils.ComDef;
@@ -38,6 +40,7 @@ public class MyListView extends ListView implements AbsListView.OnScrollListener
     boolean isqueryfinished = false;//是否已查询到底页
     ILoadListener loadListener;
     SimpleAdapter myAdapter;
+    SimpleAdapter.ViewBinder viewBinder = null;
 
     public MyListView(Context context) {
         super(context);
@@ -66,7 +69,28 @@ public class MyListView extends ListView implements AbsListView.OnScrollListener
     private void initView(Context context) {
         String[] from = {"sysname", "ip", "score", "id"};  //决定提取哪些值来生成列表项
         int[] to = {R.id.textName, R.id.textIP, R.id.textState, R.id.tv_disabled}; //对应到xml里的名字
-        myAdapter = new SimpleAdapter(context,  equList, R.layout.activity_equipmentlist, from, to);
+        myAdapter = new SimpleAdapter(context, equList, R.layout.activity_equipmentlist, from, to);
+        viewBinder = new SimpleAdapter.ViewBinder() {
+            @Override
+            public boolean setViewValue(View view, Object o, String s) {
+                if (o != null && o.equals("正常")) {
+                    TextView tv = (TextView)view;
+                    tv.setTextColor(ComDef.STATE_COLORS[1]);
+                } else if (o != null && o.equals("预警")) {
+                    TextView tv = (TextView)view;
+                    tv.setTextColor(ComDef.STATE_COLORS[2]);
+                }
+                else if (o != null && o.equals("告警")) {
+                    TextView tv = (TextView)view;
+                    tv.setTextColor(ComDef.STATE_COLORS[3]);
+                }else if (o != null && o.equals("异常")) {
+                    TextView tv = (TextView)view;
+                    tv.setTextColor(ComDef.STATE_COLORS[4]);
+                }
+                return false;
+            }
+        };
+        myAdapter.setViewBinder(viewBinder);
         setAdapter(myAdapter);
         footer = LayoutInflater.from(context).inflate(R.layout.footer, null);
         footer.findViewById(R.id.loading_layout).setVisibility(GONE);//先关闭加载提示
