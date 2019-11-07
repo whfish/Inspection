@@ -90,61 +90,64 @@ public class DevStateActivity extends AppCompatActivity implements View.OnClickL
                 //获取最新一条记录的指标集合
                 JSONObject newItem = (JSONObject) array.get(0);
                 JSONArray newData = newItem.getJSONArray("data");
-                mItems = new ArrayList<>();
-                mMaxItems = new ArrayList<>();
-                mData = new HashMap<>();
-                for (int k = 0; k < newData.length(); k++) {
-                    JSONObject o = (JSONObject) newData.get(k);
-                    String keyName = o.getString("name");
-                    mItems.add(keyName);
-                    mMaxItems.add(o.getString("detail") + " (阀值：" + o.getString("rule") + o.getString("data_type") + ")");
-                    int[] valueList = {0, 0, 0, 0, 0, 0, 0};
-                    mData.put(keyName, valueList);
-                }
-                Log.i(ComDef.TAG, "解析后获得指标集合:" + mItems.toString());
-
-
-                for (int i = 0; i < array.length(); i++) {
-                    JSONObject item = (JSONObject) array.get(i);
-                    int index = item.getInt("id");
-                    JSONArray data = item.getJSONArray("data");
-                    for (int j = 0; j < data.length(); j++) {
-                        JSONObject o = (JSONObject) data.get(j);
+                if(newData.length()>0){
+                    mItems = new ArrayList<>();
+                    mMaxItems = new ArrayList<>();
+                    mData = new HashMap<>();
+                    for (int k = 0; k < newData.length(); k++) {
+                        JSONObject o = (JSONObject) newData.get(k);
                         String keyName = o.getString("name");
-                        int value = o.getInt("data");
-                        mData.get(keyName)[index] = value;
+                        mItems.add(keyName);
+                        mMaxItems.add(o.getString("detail") + " (阀值：" + o.getString("rule") + o.getString("data_type") + ")");
+                        int[] valueList = {0, 0, 0, 0, 0, 0, 0};
+                        mData.put(keyName, valueList);
                     }
+                    Log.i(ComDef.TAG, "解析后获得指标集合:" + mItems.toString());
 
+
+                    for (int i = 0; i < array.length(); i++) {
+                        JSONObject item = (JSONObject) array.get(i);
+                        int index = item.getInt("id");
+                        JSONArray data = item.getJSONArray("data");
+                        for (int j = 0; j < data.length(); j++) {
+                            JSONObject o = (JSONObject) data.get(j);
+                            String keyName = o.getString("name");
+                            int value = o.getInt("data");
+                            mData.get(keyName)[index] = value;
+                        }
+
+
+                    }
+                    Log.i(ComDef.TAG, "解析后获得指标值集合:" + mData.toString());
+
+                    DevStateActivity.this.runOnUiThread(() -> {
+                        //动态添加checkBox
+                        mCheckBoxList = new ArrayList<>();
+                        for (int i = 0; i < mItems.size(); i++) {
+                            CheckBox checkbox = new CheckBox(DevStateActivity.this);
+                            checkbox.setId(ComDef.PRE_INDEX + i);
+                            checkbox.setText(mMaxItems.get(i));
+                            checkbox.setOnClickListener(DevStateActivity.this);
+                            mCheckBoxList.add(checkbox);
+                            mContainer.addView(checkbox);
+                        }
+                        for (int i = 0; i < mItems.size(); i++) {
+                            String tag = mItems.get(i);
+                            Log.i(ComDef.TAG, "dealResult: " + tag);
+                            dealLineChart.createLine(mData.get(tag), tag, ComDef.MY_COLORS[i], lineChart);
+                        }
+
+
+                        LineData mLineData = lineChart.getLineData();
+                        for (int i = 0; i < mLineData.getDataSetCount(); i++) {
+                            mLineData.getDataSets().get(i).setVisible(false);
+                        }
+                        lineChart.notifyDataSetChanged(); //刷新数据
+                        mCheckBoxList.get(0).setChecked(true);
+                        showLine(0);
+                    });
 
                 }
-                Log.i(ComDef.TAG, "解析后获得指标值集合:" + mData.toString());
-
-                DevStateActivity.this.runOnUiThread(() -> {
-                    //动态添加checkBox
-                    mCheckBoxList = new ArrayList<>();
-                    for (int i = 0; i < mItems.size(); i++) {
-                        CheckBox checkbox = new CheckBox(DevStateActivity.this);
-                        checkbox.setId(ComDef.PRE_INDEX + i);
-                        checkbox.setText(mMaxItems.get(i));
-                        checkbox.setOnClickListener(DevStateActivity.this);
-                        mCheckBoxList.add(checkbox);
-                        mContainer.addView(checkbox);
-                    }
-                    for (int i = 0; i < mItems.size(); i++) {
-                        String tag = mItems.get(i);
-                        Log.i(ComDef.TAG, "dealResult: " + tag);
-                        dealLineChart.createLine(mData.get(tag), tag, ComDef.MY_COLORS[i], lineChart);
-                    }
-
-
-                    LineData mLineData = lineChart.getLineData();
-                    for (int i = 0; i < mLineData.getDataSetCount(); i++) {
-                        mLineData.getDataSets().get(i).setVisible(false);
-                    }
-                    lineChart.notifyDataSetChanged(); //刷新数据
-                    mCheckBoxList.get(0).setChecked(true);
-                    showLine(0);
-                });
 
 
             }
