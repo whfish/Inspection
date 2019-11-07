@@ -63,6 +63,7 @@
         <EditText
             android:id="@+id/editTextUserid1"
             android:layout_width="match_parent"
+            android:phoneNumber="true"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName" />
