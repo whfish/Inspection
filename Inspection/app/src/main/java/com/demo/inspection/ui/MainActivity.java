@@ -41,45 +41,17 @@ public class MainActivity extends BaseActivity {
     Bundle bundle=new Bundle();
 
 
-
-
-//    Handler mHandler = new Handler() {
-//
-//        @Override
-//        public void handleMessage(Message msg) {
-//            super.handleMessage(msg);
-//            isExit = false;
-//        }
-//    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        ScreenUtil screenUtil=new ScreenUtil();
-//        int dpi=screenUtil.getScreenDPI(this);
-//        screenUtil.adapterScreen(this,dpi,false);
+
         setContentView(R.layout.activity_main);
         setTitle (TITLE_NAME[0]);
 
         Intent intent = getIntent();
          bundle = intent.getExtras();
         username = bundle.getString("username");
-
-
-
-        /**
-         * 设置网络连接提示
-         */
-
-//        mTv = (TextView) findViewById(R.id.warning);
-//
-//        //启动时判断网络状态
-//        boolean netConnect = this.isNetConnect();
-//        if (netConnect) {
-//            mTv.setVisibility(View.GONE);
-//        } else {
-//            mTv.setVisibility(View.VISIBLE);
-//        }
 
 
 
@@ -119,6 +91,7 @@ public class MainActivity extends BaseActivity {
 
 
     public void userFragmentPagerAdapter() {
+
 
         fList = new ArrayList<>();
         fList.add(StatusFragment.getInstances("状态"));
@@ -189,17 +162,6 @@ public class MainActivity extends BaseActivity {
 
         return super.onOptionsItemSelected(item);
     }
-//    @Override
-//    public void onNetChange(int netMobile) {
-//        super.onNetChange(netMobile);
-//        //网络状态变化时的操作
-//        if (netMobile== NetUtils.NETWORK_NONE){
-//            mTv.setVisibility(View.VISIBLE);
-//        }else {
-//            mTv.setVisibility(View.GONE);
-//        }
-//    }
-
 
     /**
      * 双击返回键退出

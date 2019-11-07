@@ -186,35 +186,36 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
                 }
                 numberF[0] = numberF[1] + 5;
 
+                getActivity ().runOnUiThread (new Runnable () {
+                    @Override
+                    public void run() {
+                        switch (id) {
+                            case 0:
 
-                switch (id) {
-                    case 0:
-                        getActivity ().runOnUiThread (new Runnable () {
-                            @Override
-                            public void run() {
                                 textView_fine.setText ("正常状态:" + numberF[1] + "台");
                                 textView_normal.setText ("预警状态:" + numberF[2] + "台");
                                 textView_alarm.setText ("告警状态:" + numberF[3] + "台");
                                 textView_error.setText ("异常状态:" + numberF[4] + "台");
-                            }
-                        });
-                        BarChart barChart = new BarChart ();
-                        Bundle bundle = new Bundle ();
-                        bundle.putIntArray ("number", numberF);
-                        barChart.setArguments (bundle);
-                        getChildFragmentManager ().beginTransaction ().add (R.id.barChartFL, barChart).commit ();
-                        break;
-                    case 1:
+
+                                BarChart barChart = new BarChart ();
+                                Bundle bundle = new Bundle ();
+                                bundle.putIntArray ("number", numberF);
+                                barChart.setArguments (bundle);
+                                getChildFragmentManager ().beginTransaction ().add (R.id.barChartFL, barChart).commit ();
+
+                                break;
+                            case 1:
 
 
-                        BarChart barChart1 = new BarChart ();
-                        Bundle bundle1 = new Bundle ();
-                        bundle1.putIntArray ("number", numberF);
-                        barChart1.setArguments (bundle1);
-                        getChildFragmentManager ().beginTransaction ().replace (R.id.barChartFL, barChart1).addToBackStack (null).commit ();
+                                BarChart barChart1 = new BarChart ();
+                                Bundle bundle1 = new Bundle ();
+                                bundle1.putIntArray ("number", numberF);
+                                barChart1.setArguments (bundle1);
+                                getChildFragmentManager ().beginTransaction ().replace (R.id.barChartFL, barChart1).addToBackStack (null).commit ();
 
-                }
-
+                        }
+                    }
+                });
                 Log.i (ComDef.TAG, "解析后返回:" + numberF.toString ());
             }
         };
