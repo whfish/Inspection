@@ -306,6 +306,7 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
                     intent.putExtras (bundle);
                     getActivity ().startActivity (intent);
                 })
+                .setNegativeButton ("cancel",null)
                 .setCancelable (true)
                 .create ();
         dialog.show ();
