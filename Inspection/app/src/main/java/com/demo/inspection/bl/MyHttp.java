@@ -1,9 +1,9 @@
 package com.demo.inspection.bl;
 
 import android.util.Log;
-import android.widget.SimpleAdapter;
 
-import org.jetbrains.annotations.NotNull;
+import com.demo.inspection.utils.ComDef;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,7 +23,6 @@ import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
-import okhttp3.Response;
 import okhttp3.ResponseBody;
 
 /**

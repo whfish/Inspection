@@ -2,13 +2,12 @@ package com.demo.inspection.bl;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.util.Log;
 
+import com.demo.inspection.utils.ComDef;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;

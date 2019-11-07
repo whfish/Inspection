@@ -20,7 +20,7 @@ import com.demo.inspection.R;
 import com.demo.inspection.SystemAddActivity;
 import com.demo.inspection.SystemDetailsActivity;
 import com.demo.inspection.SystemModActivity;
-import com.demo.inspection.bl.ComDef;
+import com.demo.inspection.utils.ComDef;
 import com.demo.inspection.bl.GetData;
 import com.demo.inspection.bl.MyHttp;
 import com.demo.inspection.bl.ReqParam;

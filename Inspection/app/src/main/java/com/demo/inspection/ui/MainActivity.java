@@ -1,10 +1,8 @@
 package com.demo.inspection.ui;
 
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,12 +21,11 @@ import com.demo.inspection.ui.Fragment.StatusFragment;
 import com.demo.inspection.ui.Fragment.SystemFragment;
 import com.demo.inspection.ui.NetWork.BaseActivity;
 import com.demo.inspection.ui.NetWork.NetWorkActivity;
-import com.demo.inspection.utils.ScreenUtil;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
-import static com.demo.inspection.bl.ComDef.TITLE_NAME;
+import static com.demo.inspection.utils.ComDef.TITLE_NAME;
 
 public class MainActivity extends BaseActivity {
     BottomNavigationView mainBottom;

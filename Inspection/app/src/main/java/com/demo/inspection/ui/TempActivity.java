@@ -5,24 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.widget.Button;
 
 import com.demo.inspection.R;
-import com.demo.inspection.bl.ComDef;
+import com.demo.inspection.utils.ComDef;
 import com.demo.inspection.bl.GetData;
-import com.demo.inspection.bl.MyHttp;
 import com.demo.inspection.bl.ReqParam;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class TempActivity extends AppCompatActivity {
     @Override

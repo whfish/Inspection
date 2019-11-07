@@ -1,7 +1,8 @@
 package com.demo.inspection.bl;
 
+import com.demo.inspection.utils.ComDef;
+
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @Path: com.demo.inspection.bl.ReqParam

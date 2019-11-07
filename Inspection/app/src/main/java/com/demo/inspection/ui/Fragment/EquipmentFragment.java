@@ -1,6 +1,5 @@
 package com.demo.inspection.ui.Fragment;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,12 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,11 +18,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.demo.inspection.R;
-import com.demo.inspection.bl.ComDef;
+import com.demo.inspection.utils.ComDef;
 import com.demo.inspection.bl.GetData;
 import com.demo.inspection.bl.ReqParam;
 import com.demo.inspection.ui.EquipmentDetailsActivity;
-import com.demo.inspection.utils.ScreenUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,7 +29,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 

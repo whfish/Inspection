@@ -1,6 +1,11 @@
 package com.demo.inspection.bl;
 
+import android.app.Activity;
+import android.content.Context;
 import android.util.Log;
+
+import com.demo.inspection.utils.ComDef;
+import com.demo.inspection.utils.ToastUtil;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
@@ -30,9 +35,16 @@ public abstract class GetData {
     MyHttp myHttp = new MyHttp();
     List<Map<String, String>> list = null;
     ReqParam req;
+    Activity activity = null;
 
     public GetData(ReqParam req) {
         this.req = req;
+        getList();
+    }
+
+    public GetData(ReqParam req, Activity activity) {
+        this.req = req;
+        this.activity  = activity ;
         getList();
     }
 
@@ -43,6 +55,13 @@ public abstract class GetData {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
                 Log.i(ComDef.TAG, "请求okHttp失败:" + e);
+                if(activity !=null){
+                    activity.runOnUiThread(()->{
+                        ToastUtil.toastCenter(activity ,"登录失败,请检查网络");
+                    });
+                }
+
+
             }
 
             @Override

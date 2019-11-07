@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.demo.inspection.bl.ComDef;
+import com.demo.inspection.utils.ComDef;
 import com.demo.inspection.bl.GetData;
 import com.demo.inspection.bl.ReqParam;
 import com.demo.inspection.utils.ToastUtil;

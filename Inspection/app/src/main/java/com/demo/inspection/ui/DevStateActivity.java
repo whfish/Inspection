@@ -13,7 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import com.demo.inspection.R;
-import com.demo.inspection.bl.ComDef;
+import com.demo.inspection.utils.ComDef;
 import com.demo.inspection.bl.DealLineChart;
 import com.demo.inspection.bl.GetData;
 import com.demo.inspection.bl.ReqParam;

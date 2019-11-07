@@ -1,7 +1,6 @@
 package com.demo.inspection.ui;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -20,7 +19,7 @@ import com.demo.inspection.ui.Fragment.SystemFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.demo.inspection.bl.ComDef.TITLE_NAME;
+import static com.demo.inspection.utils.ComDef.TITLE_NAME;
 
 public class StatusActivity extends AppCompatActivity {
     private ViewPager mViewPager;
