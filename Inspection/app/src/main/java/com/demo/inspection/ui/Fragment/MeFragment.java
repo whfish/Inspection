@@ -83,6 +83,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
     }
+    // 获取登录用户
     public static MeFragment getUserName(String username) {
         MeFragment meFragment = new MeFragment();
         bundle.putString("username", username);

@@ -40,7 +40,7 @@ public class XgPwd extends AppCompatActivity {
         TextView xgpwd_edit_check = findViewById(R.id.xgpwd_edit_check);
         Button xgpwd_sure = findViewById(R.id.xgpwd_sure);
         Button xgpwd_cancel = findViewById(R.id.xgpwd_cancel);
-        //验证输入信息是否正确
+        // 验证输入信息是否正确
         xgpwd_sure.setOnClickListener(v -> {
             if (xgpwd_edit_name.getText().toString().equals("admin")) {
                 if (xgpwd_edit_check.getText().toString().equals(xgpwd_edit_new.getText().toString())) {
@@ -78,14 +78,14 @@ public class XgPwd extends AppCompatActivity {
             this.finish();
             });
         };
+    //    修改密码
     private void Update_Password( String password) {
         ReqParam req1 = new ReqParam();
-        req1.setUrl(ComDef.INTF_UPDATEADMIN);//修改为实际接口
+        req1.setUrl(ComDef.INTF_UPDATEADMIN);
         HashMap map1 = new HashMap<String, String>();
         map1.put(ComDef.QUERY_ACCOUNT, "admin");
-        map1.put(ComDef.MODIFY_PW, password);//修改为实际请求参数
+        map1.put(ComDef.MODIFY_PW, password);
         req1.setMap(map1);
-//                xgpwd_edit_check.getText().toString()
         new GetData(req1) {
             @Override
             public void dealResult(String result) throws JSONException {
@@ -95,6 +95,7 @@ public class XgPwd extends AppCompatActivity {
             }
         };
     }
+    // 返回
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
