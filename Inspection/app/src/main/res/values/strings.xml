@@ -70,7 +70,7 @@
     <string name="sys_main_name">系统名称</string>
     <string name="sys_contact_name">负责人</string>
     <string name="sys_contact_number">负责人电话</string>
-    <string name="sys_txt">系统ID：</string>
+    <string name="sys_txt">系统名称：</string>
     <string name="sys_main_list">系统列表</string>
 
 
