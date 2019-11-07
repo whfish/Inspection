@@ -1,6 +1,8 @@
 package com.demo.inspection.ui.Fragment.barchart;
 
 import android.graphics.Color;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,23 +37,26 @@ public class PieChart extends Fragment {
         pieChartView = view.findViewById (R.id.piechart);
         number = getArguments ().getIntArray ("number");
         initDatas ();
-        int total = number[1]+number[2]+number[3]+number[4];
+        int total = number[1] + number[2] + number[3] + number[4];
 
-        TextView textViewP_fine =view.findViewById (R.id.textViewP_fine);
-        TextView textViewP_normal =view.findViewById (R.id.textViewP_normal);
-        TextView textViewP_alarm =view.findViewById (R.id.textViewP_alarm);
-        TextView textViewP_error =view.findViewById (R.id.textViewP_error);
+        TextView textViewP_fine = view.findViewById (R.id.textViewP_fine);
+        TextView textViewP_normal = view.findViewById (R.id.textViewP_normal);
+        TextView textViewP_alarm = view.findViewById (R.id.textViewP_alarm);
+        TextView textViewP_error = view.findViewById (R.id.textViewP_error);
 
-        textViewP_fine.setText ("正常状态:" + (number[1]*100/total) + "%");
-        textViewP_normal.setText ("预警状态:" +(number[2]*100/total) + "%");
-        textViewP_alarm.setText ("告警状态:" + (number[3]*100/total) + "%");
-        textViewP_error.setText ("异常状态:" + (number[4]*100/total) + "%");
+        textViewP_fine.setText ("正常状态:" + (number[1] * 100 / total) + "%");
+        textViewP_normal.setText ("预警状态:" + (number[2] * 100 / total) + "%");
+        textViewP_alarm.setText ("告警状态:" + (number[3] * 100 / total) + "%");
+        textViewP_error.setText ("异常状态:" + (number[4] * 100 / total) + "%");
 
 
         ImageView imageViewBar = view.findViewById (R.id.imageViewBar);
         imageViewBar.setOnClickListener ((view1) -> {
-
-            getFragmentManager ().popBackStack ();
+            BarChart barChart = new BarChart ();
+            Bundle bundle = new Bundle ();
+            bundle.putIntArray ("number", number);
+            barChart.setArguments (bundle);
+            getFragmentManager ().beginTransaction ().replace (R.id.barChartFL, barChart).commit ();
         });
 
         return view;
@@ -63,9 +68,9 @@ public class PieChart extends Fragment {
         List<SliceValue> values = new ArrayList<SliceValue> ();
 
         values.add (new SliceValue (number[1], Color.rgb (76, 175, 80)));
-        values.add (new SliceValue (number[2], Color.rgb (228,95,95)));
-        values.add (new SliceValue (number[3], Color.rgb (247,201,77)));
-        values.add (new SliceValue (number[4], Color.rgb (154,183,224)));
+        values.add (new SliceValue (number[2], Color.rgb (228, 95, 95)));
+        values.add (new SliceValue (number[3], Color.rgb (247, 201, 77)));
+        values.add (new SliceValue (number[4], Color.rgb (154, 183, 224)));
         data = new PieChartData (values);
         //样式设置
         //是否显示文本内容(默认为false)
@@ -116,6 +121,10 @@ public class PieChart extends Fragment {
         pieChartView.setPieChartData (data);
     }
 
-
+//    @Override
+//    public void onDestroyView() {
+//        super.onDestroyView ();
+//        getChildFragmentManager ().popBackStack ();
+//    }
 }
 
