@@ -9,9 +9,10 @@
         android:id="@+id/textViewDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:text="@string/status_time"
         android:textAlignment="center"
+        android:textColor="#1C86EE"
         android:textSize="@dimen/size_max_54" />
 
     <ScrollView
@@ -49,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="horizontal"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="24dp">
 
                 <TextView
                     android:id="@+id/textView_fine"
@@ -57,6 +58,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textAlignment="center"
+                    android:textColor="#1874CD"
                     android:textSize="@dimen/size_ll_32" />
 
                 <TextView
@@ -65,6 +67,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textAlignment="center"
+                    android:textColor="#1874CD"
                     android:textSize="@dimen/size_ll_32" />
             </LinearLayout>
 
@@ -72,7 +75,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="18dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -81,6 +84,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textAlignment="center"
+                    android:textColor="#1874CD"
                     android:textSize="@dimen/size_ll_32" />
 
                 <TextView
@@ -89,6 +93,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textAlignment="center"
+                    android:textColor="#1874CD"
                     android:textSize="@dimen/size_ll_32" />
             </LinearLayout>
         </LinearLayout>
