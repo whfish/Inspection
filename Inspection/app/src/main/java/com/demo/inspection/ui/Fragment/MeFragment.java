@@ -52,7 +52,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         map.put(ComDef.QUERY_ACCOUNT, bundle.getString("username"));
         req.setMap(map);
 
-       //  Log.i(ComDef.TAG, "我的开始查询");
+        // Log.i(ComDef.TAG, "我的开始查询");
         new GetData(req) {
             @Override
             public void dealResult(String result) throws JSONException {
@@ -63,7 +63,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                 account = item.getString("account");
                 username = item.getString("username");
                 telphone = item.getString("phone");
-
+                // 展示我的页面信息
                 getActivity().runOnUiThread(() -> {
                     name.setText(username);
                     uid.setText(account);
@@ -74,6 +74,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         };
         return view;
     }
+             // 绑定我的页面的“我的”
              public static MeFragment getInstances(String name) {
                  MeFragment meFragment = new MeFragment();
                  bundle.putString("name", name);
@@ -83,7 +84,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
     }
-    // 获取登录用户
+    // 把用户名绑定在我的页面bundle里
     public static MeFragment getUserName(String username) {
         MeFragment meFragment = new MeFragment();
         bundle.putString("username", username);

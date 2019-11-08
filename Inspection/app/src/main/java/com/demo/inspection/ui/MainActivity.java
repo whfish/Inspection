@@ -61,6 +61,7 @@ public class MainActivity extends BaseActivity {
         setTitle(TITLE_NAME[0]);
 
         Intent intent = getIntent();
+        // 获得登录页面的bundle(用户名)
         bundle = intent.getExtras();
         username = bundle.getString("username");
 
@@ -109,6 +110,7 @@ public class MainActivity extends BaseActivity {
         fList.add(EquipmentFragment.getInstances("设备"));
         fList.add(SystemFragment.getInstances("系统"));
         fList.add(MeFragment.getInstances("我的"));
+        // 把username 传给我的页面
         MeFragment.getUserName(username);
 
         MyFragmentPagerAdapter adapter = new MyFragmentPagerAdapter(fList, getSupportFragmentManager());

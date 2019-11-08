@@ -40,7 +40,7 @@ public class XgPwd extends AppCompatActivity {
         TextView xgpwd_edit_check = findViewById(R.id.xgpwd_edit_check);
         Button xgpwd_sure = findViewById(R.id.xgpwd_sure);
         Button xgpwd_cancel = findViewById(R.id.xgpwd_cancel);
-        // 验证输入信息是否正确
+        //验证输入信息是否正确
         xgpwd_sure.setOnClickListener(v -> {
             if (xgpwd_edit_name.getText().toString().equals("admin")) {
                 if (xgpwd_edit_check.getText().toString().equals(xgpwd_edit_new.getText().toString())) {
@@ -49,12 +49,11 @@ public class XgPwd extends AppCompatActivity {
                         map.put(ComDef.QUERY_ACCOUNT, "admin");
                         req.setUrl(ComDef.INTF_QUERYADMIN);
                         req.setMap(map);
-
-                    new GetData(req) {
+                        new GetData(req) {
                         public void dealResult(String result) throws JSONException {
                             JSONArray array = new JSONArray(result);
                             JSONObject item = (JSONObject) array.get(0);
-                             String dbpasswd= item.getString("password");
+                            String dbpasswd= item.getString("password");
                             if (dbpasswd.equals(xgpwd_edit_old.getText().toString())) {
                                 Update_Password(xgpwd_edit_check.getText().toString());
 
@@ -78,7 +77,7 @@ public class XgPwd extends AppCompatActivity {
             this.finish();
             });
         };
-    //    修改密码
+    // 修改密码
     private void Update_Password( String password) {
         ReqParam req1 = new ReqParam();
         req1.setUrl(ComDef.INTF_UPDATEADMIN);
@@ -86,6 +85,7 @@ public class XgPwd extends AppCompatActivity {
         map1.put(ComDef.QUERY_ACCOUNT, "admin");
         map1.put(ComDef.MODIFY_PW, password);
         req1.setMap(map1);
+        // 获取后台修改提示数据，展示给前台
         new GetData(req1) {
             @Override
             public void dealResult(String result) throws JSONException {
