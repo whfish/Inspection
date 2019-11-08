@@ -148,6 +148,7 @@ public class SystemFragment extends Fragment {
                         TextView one = view.findViewById(R.id.textViewSBid);
                         String id = one.getText().toString();
                         bundle.putString("id", id);
+                        idqu = id;
 
                         TextView two = view.findViewById(R.id.textViewSBscore);
                         String sysname = two.getText().toString();
