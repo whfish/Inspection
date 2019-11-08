@@ -46,6 +46,8 @@ import java.util.Map;
 
 public class SystemFragment extends Fragment {
 
+    String idqu;
+
     //定义系统状态
     String str1 = "正常";
     String str2 = "预警";
@@ -94,6 +96,10 @@ public class SystemFragment extends Fragment {
                 for (int i = 0; i < array.length(); i++) {
                     JSONObject item = (JSONObject) array.get(i);
                     Map<String, String> map = new HashMap<>();
+
+
+                    System.out.println(item.getString("id"));
+
                     map.put("id", item.getString("id"));//获取你自己需要的字段
                     //                   map.put("score", item.getString("score"));//获取你自己需要的字段
                     //判断状态

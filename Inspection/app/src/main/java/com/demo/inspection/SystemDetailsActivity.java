@@ -113,8 +113,6 @@ public class SystemDetailsActivity extends AppCompatActivity {
                     linkman.setText (item.getString ("linkman"));
                     phone.setText(item.getString("phone"));
 
-
-
                 }
 
 //                List<Map<String, String>> list = new ArrayList<>();
@@ -216,9 +214,11 @@ public class SystemDetailsActivity extends AppCompatActivity {
                 SystemDetailsActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        String[] from = { "ip", "score", "sysname","userId"};  //决定提取哪些值来生成列表项
-                        int[] to = { R.id.textViewSBip,
-                                R.id.textViewSBscore, R.id.textViewSBsysname,R.id.textViewSBid,}; //对应到xml里的名字
+//                        String[] from = { "iP"};  //决定提取哪些值来生成列表项
+//                        int[] to = { R.id.textid}; //对应到xml里的名字
+                        String[] from = { "ip", "score", "sysname"};  //决定提取哪些值来生成列表项
+                        int[] to = { R.id.textViewSBip1,
+                                R.id.textViewSBscore1, R.id.textViewSBsysname1,}; //对应到xml里的名字
                         SimpleAdapter adapter = new SimpleAdapter(SystemDetailsActivity.this, listS, R.layout.item_list1, from, to);
                         adapter.setViewBinder(new MyViewBinder());
                         mListView.setAdapter(adapter);
