@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.demo.inspection.R;
+import com.demo.inspection.ui.Fragment.barchart.XgPwd;
 import com.demo.inspection.utils.ComDef;
 import com.demo.inspection.bl.GetData;
 import com.demo.inspection.bl.ReqParam;
@@ -27,7 +28,7 @@ import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
     Bundle bundle = new Bundle();
-    private MeFragment meFragment=new MeFragment();
+    private XgPwd xgPwd=new XgPwd();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,7 @@ public class LoginActivity extends AppCompatActivity {
                 HashMap map = new HashMap<String, String>();
                 map.put(ComDef.QUERY_ACCOUNT, account.getText().toString());//修改为实际请求参数
                 req.setMap(map);
+                // 绑定用户名字，绑定在bundle里
                 bundle.putString("username", account.getText().toString());
 
                 new GetData(req,LoginActivity.this) {
