@@ -70,38 +70,6 @@ public class SystemAddActivity extends AppCompatActivity {
                 }
 
             };
-//            new GetData(req) {
-//                @Override
-//                public void dealResult(String result) throws JSONException {
-//
-//                    List<Map<String, String>> list = new ArrayList<>();
-//                    JSONArray array = new JSONArray(result);
-//
-//                    for (int i = 0; i < array.length(); i++) {
-//
-//                        JSONObject item = (JSONObject) array.get(i);
-//                        Map<String, String> map = new HashMap<>();
-//                        map.put("id", item.getString("id"));//获取需要的字段：id
-//                        map.put("score", item.getString("score"));//获取需要的字段：score
-//
-//                        EditText editTextADXTMCInput = findViewById(R.id.editTextADXTMC);
-//                        map.put("sysname", editTextADXTMCInput.getText().toString());//获取需要的字段：sysName
-//                        Log.i("sysname----------", editTextADXTMCInput.getText().toString());
-//
-//                        EditText editTextADXTXQInput = findViewById(R.id.editTextADXTXQ);
-//                        map.put("detial", editTextADXTXQInput.getText().toString());//获取需要的字段：detial
-//                        Log.i("detial----------", editTextADXTXQInput.getText().toString());
-//
-//                        EditText editTextADOTInput = findViewById(R.id.editTextADOT);
-//                        map.put("opttime", editTextADOTInput.getText().toString());//获取需要的字段：opttime
-//
-//                        EditText editTextADUseridInput = findViewById(R.id.editTextADUserid);
-//                        map.put("userId", editTextADUseridInput.getText().toString());//获取你自己需要的字段：userId
-//
-//                        list.add(map);
-//                    }
-//                }
-//            };
 
             finish();
 
