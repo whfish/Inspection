@@ -217,25 +217,30 @@ public class MainActivity extends BaseActivity {
 
                                 Intent intent = new Intent(this, SystemAddActivity.class); //参数1:Fragment所依存的Activity,参数2：要跳转的Activity
 
-
-                                Bundle bundle = new Bundle();
-                                TextView one = findViewById(R.id.textViewSBid);
-                                String id = one.getText().toString();
-                                bundle.putString("id", id);
-                                intent.putExtras(bundle);
+//
+//                                Bundle bundle = new Bundle();
+//                                TextView one = findViewById(R.id.textViewSBid);
+//                                String id = one.getText().toString();
+//                                bundle.putString("id", id);
+//                                intent.putExtras(bundle);
                                 startActivity(intent); //这里一定要获取到所在Activity再startActivity()；
 
 
                             } else if (which == 1) {// 修改
-                                Intent intent = new Intent(this, SystemModActivity.class); //参数1:Fragment所依存的Activity,参数2：要跳转的Activity
+                                Intent intent1 = new Intent(this, SystemModActivity.class); //参数1:Fragment所依存的Activity,参数2：要跳转的Activity
 
 
                                 Bundle bundle = new Bundle();
                                 TextView one = findViewById(R.id.textViewSBid);
                                 String id = one.getText().toString();
+
+                                System.out.println(" bundle.putString"+id);
+
+
                                 bundle.putString("id", id);
-                                intent.putExtras(bundle);
-                                startActivity(intent); //这里一定要获取到所在Activity再startActivity()；
+
+                                intent1.putExtras(bundle);
+                                startActivity(intent1); //这里一定要获取到所在Activity再startActivity()；
 
 
                             } else {  //删除
