@@ -86,14 +86,9 @@ public class BarChart extends Fragment {
             values = new ArrayList<> ();
             values.add (new SubcolumnValue (numberF[i], colors[i]));
             Column column = new Column (values);
-//            ColumnChartValueFormatter chartValueFormatter = new SimpleColumnChartValueFormatter (0);
-//            column.setFormatter (chartValueFormatter);
             //是否有数据标注
             column.setHasLabels (true);
             column.hasLabels ();
-
-            //是否是点击圆柱才显示数据标注
-//            column.setHasLabelsOnlyForSelected (true);
             columns.add (column);
 
             //给x轴坐标设置描述
@@ -105,7 +100,6 @@ public class BarChart extends Fragment {
         //给画表格的View添加要画的表格
         columnChartView.setColumnChartData (columnChartData);
 
-
         //创建一个带有之前圆柱对象column集合的ColumnChartData
         data = new ColumnChartData (columns);
         data.setValueLabelTextSize (15);
@@ -114,7 +108,7 @@ public class BarChart extends Fragment {
         data.setValueLabelBackgroundEnabled (true);
         data.setValueLabelBackgroundAuto (false);
         //柱状图的宽度
-        data.setFillRatio (0.65f);
+        data.setFillRatio (0.55f);
         data.setValueLabelsTextColor (Color.BLACK);
         //定义x轴y轴相应参数
         Axis axisX = new Axis ();
@@ -124,7 +118,6 @@ public class BarChart extends Fragment {
         axisY.setTextColor (Color.GRAY);
         axisY.setLineColor (Color.GRAY);
         axisY.hasLines ();//是否显示网格线
-
 
         axisX.hasLines ();
         axisX.setTextColor (Color.parseColor ("#525252"));
@@ -152,8 +145,6 @@ public class BarChart extends Fragment {
         columnChartView.setMaximumViewport (viewportMax);
         columnChartView.moveTo (0, 0);
 
-
     }
-
 
 }
