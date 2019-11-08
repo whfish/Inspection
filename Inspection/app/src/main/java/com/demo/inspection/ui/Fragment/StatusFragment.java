@@ -219,7 +219,6 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
                         }
                     }
                 });
-                Log.i (ComDef.TAG, "解析后返回:" + numberF.toString ());
             }
         };
 

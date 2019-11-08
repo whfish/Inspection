@@ -24,6 +24,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import com.demo.inspection.bl.GetData;
+import com.demo.inspection.bl.MyViewBinder;
 import com.demo.inspection.bl.ReqParam;
 import com.demo.inspection.utils.ComDef;
 import com.demo.inspection.utils.Tools;
@@ -42,11 +43,11 @@ public class SystemDetailsActivity extends AppCompatActivity {
     //设置对应选项
     String str1 = "全部状态";
     String str2 = "正常";
-    String str3 = "告警";
-    String str4 = "预警";
+    String str3 = "预警";
+    String str4 = "告警";
     String str5 = "异常";
     //定义状态
-    String[] Score = new String[]{str1,str2,str3,str4,str5};//1-正常，2-告警，3-预警,"null"-异常
+    String[] Score = new String[]{str1,str2,str3,str4,str5};//1-正常，2-预警，3-告警,"null"-异常
     String data1;
 
     String string = "";
@@ -219,6 +220,7 @@ public class SystemDetailsActivity extends AppCompatActivity {
                         int[] to = { R.id.textViewSBip,
                                 R.id.textViewSBscore, R.id.textViewSBsysname,R.id.textViewSBid,}; //对应到xml里的名字
                         SimpleAdapter adapter = new SimpleAdapter(SystemDetailsActivity.this, listS, R.layout.item_list1, from, to);
+                        adapter.setViewBinder(new MyViewBinder());
                         mListView.setAdapter(adapter);
                     }
                 });

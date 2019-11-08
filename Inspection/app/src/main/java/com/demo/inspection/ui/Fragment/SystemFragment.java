@@ -32,6 +32,7 @@ import com.demo.inspection.SystemAddActivity;
 import com.demo.inspection.SystemDetailsActivity;
 import com.demo.inspection.SystemModActivity;
 import com.demo.inspection.bl.GetData;
+import com.demo.inspection.bl.MyViewBinder;
 import com.demo.inspection.bl.ReqParam;
 import com.demo.inspection.utils.ComDef;
 import com.demo.inspection.utils.ToastUtil;
@@ -47,8 +48,8 @@ public class SystemFragment extends Fragment {
 
     //定义系统状态
     String str1 = "正常";
-    String str2 = "告警";
-    String str3 = "预警";
+    String str2 = "预警";
+    String str3 = "告警";
     String str4 = "异常";
 
     private ListView listView;
@@ -127,6 +128,7 @@ public class SystemFragment extends Fragment {
                         int[] to = {R.id.textViewSBid, R.id.textViewSBip,
                                 R.id.textViewSBscore, R.id.textViewSBsysname, R.id.textViewAmountExercise}; //决定填充哪些组建
                         SimpleAdapter adapter = new SimpleAdapter(getActivity(), list, R.layout.item_list, from, to);
+                        adapter.setViewBinder(new MyViewBinder());
                         listView.setAdapter(adapter);
                     }
                 });
