@@ -23,6 +23,8 @@ import com.demo.inspection.utils.ComDef;
 import com.demo.inspection.bl.GetData;
 import com.demo.inspection.bl.ReqParam;
 import com.demo.inspection.ui.EquipmentDetailsActivity;
+import com.demo.inspection.utils.ToastUtil;
+import com.demo.inspection.utils.Tools;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -76,10 +78,14 @@ public class EquipmentFragment extends Fragment {
         Button btnGO = view.findViewById(R.id.buttonGO);
         btnGO.setOnClickListener(v -> {
             String key = txt.getText().toString();//获取文本内容
-            currPage = 1;
-            mListView.clearflag();
-            mListView.showLoading();
-            query(key, currPage);
+            if (Tools.CheckIP(key)) {
+                currPage = 1;
+                mListView.clearflag();
+                mListView.showLoading();
+                query(key, currPage);
+            } else {
+                ToastUtil.toastCenter(getActivity(),"输入IP格式错误！");
+            }
         });
         //向下滚动执行方法
         mListView.setInterface(() -> {
