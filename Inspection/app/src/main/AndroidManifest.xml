@@ -27,7 +27,6 @@
 
         <activity android:name=".ui.MainActivity"
             android:launchMode="singleTask"></activity>
-        <activity android:name=".ui.StatusActivity" />
         <activity android:name=".SystemDetailsActivity"></activity>
         <activity android:name=".ui.EquipmentDetailsActivity"></activity>
         <activity android:name=".ui.Fragment.barchart.XgPwd"></activity>

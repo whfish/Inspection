@@ -40,20 +40,27 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import static com.demo.inspection.utils.ComDef.STATE_COLORS;
+
 
 public class StatusFragment extends Fragment implements View.OnClickListener {
 
     Calendar calendar = Calendar.getInstance (Locale.CHINA);
+
     private TextView textViewDate;
+
     Date date = new Date (System.currentTimeMillis ());
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat ("yyyy-MM-dd");
     SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat ("yyyy年MM月dd日");
+
     int[] numberF;
     String dateString;
+
     TextView textView_fine;
     TextView textView_normal;
     TextView textView_alarm;
     TextView textView_error;
+
     String[] fineIP;
     String[] normalIP;
     String[] alarmIP;
@@ -63,12 +70,6 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
     List<String> listNormal;
     List<String> listAlarm;
     List<String> listError;
-
-
-    int[] color = {Color.rgb (76, 175, 80),
-            Color.rgb (247,201,77),
-            Color.rgb (228,95,95),
-            Color.rgb (154,183,224)};
 
     @Nullable
     @Override
@@ -81,7 +82,6 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
         textViewDate.setOnClickListener (this);
         dateString = simpleDateFormat.format (date);
         getData (0);
-
 
         textView_fine = view.findViewById (R.id.textView_fine);
         textView_normal = view.findViewById (R.id.textView_normal);
@@ -104,12 +104,12 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
             myAlerDialog (errorIP, 3);
         });
 
-
         return view;
     }
 
     //构造数
     public static StatusFragment getInstances(String name) {
+
         StatusFragment statusFragment = new StatusFragment ();
         Bundle bundle = new Bundle ();
         bundle.putString ("name", name);
@@ -131,7 +131,6 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
             dateString = sb.toString ();
             getData (1);
 
-
             new Handler ().postDelayed (() -> {
 
                 getIP (dateString);
@@ -139,7 +138,6 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
                 textView_normal.setText ("预警状态:" + numberF[2] + "台");
                 textView_alarm.setText ("告警状态:" + numberF[3] + "台");
                 textView_error.setText ("异常状态:" + numberF[4] + "台");
-
 
             }, 300);
 
@@ -164,20 +162,19 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
 
     public void getData(int id) {
 
-        /**调用后台方法参考
-         * 请安步骤修改为自己的方法
-         */
-
         ReqParam req = new ReqParam ();
         req.setUrl (ComDef.INTF_QUERYSTATIC);//修改为实际接口
         HashMap map = new HashMap<String, String> ();
         System.out.println (dateString);
         map.put (ComDef.QUERY_DATE, dateString);//修改为实际请求参数
-//        map.put(ComDef.QUERY_INDEX, "1");//修改为实际请求参数
+
         req.setMap (map);
+
         new GetData (req) {
+
             @Override
             public void dealResult(String result) throws JSONException {
+
                 JSONArray array = new JSONArray (result);
                 numberF = new int[]{40, 0, 0, 0, 0};
                 for (int i = 0; i < array.length (); i++) {
@@ -209,7 +206,6 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
                                 break;
                             case 1:
 
-
                                 BarChart barChart1 = new BarChart ();
                                 Bundle bundle1 = new Bundle ();
                                 bundle1.putIntArray ("number", numberF);
@@ -233,8 +229,10 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
 
         req.setMap (map);
         new GetData (req) {
+
             @Override
             public void dealResult(String result) throws JSONException {
+
                 JSONArray array = new JSONArray (result);
                 List<Map<String, String>> list = new ArrayList<> ();
                 for (int i = 0; i < array.length (); i++) {
@@ -244,8 +242,6 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
                     map.put ("ip", item.getString ("ip"));//获取你自己需要的字段
                     list.add (map);
                 }
-//                Log.i (ComDef.TAG, "查询ip地址解析后返回:" + list.toString ());
-
 
                 listFine = new ArrayList<> ();
                 listNormal = new ArrayList<> ();
@@ -273,8 +269,8 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
                             break;
 
                     }
-
                 }
+
                 fineIP = new String[listFine.size ()];
                 listFine.toArray (fineIP);
 
@@ -289,7 +285,6 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
 
             }
         };
-
     }
 
     private void myAlerDialog(String[] listDate, int a) {
@@ -305,21 +300,27 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
                     intent.putExtras (bundle);
                     getActivity ().startActivity (intent);
                 })
-                .setNegativeButton ("cancel",null)
+                .setNegativeButton ("cancel", null)
                 .setCancelable (true)
                 .create ();
+
         dialog.show ();
+
         try {
+
             Field mAlert = AlertDialog.class.getDeclaredField ("mAlert");
             mAlert.setAccessible (true);
             Object mAlertController = mAlert.get (dialog);
             Field mTitleView = mAlertController.getClass ().getDeclaredField ("mTitleView");
             mTitleView.setAccessible (true);
             TextView mMessageView = (TextView) mTitleView.get (mAlertController);
-            mMessageView.setTextColor (color[a]);
+            mMessageView.setTextColor (STATE_COLORS[a + 1]);
+
         } catch (IllegalAccessException e) {
+
             e.printStackTrace ();
         } catch (NoSuchFieldException e) {
+
             e.printStackTrace ();
         }
     }

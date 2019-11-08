@@ -29,6 +29,7 @@ import com.demo.inspection.bl.GetData;
 import com.demo.inspection.bl.ReqParam;
 import com.demo.inspection.utils.ComDef;
 import com.demo.inspection.utils.ToastUtil;
+import com.demo.inspection.utils.Tools;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -148,7 +149,8 @@ public class SystemModActivity extends AppCompatActivity {
 
                     js.setText(item.getString("sysName"));
                     uid.setText(item.getString("detial"));
-                    ot.setText (item.getString ("linkman"));
+                    String result1  = Tools.myDateFormat(item.getString("opttime"));
+                    ot.setText (item.getString("linkman"));
                     userid.setText(item.getString("phone"));
 
 
@@ -222,7 +224,7 @@ public class SystemModActivity extends AppCompatActivity {
 
 
            EditText editTextUseridInput = findViewById(R.id.editTextUserid1);
-            map1.put(ComDef.SYS_PHONE, editTextUseridInput.getText().toString());//获取你自己需要的字段联系人电话
+            map1.put(ComDef.SYS_PHONE, editTextUseridInput.getText().toString());//获取需要的字段联系人电话
 
             Log.i("cccccccccccc15646984123",editTextUseridInput.getText().toString());
 

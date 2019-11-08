@@ -29,6 +29,7 @@ import lecho.lib.hellocharts.view.ColumnChartView;
 
 public class BarChart extends Fragment {
 
+
     ColumnChartView columnChartView = null;
     View view;
     //统计图数据
@@ -39,23 +40,22 @@ public class BarChart extends Fragment {
     private int[] colors = ComDef.STATE_COLORS;
     private String[] mold = {"", "正常", "预警", "告警", "异常"};
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate (R.layout.activity_bar_chart, container, false);
 
+        view = inflater.inflate (R.layout.activity_bar_chart, container, false);
         columnChartView = view.findViewById (R.id.columnchart);
 
         //获取数据
         numberF = getArguments ().getIntArray ("number");
         generateDefaultData ();
 
-
         ImageView imageViewPie = view.findViewById (R.id.imageViewPie);
         imageViewPie.setOnClickListener ((view) -> {
 
             //传递参数
-            //传递数值
             PieChart pieChart = new PieChart ();
             Bundle bundle = new Bundle ();
             bundle.putIntArray ("number", numberF);
@@ -64,10 +64,8 @@ public class BarChart extends Fragment {
 
         });
 
-
         return view;
     }
-
 
     private void generateDefaultData() {
         //定义有多少个柱子
@@ -86,16 +84,10 @@ public class BarChart extends Fragment {
             values = new ArrayList<> ();
             values.add (new SubcolumnValue (numberF[i], colors[i]));
             Column column = new Column (values);
-//            ColumnChartValueFormatter chartValueFormatter = new SimpleColumnChartValueFormatter (0);
-//            column.setFormatter (chartValueFormatter);
             //是否有数据标注
             column.setHasLabels (true);
             column.hasLabels ();
-
-            //是否是点击圆柱才显示数据标注
-//            column.setHasLabelsOnlyForSelected (true);
             columns.add (column);
-
             //给x轴坐标设置描述
             axisValues.add (new AxisValue (i).setLabel (mold[i]));
         }
@@ -104,28 +96,22 @@ public class BarChart extends Fragment {
         columnChartData = new ColumnChartData (columns);
         //给画表格的View添加要画的表格
         columnChartView.setColumnChartData (columnChartData);
-
-
         //创建一个带有之前圆柱对象column集合的ColumnChartData
         data = new ColumnChartData (columns);
         data.setValueLabelTextSize (15);
         data.setValueLabelBackgroundColor (Color.parseColor ("#00000000"));
-//        data.setValueLabelTypeface(Typeface.DEFAULT);// 设置数据文字样式
         data.setValueLabelBackgroundEnabled (true);
         data.setValueLabelBackgroundAuto (false);
         //柱状图的宽度
-        data.setFillRatio (0.65f);
+        data.setFillRatio (0.55f);
         data.setValueLabelsTextColor (Color.BLACK);
         //定义x轴y轴相应参数
         Axis axisX = new Axis ();
         Axis axisY = new Axis ().setHasLines (true);
-//        axisY.setName ("数量");//轴名称
         axisY.setTextSize (15);
         axisY.setTextColor (Color.GRAY);
         axisY.setLineColor (Color.GRAY);
         axisY.hasLines ();//是否显示网格线
-
-
         axisX.hasLines ();
         axisX.setTextColor (Color.parseColor ("#525252"));
         axisX.setValues (axisValues);
@@ -137,7 +123,6 @@ public class BarChart extends Fragment {
 
         data.setAxisXBottom (axisX);
         data.setAxisYLeft (axisY);
-
 
         //把X轴Y轴数据设置到ColumnChartData 对象中
         //给表填充数据，显示出来
@@ -152,8 +137,6 @@ public class BarChart extends Fragment {
         columnChartView.setMaximumViewport (viewportMax);
         columnChartView.moveTo (0, 0);
 
-
     }
-
 
 }
