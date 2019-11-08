@@ -12,6 +12,7 @@ import com.demo.inspection.R;
 import com.demo.inspection.bl.GetData;
 import com.demo.inspection.bl.ReqParam;
 import com.demo.inspection.utils.ComDef;
+import com.demo.inspection.utils.Tools;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -111,39 +112,15 @@ public class EquipmentDetailsActivity extends AppCompatActivity {
                                         //判断硬件名称
                                         switch (item.getString("name")) {
                                             case "cpu":
-                                                data = Integer.valueOf(item.getString("data"));
-                                                rule = Integer.valueOf(item.getString("rule"));
-                                                if(data > rule){
-                                                    textCpu.setTextColor(ComDef.STATE_COLORS[3]);
-                                                }else if(data==  rule){
-                                                    textCpu.setTextColor(ComDef.STATE_COLORS[2]);
-                                                }else if(data <  rule){
-                                                    textCpu.setTextColor(ComDef.STATE_COLORS[1]);
-                                                }
+                                                Tools.changeColor(item, textCpu);
                                                 textCpu.setText(item.getString("detail") + item.getString("data") + item.getString("data_type"));
                                                 break;
                                             case "内存":
-                                                data = Integer.valueOf(item.getString("data"));
-                                                rule = Integer.valueOf(item.getString("rule"));
-                                                if(data > rule){
-                                                    textMemory.setTextColor(ComDef.STATE_COLORS[3]);
-                                                }else if(data==  rule){
-                                                    textMemory.setTextColor(ComDef.STATE_COLORS[2]);
-                                                }else if(data <  rule){
-                                                    textMemory.setTextColor(ComDef.STATE_COLORS[1]);
-                                                }
+                                                Tools.changeColor(item, textMemory);
                                                 textMemory.setText(item.getString("detail") + item.getString("data") + item.getString("data_type"));
                                                 break;
                                             case "磁盘":
-                                                data = Integer.valueOf(item.getString("data"));
-                                                rule = Integer.valueOf(item.getString("rule"));
-                                                if(data > rule){
-                                                    textHard.setTextColor(ComDef.STATE_COLORS[3]);
-                                                }else if(data==  rule){
-                                                    textHard.setTextColor(ComDef.STATE_COLORS[2]);
-                                                }else if(data <  rule){
-                                                    textHard.setTextColor(ComDef.STATE_COLORS[1]);
-                                                }
+                                                Tools.changeColor(item, textHard);
                                                 textHard.setText(item.getString("detail") + item.getString("data") + item.getString("data_type"));
                                                 break;
                                         }
