@@ -79,7 +79,7 @@ public class EquipmentFragment extends Fragment {
             currPage = 1;
             mListView.clearflag();
             mListView.showLoading();
-           query(key,currPage);
+            query(key, currPage);
         });
         //向下滚动执行方法
         mListView.setInterface(() -> {
@@ -132,61 +132,63 @@ public class EquipmentFragment extends Fragment {
     }
 
     public void query(String condition, int currPage) {
-        Log.i(ComDef.TAG, "查询第：" +  currPage+"页");
+        Log.i(ComDef.TAG, "查询第：" + currPage + "页");
         req.setUrl(ComDef.INTF_QUERYDEVICEPAGE);//连接到服务器，调用查询设备列表方法
         map.put(ComDef.QUERY_IP, condition);
-        map.put(ComDef.PAGESIZE,String.valueOf(ComDef.QRY_NUM));
-        map.put(ComDef.PAGENUM,String.valueOf(currPage));
+        map.put(ComDef.PAGESIZE, String.valueOf(ComDef.QRY_NUM));
+        map.put(ComDef.PAGENUM, String.valueOf(currPage));
         req.setMap(map);
         new GetData(req) {
             @Override
             public void dealResult(String result) throws JSONException {
-
-                JSONArray array = new JSONArray(result);
-                Log.i(ComDef.TAG, "查询到记录条数：" + array.length());
-                if(currPage==1) {
-                    //刷新查询
-                    Log.i(ComDef.TAG, "刷新查询===");
-                    mListView.getEquList().clear();
-                }else {
-                    //累加查询结果
-                    Log.i(ComDef.TAG, "累加查询===");
-                }
-                    for (int i = 0; i < array.length(); i++) {
-                        item = (JSONObject) array.get(i);
-                        Map<String, String> map = new HashMap<>();
-                        map.put("id", item.getString("id"));
-                        map.put("ip", item.getString("ip"));
-                        //判断状态
-                        switch (item.getString("score")) {
-                            case "1":
-                                map.put("score", str2);
-                                break;
-                            case "2":
-                                map.put("score", str3);
-                                break;
-                            case "3":
-                                map.put("score", str4);
-                                break;
-                            case "":
-                                map.put("score", str5);
-                        }
-                        map.put("errlist", item.getString("errlist"));
-                        map.put("dev_Name", item.getString("devName"));
-                        map.put("detail", item.getString("detail"));
-                        map.put("sysname", item.getString("sysname"));
-                        mListView.getEquList().add(map);
-                    }
-                    Log.i(ComDef.TAG, "解析设备列表后返回:" + mListView.getEquList().toString());
-
-
                 //刷新主界面
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                       mListView.getMyAdapter().notifyDataSetChanged();
-                        mListView.getMyAdapter().notifyDataSetInvalidated();
-                        mListView.loadComplete(array.length());
+
+                        List<Map<String, String>> list = mListView.getEquList();
+                        try {
+                            JSONArray array = new JSONArray(result);
+                            Log.i(ComDef.TAG, "查询到记录条数：" + array.length());
+                            if (currPage == 1) {
+                                //刷新查询
+                                Log.i(ComDef.TAG, "刷新查询===");
+                                list.clear();
+                            } else {
+                                //累加查询结果
+                                Log.i(ComDef.TAG, "累加查询===");
+                            }
+                            for (int i = 0; i < array.length(); i++) {
+                                item = (JSONObject) array.get(i);
+                                Map<String, String> map = new HashMap<>();
+                                map.put("id", item.getString("id"));
+                                map.put("ip", item.getString("ip"));
+                                //判断状态
+                                switch (item.getString("score")) {
+                                    case "1":
+                                        map.put("score", str2);
+                                        break;
+                                    case "2":
+                                        map.put("score", str3);
+                                        break;
+                                    case "3":
+                                        map.put("score", str4);
+                                        break;
+                                    case "":
+                                        map.put("score", str5);
+                                }
+                                map.put("errlist", item.getString("errlist"));
+                                map.put("dev_Name", item.getString("devName"));
+                                map.put("detail", item.getString("detail"));
+                                map.put("sysname", item.getString("sysname"));
+                                list.add(map);
+                            }
+                            Log.i(ComDef.TAG, "解析设备列表后返回:" + mListView.getEquList().toString());
+                            mListView.getMyAdapter().notifyDataSetChanged();
+                            mListView.loadComplete(array.length());
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 });
             }
