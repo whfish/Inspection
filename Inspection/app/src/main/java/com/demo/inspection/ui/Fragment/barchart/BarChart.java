@@ -50,7 +50,7 @@ public class BarChart extends Fragment {
 
         //获取数据
         numberF = getArguments ().getIntArray ("number");
-        generateDefaultData ();
+        generateView ();
 
         ImageView imageViewPie = view.findViewById (R.id.imageViewPie);
         imageViewPie.setOnClickListener ((view) -> {
@@ -67,7 +67,7 @@ public class BarChart extends Fragment {
         return view;
     }
 
-    private void generateDefaultData() {
+    private void generateView() {
         //定义有多少个柱子
         int numColumns = 5;
         //定义表格实现类
