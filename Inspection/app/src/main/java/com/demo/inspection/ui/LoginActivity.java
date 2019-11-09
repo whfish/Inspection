@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.demo.inspection.R;
-import com.demo.inspection.ui.fragment.barchart.XgPwd;
 import com.demo.inspection.utils.ComDef;
 import com.demo.inspection.bl.GetData;
 import com.demo.inspection.bl.ReqParam;
@@ -28,7 +27,7 @@ import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
     Bundle bundle = new Bundle();
-    private XgPwd xgPwd=new XgPwd();
+    private XgPwdActivity xgPwd=new XgPwdActivity();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

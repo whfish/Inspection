@@ -3,7 +3,7 @@
  *   实现密码修改基本功能
  *   2019-11
  */
-package com.demo.inspection.ui.fragment.barchart;
+package com.demo.inspection.ui;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -22,7 +22,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.HashMap;
 
-public class XgPwd extends AppCompatActivity {
+public class XgPwdActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,8 +58,8 @@ public class XgPwd extends AppCompatActivity {
                                 Update_Password(xgpwd_edit_check.getText().toString());
 
                             }else {
-                                XgPwd.this.runOnUiThread(() -> {
-                                    ToastUtil.toastCenter(XgPwd.this, "原密码输入错误！！");
+                                XgPwdActivity.this.runOnUiThread(() -> {
+                                    ToastUtil.toastCenter(XgPwdActivity.this, "原密码输入错误！！");
                                 });
                             }
 
@@ -89,8 +89,8 @@ public class XgPwd extends AppCompatActivity {
         new GetData(req1) {
             @Override
             public void dealResult(String result) throws JSONException {
-                XgPwd.this.runOnUiThread(() -> {
-                    ToastUtil.toastCenter(XgPwd.this, result);
+                XgPwdActivity.this.runOnUiThread(() -> {
+                    ToastUtil.toastCenter(XgPwdActivity.this, result);
                 });
             }
         };
