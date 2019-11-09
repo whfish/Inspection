@@ -1,4 +1,4 @@
-package com.demo.inspection;
+package com.demo.inspection.ui.system;
 
 
 import android.app.Activity;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+
+import com.demo.inspection.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;

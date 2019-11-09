@@ -9,11 +9,10 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.demo.inspection.R;
-import com.demo.inspection.ui.Fragment.barchart.XgPwd;
+import com.demo.inspection.ui.fragment.barchart.XgPwd;
 import com.demo.inspection.utils.ComDef;
 import com.demo.inspection.bl.GetData;
 import com.demo.inspection.bl.ReqParam;
-import com.demo.inspection.ui.Fragment.MeFragment;
 import com.demo.inspection.utils.ScreenUtil;
 import com.demo.inspection.utils.ToastUtil;
 import com.demo.inspection.utils.Tools;

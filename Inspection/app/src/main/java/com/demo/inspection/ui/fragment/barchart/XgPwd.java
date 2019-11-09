@@ -3,7 +3,7 @@
  *   实现密码修改基本功能
  *   2019-11
  */
-package com.demo.inspection.ui.Fragment.barchart;
+package com.demo.inspection.ui.fragment.barchart;
 
 import android.os.Bundle;
 import android.view.MenuItem;

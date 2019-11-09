@@ -3,7 +3,7 @@
  *   实现我的页面基本功能
  *   2019-11
  */
-package com.demo.inspection.ui.Fragment;
+package com.demo.inspection.ui.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,7 +19,7 @@ import com.demo.inspection.R;
 import com.demo.inspection.utils.ComDef;
 import com.demo.inspection.bl.GetData;
 import com.demo.inspection.bl.ReqParam;
-import com.demo.inspection.ui.Fragment.barchart.XgPwd;
+import com.demo.inspection.ui.fragment.barchart.XgPwd;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

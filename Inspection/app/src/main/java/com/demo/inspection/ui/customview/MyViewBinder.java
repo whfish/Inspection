@@ -1,4 +1,4 @@
-package com.demo.inspection.bl;
+package com.demo.inspection.ui.customview;
 
 import android.view.View;
 import android.widget.SimpleAdapter;

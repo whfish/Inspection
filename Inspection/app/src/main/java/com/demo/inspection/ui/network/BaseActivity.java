@@ -1,4 +1,4 @@
-package com.demo.inspection.ui.NetWork;
+package com.demo.inspection.ui.network;
 
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -12,8 +12,8 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.demo.inspection.R;
-import com.demo.inspection.dialog.MyAlertDialog;
-import com.demo.inspection.receiver.NetBroadcastReceiver;
+import com.demo.inspection.ui.dialog.MyAlertDialog;
+import com.demo.inspection.ui.receiver.NetBroadcastReceiver;
 import com.demo.inspection.utils.NetUtils;
 import com.demo.inspection.utils.ToastUtil;
 

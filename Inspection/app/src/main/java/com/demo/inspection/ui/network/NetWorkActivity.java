@@ -1,4 +1,4 @@
-package com.demo.inspection.ui.NetWork;
+package com.demo.inspection.ui.network;
 
 
 import android.os.Bundle;
