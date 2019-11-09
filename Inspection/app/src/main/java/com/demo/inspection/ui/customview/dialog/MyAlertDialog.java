@@ -1,4 +1,4 @@
-package com.demo.inspection.ui.dialog;
+package com.demo.inspection.ui.customview.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
