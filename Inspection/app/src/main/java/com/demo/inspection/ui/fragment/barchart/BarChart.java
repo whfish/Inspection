@@ -1,4 +1,4 @@
-package com.demo.inspection.ui.Fragment.barchart;
+package com.demo.inspection.ui.fragment.barchart;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -17,8 +17,6 @@ import com.demo.inspection.utils.ComDef;
 import java.util.ArrayList;
 import java.util.List;
 
-import lecho.lib.hellocharts.formatter.ColumnChartValueFormatter;
-import lecho.lib.hellocharts.formatter.SimpleColumnChartValueFormatter;
 import lecho.lib.hellocharts.model.Axis;
 import lecho.lib.hellocharts.model.AxisValue;
 import lecho.lib.hellocharts.model.Column;

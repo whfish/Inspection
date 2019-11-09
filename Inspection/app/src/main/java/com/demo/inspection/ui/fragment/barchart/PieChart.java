@@ -1,8 +1,6 @@
-package com.demo.inspection.ui.Fragment.barchart;
+package com.demo.inspection.ui.fragment.barchart;
 
 import android.graphics.Color;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;

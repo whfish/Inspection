@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -66,7 +67,7 @@ public class MyHttp {
         Call call = okHttpClient.newCall(request);
         System.out.print("okHttp开始执行同步调用");
         ResponseBody rb = null;
-        String result="";
+        String result = "";
         try {
             rb = call.execute().body();
             result = rb.string();
@@ -75,7 +76,7 @@ public class MyHttp {
             System.out.print("异常：" + e);
         } finally {
             //应答体内包含输出流对象，不再使用需要关闭
-            if(rb!=null) {
+            if (rb != null) {
                 rb.close();
             }
         }
@@ -84,16 +85,21 @@ public class MyHttp {
     }
 
     public void requestOkHttpAsync(ReqParam reqParam, Callback callback) {
-       /**
-        * @method  requestOkHttpAsync
-        * @description 描述一下方法的作用
-        * @date: 2019/10/30 16:45
-        * @author: 王欢
-        * @param [reqParam, callback：回调函数]
-        * @return void
-        */
+        /**
+         * @method requestOkHttpAsync
+         * @description 描述一下方法的作用
+         * @date: 2019/10/30 16:45
+         * @author: 王欢
+         * @param [reqParam, callback：回调函数]
+         * @return void
+         */
 
-        OkHttpClient okHttpClient = new OkHttpClient();
+//        OkHttpClient okHttpClient = new OkHttpClient();
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .connectTimeout(ComDef.CONNECT_TIMEOUT, TimeUnit.SECONDS)
+                .readTimeout(ComDef.REQUEST_TIMEOUT, TimeUnit.SECONDS)
+                .build();
+
         //Post
         FormBody.Builder fbody = new FormBody.Builder();
         HashMap<String, String> map = reqParam.getMap();
@@ -141,14 +147,14 @@ public class MyHttp {
     public List<Map<String, String>> string2List(String in) throws JSONException {
         List<Map<String, String>> list = new ArrayList<>();
         JSONArray array = new JSONArray(in);
-            for (int i = 0; i < array.length(); i++) {
-                JSONObject item = (JSONObject) array.get(i);
-                Map<String, String> map = new HashMap<>();
-                map.put("id", item.getString("id"));
-                map.put("ip", item.getString("ip"));
-                map.put("devName", item.getString("devName"));
-                list.add(map);
-            }
+        for (int i = 0; i < array.length(); i++) {
+            JSONObject item = (JSONObject) array.get(i);
+            Map<String, String> map = new HashMap<>();
+            map.put("id", item.getString("id"));
+            map.put("ip", item.getString("ip"));
+            map.put("devName", item.getString("devName"));
+            list.add(map);
+        }
         return list;
     }
 

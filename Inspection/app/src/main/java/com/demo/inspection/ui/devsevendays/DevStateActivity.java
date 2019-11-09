@@ -1,4 +1,4 @@
-package com.demo.inspection.ui;
+package com.demo.inspection.ui.devsevendays;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -10,16 +10,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.demo.inspection.R;
 import com.demo.inspection.utils.ComDef;
-import com.demo.inspection.bl.DealLineChart;
+import com.demo.inspection.ui.customview.DealLineChart;
 import com.demo.inspection.bl.GetData;
 import com.demo.inspection.bl.ReqParam;
 import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.LineData;
 
 import org.json.JSONArray;

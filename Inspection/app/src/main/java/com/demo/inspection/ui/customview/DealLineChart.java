@@ -1,4 +1,4 @@
-package com.demo.inspection.bl;
+package com.demo.inspection.ui.customview;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -6,7 +6,6 @@ import android.graphics.Color;
 import com.demo.inspection.utils.ComDef;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
-import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -92,12 +91,6 @@ public class DealLineChart {
             }
         });
         lineChart.setBackgroundColor(Color.WHITE);
-
-        Description description = new Description();
-        description.setText("近七日使用率");
-        description.setTextColor(Color.RED);
-        description.setTextSize(15);
-        lineChart.setDescription(description);//设置图表描述信息
 
         lineChart.animateX(2000);//x轴动画效果
 

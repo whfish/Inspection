@@ -21,6 +21,8 @@ public interface ComDef {
     public static final int QRY_NUM = 10;//分页使用，最大查询条数
 
     public static final String URL_PRE = "http://10.52.200.138:8082/";//服务器地址
+    public static final int  CONNECT_TIMEOUT =3; //接口超时时间（单位秒）
+    public static final int  REQUEST_TIMEOUT =10;//请求超时时间（单位秒）
     public static final String INTF_QUERYSTATIC = "queryStatic";//查询统计数据
 
     public static final String INTF_QUERYDEVICE = "queryDeviceInfo";//查询设备列表

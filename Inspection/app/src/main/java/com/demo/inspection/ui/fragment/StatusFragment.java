@@ -1,10 +1,9 @@
-package com.demo.inspection.ui.Fragment;
+package com.demo.inspection.ui.fragment;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -24,7 +23,7 @@ import com.demo.inspection.utils.ComDef;
 import com.demo.inspection.bl.GetData;
 import com.demo.inspection.bl.ReqParam;
 import com.demo.inspection.ui.EquipmentDetailsActivity;
-import com.demo.inspection.ui.Fragment.barchart.BarChart;
+import com.demo.inspection.ui.fragment.barchart.BarChart;
 
 import org.json.JSONArray;
 import org.json.JSONException;

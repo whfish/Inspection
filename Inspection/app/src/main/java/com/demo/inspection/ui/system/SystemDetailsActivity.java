@@ -12,7 +12,7 @@
  * @Version: 1.0
  */
 
-package com.demo.inspection;
+package com.demo.inspection.ui.system;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -23,8 +23,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.demo.inspection.R;
 import com.demo.inspection.bl.GetData;
-import com.demo.inspection.bl.MyViewBinder;
+import com.demo.inspection.ui.customview.MyViewBinder;
 import com.demo.inspection.bl.ReqParam;
 import com.demo.inspection.utils.ComDef;
 import com.demo.inspection.utils.Tools;

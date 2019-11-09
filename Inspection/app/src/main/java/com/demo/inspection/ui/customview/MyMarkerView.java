@@ -1,4 +1,4 @@
-package com.demo.inspection.bl;
+package com.demo.inspection.ui.customview;
 
 import android.content.Context;
 import android.graphics.Bitmap;

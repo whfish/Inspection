@@ -1,7 +1,6 @@
-package com.demo.inspection.ui;
+package com.demo.inspection.ui.customview;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,11 +8,8 @@ import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.SimpleCursorAdapter;
-import android.widget.TextView;
 
 import com.demo.inspection.R;
-import com.demo.inspection.bl.MyViewBinder;
 import com.demo.inspection.utils.ComDef;
 
 import java.util.ArrayList;

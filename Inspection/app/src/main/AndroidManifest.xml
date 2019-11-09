@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.DevStateActivity">
+        <activity android:name=".ui.devsevendays.DevStateActivity">
         </activity>
         <activity android:name=".ui.LoginActivity">
             <intent-filter>
@@ -27,12 +27,12 @@
 
         <activity android:name=".ui.MainActivity"
             android:launchMode="singleTask"></activity>
-        <activity android:name=".SystemDetailsActivity"></activity>
+        <activity android:name=".ui.system.SystemDetailsActivity"></activity>
         <activity android:name=".ui.EquipmentDetailsActivity"></activity>
-        <activity android:name=".ui.Fragment.barchart.XgPwd"></activity>
-        <activity android:name=".ui.NetWork.NetWorkActivity"></activity>
-        <activity android:name=".SystemModActivity"></activity>
-        <activity android:name=".SystemAddActivity"></activity>
+        <activity android:name=".ui.XgPwdActivity"></activity>
+        <activity android:name=".ui.network.NetWorkActivity"></activity>
+        <activity android:name=".ui.system.SystemModActivity"></activity>
+        <activity android:name=".ui.system.SystemAddActivity"></activity>
 
 
     </application>
