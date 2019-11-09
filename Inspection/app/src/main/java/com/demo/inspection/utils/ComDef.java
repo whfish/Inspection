@@ -68,6 +68,10 @@ public interface ComDef {
     public static final int REQUEST_CODE_CREATE = 0;
     public static final int REQUEST_CODE_MOD = 1;
 
+    /*
+     * ip的正则表达式
+     * */
+    public static final String IP_NORMAL = "((25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))\\.){3}(25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))";
 
     public int[] STATE_COLORS = {
             Color.WHITE,

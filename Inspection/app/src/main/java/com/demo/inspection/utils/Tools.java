@@ -20,7 +20,7 @@ public class Tools {
      */
     public static boolean CheckIP(String text) {
 //        String money = text.getText().toString();
-        Pattern p = Pattern.compile("((25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))\\.){3}(25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))");
+        Pattern p = Pattern.compile(ComDef.IP_NORMAL);
         Matcher m = p.matcher(text);
         if (m.matches()) {
 
