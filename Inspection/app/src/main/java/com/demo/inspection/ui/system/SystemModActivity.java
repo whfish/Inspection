@@ -125,7 +125,7 @@ public class SystemModActivity extends AppCompatActivity {
                     map1.put(ComDef.SYS_LINKMAN, editTextSysLinkMan.getText().toString());
 
                     map1.put(ComDef.SYS_PHONE, s);//获取需要的字段联系人电话
-
+                    req1.setMap(map1);
                     new GetData(req1) {
 
                         @Override
@@ -137,8 +137,11 @@ public class SystemModActivity extends AppCompatActivity {
                                 Log.i("ccccccccccccssssthg",result);
                             });
 
+
                         }
                     };
+
+                    finish();
 
                 } else {
                     editTextSysLinkManPhone.setText("");
@@ -150,7 +153,6 @@ public class SystemModActivity extends AppCompatActivity {
 
 
             Log.i("cccccccccccc15646984123", editTextSysLinkManPhone.getText().toString());
-            req1.setMap(map1);
 
 
 
