@@ -15,11 +15,11 @@
 package com.demo.inspection.ui.system;
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -34,6 +34,8 @@ import com.demo.inspection.utils.ToastUtil;
 import org.json.JSONException;
 
 import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SystemAddActivity extends AppCompatActivity {
     @Override
@@ -46,84 +48,68 @@ public class SystemAddActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        Button butOk = findViewById(R.id.buttonOKS);
-        butOk.setOnClickListener((view) -> {
 
-            ReqParam req = new ReqParam();
-            req.setUrl(ComDef.INTF_SYSADD);//从INTF_SYSADD接口添加数据
+        Button buttonOk = findViewById(R.id.buttonOKS);
+        buttonOk.setOnClickListener((view) -> {
+            ReqParam req1 = new ReqParam();
+            req1.setUrl(ComDef.INTF_SYSADD);//从INTF_SYSMOD接口修改数据
             HashMap map1 = new HashMap<String, String>();
 
-            //通过SYS_NAME接口添加sysName数据
+            //通过SYS_NAME接口修改linkmanphone数据
             EditText editTextADXTMCInput = findViewById(R.id.editTextName);
-            map1.put(ComDef.SYS_NAME, editTextADXTMCInput.getText().toString());
-
-            //通过SYS_DETIAL接口添加detail数据
             EditText editTextADXTXQInput = findViewById(R.id.editTextDetial);
-            map1.put(ComDef.SYS_DETIAL, editTextADXTXQInput.getText().toString());
-
-            //通过SYS_LINKMAN接口添加linkman数据
             EditText editTextADOTInput = findViewById(R.id.editTextLinkman);
-            map1.put(ComDef.SYS_LINKMAN, editTextADOTInput.getText().toString());
-
-            //通过SYS_PHONE接口添加phone数据
             EditText editTextADUseridInput = findViewById(R.id.editTextPhone);
-            editTextADUseridInput.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void onTextChanged(CharSequence str, int arg1, int arg2, int arg3) { // 已经改变了的。
-                    String contents = str.toString();
-                    int length = contents.length();
-                    if(length == 4){
-                        if(contents.substring(3).equals(new String(" "))){ // -
-                            contents = contents.substring(0, 3);
-                            editTextADUseridInput.setText(contents);
-                            editTextADUseridInput.setSelection(contents.length());
-                        }else{ // +
-                            contents = contents.substring(0, 3) + " " + contents.substring(3);
-                            editTextADUseridInput.setText(contents);
-                            editTextADUseridInput.setSelection(contents.length());
+
+            String s = editTextADUseridInput.getText().toString();
+
+            if (!editTextADXTMCInput.getText().toString().equals("")
+                    && !editTextADXTXQInput.getText().toString().equals("")
+                    && !editTextADOTInput.getText().toString().equals("")) {
+                if (isPhoneNumberValid(s)) {
+
+                    //通过SYS_NAME接口添加sysName数据
+
+                    map1.put(ComDef.SYS_NAME, editTextADXTMCInput.getText().toString());
+
+                    //通过SYS_DETIAL接口添加detail数据
+
+                    map1.put(ComDef.SYS_DETIAL, editTextADXTXQInput.getText().toString());
+
+                    //通过SYS_LINKMAN接口添加linkman数据
+
+                    map1.put(ComDef.SYS_LINKMAN, editTextADOTInput.getText().toString());
+
+                    //通过SYS_PHONE接口添加phone数据
+
+                    map1.put(ComDef.SYS_PHONE, s);//获取需要的字段联系人电话
+                    req1.setMap(map1);
+                    new GetData(req1) {
+
+                        @Override
+                        public void dealResult(String result) throws JSONException {
+
+                            SystemAddActivity.this.runOnUiThread(() -> {
+
+                                ToastUtil.toastCenter(SystemAddActivity.this, result);
+                                Log.i("ccccccccccccssssthg", result);
+                            });
+
+
                         }
-                    }
-                    else if(length == 9){
-                        if(contents.substring(8).equals(new String(" "))){ // -
-                            contents = contents.substring(0, 8);
-                            editTextADUseridInput.setText(contents);
-                            editTextADUseridInput.setSelection(contents.length());
-                        }else{// +
-                            contents = contents.substring(0, 8) + " " + contents.substring(8);
-                            editTextADUseridInput.setText(contents);
-                            editTextADUseridInput.setSelection(contents.length());
-                        }
-                    }
+                    };
+
+                    finish();
+
+                } else {
+                    editTextADUseridInput.setText("");
+                    Toast.makeText(SystemAddActivity.this, "您输入的电话号码格式错误，请重新输入！", Toast.LENGTH_LONG).show();
                 }
-                @Override
-                public void beforeTextChanged(CharSequence str, int arg1, int arg2,int arg3) {
-                }
+            } else {
+                Toast.makeText(SystemAddActivity.this, "有值为空，请检查！", Toast.LENGTH_LONG).show();
+            }
+            Log.i("cccccccccccc15646984123", editTextADUseridInput.getText().toString());
 
-                @Override
-                public void afterTextChanged(Editable arg0) {// TODO Auto-generated method stub
-
-                    map1.put(ComDef.SYS_PHONE, editTextADUseridInput.getText().toString());
-                }
-            });
-
-
-
-
-            req.setMap(map1);
-
-            new GetData(req) {
-
-                @Override
-                public void dealResult(String result) throws JSONException {
-
-                    SystemAddActivity.this.runOnUiThread(() -> {
-                        ToastUtil.toastCenter(SystemAddActivity.this, result);
-                    });
-
-                }
-            };
-
-            finish();
         });
 
         Button buttonCancel = findViewById(R.id.buttonCancelS);
@@ -141,5 +127,20 @@ public class SystemAddActivity extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    public static boolean isPhoneNumberValid(String phoneNumber) {
+        boolean isValid = false;
+
+        String expression01 = "^\\(?(\\d{3})\\)?[- ]?(\\d{4})[- ]?(\\d{4})$";
+        String expression02 = "^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{5})$";
+        Pattern p01 = Pattern.compile(expression01);//通过Pattern对象将电话格式传入
+        Matcher m01 = p01.matcher(phoneNumber);//检查电话号码的格式是否正确
+        Pattern p02 = Pattern.compile(expression02);
+        Matcher m02 = p02.matcher(phoneNumber);
+        if (m01.matches() || m02.matches()) {
+            isValid = true;
+        }
+        return isValid;
     }
 }
