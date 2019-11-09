@@ -80,7 +80,6 @@ public class SystemDetailsActivity extends AppCompatActivity {
         TextView phone = findViewById(R.id.editTextphone);
 
         editTextInput.setText(bundle.getString("sysName"));
-      //  editTextWeight.setText(bundle.getString("opttime"));
 
         /**
          *
@@ -101,10 +100,6 @@ public class SystemDetailsActivity extends AppCompatActivity {
                     JSONObject item = (JSONObject) array.get(i);
                     //将查询到的数据写入页面控件
 
-                   // DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
-                 //   data1 = format1.format(item.getString("opttime"));
-                //    opttime.setText (data1);
-
                     String result1  = Tools.myDateFormat(item.getString("opttime"));
 
                     opttime.setText (result1);
@@ -115,45 +110,7 @@ public class SystemDetailsActivity extends AppCompatActivity {
 
                 }
 
-//                List<Map<String, String>> list = new ArrayList<>();
-//                JSONArray array = new JSONArray(result);
-//
-//                for (int i = 0; i < array.length(); i++) {
-//
-//                    JSONObject item = (JSONObject) array.get(i);
-//                    Map<String, String> map = new HashMap<>();
-//                    map.put("id", item.getString("id"));//获取需要的字段：id
-//                    map.put("score", item.getString("score"));//获取需要的字段：score
-//                    map.put("sysname", item.getString("sysName"));//获取需要的字段：sysName
-//                    map.put("detial", item.getString("detial"));//获取需要的字段：detial
-//                    map.put("opttime", item.getString("opttime"));//获取需要的字段：opttime
-//                    map.put("userId", item.getString("userId"));//获取你自己需要的字段：userId
-//                    list.add(map);
-//
-//                    //根据SystemListActivity传过来id查询系统数据
-//                    for (Map<String, String> myitem : list) {
-//                        if (myitem.get("id").equals(id)) {
-//                            String score = myitem.get("score");
-//                            String sysName = myitem.get("sysname");
-//                            String detail = myitem.get("detial");
-//                            String userId = myitem.get("userId");
-//                            String opttime = myitem.get("opttime");
-//
-//                            //将查询系统数据绑定到控件显示
-//
-//                            TextView js = findViewById(R.id.editTextOutput001);
-//                            js.setText(detail);
-//
-//                            Log.i("cccccccccccc", sysName);
-//                            TextView uid = findViewById(R.id.editTextAmountExercise);
-//                            uid.setText(userId);
-//                            TextView editTextWeight = findViewById(R.id.editTextWeight);
-//                            editTextWeight.setText(opttime);
-//
-//                        } else {
-//                        }
-//                    }
-//                }
+
             }
         };
 
@@ -235,8 +192,6 @@ public class SystemDetailsActivity extends AppCompatActivity {
         }
         return true;
     }
-
-
 
 }
 

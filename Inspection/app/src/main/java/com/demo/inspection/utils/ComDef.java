@@ -63,6 +63,9 @@ public interface ComDef {
     public static final int[] MY_COLORS = {Color.GREEN, Color.YELLOW, Color.BLUE, Color.CYAN, Color.GRAY, Color.LTGRAY};
     public static final String[] XSTRS = new String[]{"1", "2", "3", "4", "5", "6", "7"};
     public static final int PRE_INDEX = 10010;
+    public static final int REQUEST_CODE_CREATE = 0;
+    public static final int REQUEST_CODE_MOD = 1;
+
 
     public int[] STATE_COLORS = {
             Color.WHITE,
@@ -73,3 +76,8 @@ public interface ComDef {
 
 
 }
+
+
+
+
+
