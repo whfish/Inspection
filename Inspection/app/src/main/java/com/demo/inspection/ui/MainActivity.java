@@ -7,35 +7,25 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.demo.inspection.R;
-import com.demo.inspection.ui.system.SystemAddActivity;
-import com.demo.inspection.ui.system.SystemModActivity;
-import com.demo.inspection.bl.GetData;
+import com.demo.inspection.ui.Fragment.SystemFragment;
 import com.demo.inspection.ui.customview.adapter.MyFragmentPagerAdapter;
-import com.demo.inspection.bl.ReqParam;
 import com.demo.inspection.ui.fragment.EquipmentFragment;
 import com.demo.inspection.ui.fragment.MeFragment;
 import com.demo.inspection.ui.fragment.StatusFragment;
-import com.demo.inspection.ui.fragment.SystemFragment;
 import com.demo.inspection.ui.network.BaseActivity;
 import com.demo.inspection.ui.network.NetWorkActivity;
 import com.demo.inspection.utils.ComDef;
-import com.demo.inspection.utils.ToastUtil;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import org.json.JSONException;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import static com.demo.inspection.utils.ComDef.TITLE_NAME;
 
@@ -211,61 +201,6 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    public void imageViewonClick(View v) {
-
-        Toast.makeText (this, "你已经点击了图片", Toast.LENGTH_SHORT).show ();
-
-        new AlertDialog.Builder (this)
-                .setTitle ("系统")
-                .setItems (
-                        R.array.Pos_items,
-                        (dialog, which) -> {
-                            if (which == 0) {//新增
-
-                                Intent intent = new Intent (this, SystemAddActivity.class); //参数1:Fragment所依存的Activity,参数2：要跳转的Activity
-                                startActivity (intent); //这里一定要获取到所在Activity再startActivity()；
-
-                            } else if (which == 1) {// 修改
-
-                                Intent intent1 = new Intent (this, SystemModActivity.class); //参数1:Fragment所依存的Activity,参数2：要跳转的Activity
-                                Bundle bundle = new Bundle ();
-                                TextView one = findViewById (R.id.textViewSBid);
-                                String id = one.getText ().toString ();
-
-                                bundle.putString ("id", id);
-
-                                intent1.putExtras (bundle);
-                                startActivity (intent1); //这里一定要获取到所在Activity再startActivity()；
-
-                            } else {  //删除
-
-                                ReqParam req = new ReqParam ();
-                                req.setUrl (ComDef.INTF_SYSDEL);//从INTF_SYSDEL接口删除数据
-                                HashMap map1 = new HashMap<String, String> ();
-
-                                TextView one = findViewById (R.id.textViewSBid);
-                                String id1 = one.getText ().toString ();
-
-                                map1.put (ComDef.QUERY_SYSINDEX, id1); //获取需要的字段：sysName, editTextXTMCInput.getText().toString()); //获取需要的字段：sysName
-
-                                req.setMap (map1);
-
-                                new GetData (req) {
-
-                                    @Override
-                                    public void dealResult(String result) throws JSONException {
-
-                                        MainActivity.this.runOnUiThread (() -> {
-                                            ToastUtil.toastCenter (MainActivity.this, result);
-                                        });
-                                    }
-
-                                };
-
-                            }
-                        }).show ();
-
-    }
 
 }
 

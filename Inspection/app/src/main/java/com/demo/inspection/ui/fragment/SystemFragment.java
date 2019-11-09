@@ -12,7 +12,7 @@
  * @Version: 1.0
  */
 
-package com.demo.inspection.ui.fragment;
+package com.demo.inspection.ui.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,11 +30,13 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.demo.inspection.R;
+import com.demo.inspection.bl.GetData;
+
+import com.demo.inspection.bl.ReqParam;
+
+import com.demo.inspection.ui.customview.MyViewBinder;
 import com.demo.inspection.ui.system.SystemAddActivity;
 import com.demo.inspection.ui.system.SystemDetailsActivity;
-import com.demo.inspection.bl.GetData;
-import com.demo.inspection.ui.customview.MyViewBinder;
-import com.demo.inspection.bl.ReqParam;
 import com.demo.inspection.ui.system.SystemModActivity;
 import com.demo.inspection.utils.ComDef;
 import com.demo.inspection.utils.ToastUtil;
@@ -85,17 +87,17 @@ public class SystemFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), SystemDetailsActivity.class); //参数1:Fragment所依存的Activity,参数2：要跳转的Activity
 
                 Bundle bundle = new Bundle();
-                TextView one = view.findViewById(R.id.textViewSBid);
+                TextView one = view.findViewById(R.id.textViewSysId);
                 String id = one.getText().toString();
                 bundle.putString("id", id);
 
-                TextView two = view.findViewById(R.id.textViewSBscore);
+                TextView two = view.findViewById(R.id.textViewSysName3);
                 String sysname = two.getText().toString();
                 bundle.putString("sysName", sysname);
 
-                TextView four = view.findViewById(R.id.textViewSBsysname);
-                String opttime = four.getText().toString();
-                bundle.putString("opttime", opttime);
+//                TextView four = view.findViewById(R.id.textViewSBsysname);
+//                String opttime = four.getText().toString();
+//                bundle.putString("opttime", opttime);
                 intent.putExtras(bundle);
                 getActivity().startActivity(intent); //这里一定要获取到所在Activity再startActivity()；
 
@@ -117,7 +119,7 @@ public class SystemFragment extends Fragment {
 
 
                                         Bundle bundle = new Bundle();
-                                        TextView one = view.findViewById(R.id.textViewSBid);
+                                        TextView one = view.findViewById(R.id.textViewSysId);
                                         String id = one.getText().toString();
                                         bundle.putString("id", id);
                                         intent.putExtras(bundle);
@@ -130,7 +132,7 @@ public class SystemFragment extends Fragment {
 
 
                                         Bundle bundle = new Bundle();
-                                        TextView one = view.findViewById(R.id.textViewSBid);
+                                        TextView one = view.findViewById(R.id.textViewSysId);
                                         String id = one.getText().toString();
                                         bundle.putString("id", id);
                                         intent.putExtras(bundle);
@@ -142,7 +144,7 @@ public class SystemFragment extends Fragment {
                                         req.setUrl(ComDef.INTF_SYSDEL);//从INTF_SYSDEL接口删除数据
                                         HashMap map1 = new HashMap<String, String>();
 
-                                        TextView one = view.findViewById(R.id.textViewSBid);
+                                        TextView one = view.findViewById(R.id.textViewSysId);
                                         String id1 = one.getText().toString();
 
 
@@ -218,8 +220,8 @@ public class SystemFragment extends Fragment {
                     @Override
                     public void run() {
                         String[] from = {"id", "score", "sysName", "linkman", "phone"};  //决定提取哪些值来生成列表项
-                        int[] to = {R.id.textViewSBid, R.id.textViewSBip,
-                                R.id.textViewSBscore, R.id.textViewSBsysname, R.id.textViewAmountExercise}; //决定填充哪些组建
+                        int[] to = {R.id.textViewSysId, R.id.textViewSysScore1,
+                                R.id.textViewSysName3, R.id.textViewLinkName2, R.id.textViewLinkNamePhone2}; //决定填充哪些组建
                         SimpleAdapter adapter= new SimpleAdapter(getActivity(), list, R.layout.item_list, from, to);
                         adapter.setViewBinder(new MyViewBinder());
                         listView.setAdapter(adapter);

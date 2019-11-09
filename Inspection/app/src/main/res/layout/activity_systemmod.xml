@@ -182,8 +182,8 @@
                 android:textColor="@color/color_black_light"
                 android:textColorHint="@color/color_gray"
                 android:textSize="@dimen/size_ll_30"
-                android:inputType="textPersonName"
-                android:phoneNumber="true"/>
+                android:phoneNumber="true"
+                />
 
             <View
                 android:layout_width="match_parent"

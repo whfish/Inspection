@@ -54,7 +54,7 @@
                     android:textSize="@dimen/size_ll_30" />
 
                 <TextView
-                    android:id="@+id/editTextInput"
+                    android:id="@+id/editTextSysName1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -91,7 +91,7 @@
                     android:textSize="@dimen/size_ll_30" />
 
                 <TextView
-                    android:id="@+id/editTextOutput001"
+                    android:id="@+id/editTextDetial1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -128,7 +128,7 @@
                     android:textSize="@dimen/size_ll_30" />
 
                 <TextView
-                    android:id="@+id/editTextWeight"
+                    android:id="@+id/editTextOptTime1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -165,7 +165,7 @@
                     android:textSize="@dimen/size_ll_30" />
 
                 <TextView
-                    android:id="@+id/editTextAmountExercise"
+                    android:id="@+id/editTextLinkMan1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -202,7 +202,7 @@
                     android:textSize="@dimen/size_ll_30" />
 
                 <TextView
-                    android:id="@+id/editTextphone"
+                    android:id="@+id/editTextPhone1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
