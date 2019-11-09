@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -33,12 +34,8 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-//        ScreenUtil screenUtil=new ScreenUtil();
-//        int dpi=screenUtil.getScreenDPI(this);
-//        screenUtil.adapterScreen(this,dpi,false);
-
         setContentView(R.layout.activity_login);
+
         EditText account = findViewById(R.id.edt_login_account);
         EditText passwd = findViewById(R.id.edt_login_pwd);
         Button login = findViewById(R.id.tv_login);
@@ -56,10 +53,16 @@ public class LoginActivity extends AppCompatActivity {
                 // 绑定用户名字，绑定在bundle里
                 bundle.putString("username", account.getText().toString());
 
-                new GetData(req,LoginActivity.this) {
+                new GetData(req) {
                     @Override
                     public void dealResult(String result) throws JSONException {
-                        if(result.equals("[null]")){
+                        if(result.equals("请检查网络！")){
+                            Log.i(ComDef.TAG, "请检查网络！");
+                            LoginActivity.this.runOnUiThread(() -> {
+                                ToastUtil.toastCenter(LoginActivity.this, "请检查网络！");
+                            });
+                        }
+                        else if(result.equals("[null]")){
                             LoginActivity.this.runOnUiThread(() -> {
                                 ToastUtil.toastCenter(LoginActivity.this, "用户不存在");
                             });

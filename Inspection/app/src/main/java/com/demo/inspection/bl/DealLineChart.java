@@ -93,12 +93,6 @@ public class DealLineChart {
         });
         lineChart.setBackgroundColor(Color.WHITE);
 
-        Description description = new Description();
-        description.setText("近七日使用率");
-        description.setTextColor(Color.RED);
-        description.setTextSize(15);
-        lineChart.setDescription(description);//设置图表描述信息
-
         lineChart.animateX(2000);//x轴动画效果
 
         // 设置图例
