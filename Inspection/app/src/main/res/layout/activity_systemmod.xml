@@ -53,7 +53,7 @@
                 android:textSize="@dimen/size_ll_30" />
 
             <EditText
-                android:id="@+id/editTextXTMC1"
+                android:id="@+id/editTextSysName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -92,7 +92,7 @@
                 android:textSize="@dimen/size_ll_30" />
 
             <EditText
-                android:id="@+id/editTextXTXQ1"
+                android:id="@+id/editTextSysDetial"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -131,7 +131,7 @@
                 android:textSize="@dimen/size_ll_30" />
 
             <EditText
-                android:id="@+id/editTextOT1"
+                android:id="@+id/editTextSysLinkMan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -170,7 +170,7 @@
                 android:textSize="@dimen/size_ll_30" />
 
             <EditText
-                android:id="@+id/editTextUserid1"
+                android:id="@+id/editTextSysLinkManPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
