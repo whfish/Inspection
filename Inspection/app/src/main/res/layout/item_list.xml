@@ -33,7 +33,7 @@
                 android:textSize="@dimen/size_max_40"/>
 
             <TextView
-                android:id="@+id/textViewSBscore"
+                android:id="@+id/textViewSysName3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
@@ -41,8 +41,9 @@
                 android:textColor="@color/color_gray_dark"
                 android:textSize="@dimen/size_max_40"
                 tools:hint="@string/sys_main_name" />
+
             <TextView
-                android:id="@+id/textViewSBid"
+                android:id="@+id/textViewSysId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
@@ -63,7 +64,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textViewSBip"
+                android:id="@+id/textViewSysScore1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
@@ -76,9 +77,8 @@
 
 
 
-
             <TextView
-                android:id="@+id/textViewAmountExercise"
+                android:id="@+id/textViewLinkNamePhone2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -88,7 +88,7 @@
                 android:textSize="@dimen/size_ll_32" />
 
             <TextView
-                android:id="@+id/textViewSBsysname"
+                android:id="@+id/textViewLinkName2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -98,15 +98,15 @@
                 android:textSize="@dimen/size_ll_32" />
 
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="32dp"
-                android:layout_height="match_parent"
-                android:clickable="true"
-                android:descendantFocusability="blocksDescendants"
-                android:gravity="right"
-                android:onClick="imageViewonClick"
-                app:srcCompat="@mipmap/icon_system" />
+<!--            <ImageView-->
+<!--                android:id="@+id/imageView2"-->
+<!--                android:layout_width="32dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:clickable="true"-->
+<!--                android:descendantFocusability="blocksDescendants"-->
+<!--                android:gravity="right"-->
+<!--                android:onClick="imageViewonClick"-->
+<!--                app:srcCompat="@mipmap/icon_system" />-->
 
         </LinearLayout>
 

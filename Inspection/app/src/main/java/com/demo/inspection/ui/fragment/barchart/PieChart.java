@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.demo.inspection.R;
+import com.demo.inspection.utils.ComDef;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,15 +66,14 @@ public class PieChart extends Fragment {
         //初始化数据
         List<SliceValue> values = new ArrayList<SliceValue> ();
 
-        values.add (new SliceValue (number[1], Color.rgb (76, 175, 80)));
-        values.add (new SliceValue (number[2], Color.rgb (228, 95, 95)));
-        values.add (new SliceValue (number[3], Color.rgb (247, 201, 77)));
-        values.add (new SliceValue (number[4], Color.rgb (154, 183, 224)));
+        for(int i =1;i<ComDef.STATE_COLORS.length;i++){
+            values.add (new SliceValue (number[i], ComDef.STATE_COLORS[i]));
+        }
         data = new PieChartData (values);
         //文字样式设置
         data.setHasLabels (true);
         data.setValueLabelTextSize (18);
-        data.setValueLabelsTextColor (Color.BLUE);
+        data.setValueLabelsTextColor (Color.DKGRAY);
         data.setValueLabelBackgroundAuto (true);
         data.setValueLabelBackgroundEnabled (true);
 
@@ -82,7 +82,7 @@ public class PieChart extends Fragment {
         data.setCenterCircleColor (Color.WHITE);
         data.setCenterCircleScale (0.4f);
         data.setCenterText1 ("设备状态");
-        data.setCenterText1Color (Color.BLUE);
+        data.setCenterText1Color (Color.DKGRAY);
         data.setCenterText1FontSize (20);
         data.setSlicesSpacing (6);
         pieChartView.setCircleFillRatio (0.7f);

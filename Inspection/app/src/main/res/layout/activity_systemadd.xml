@@ -53,7 +53,7 @@
                 android:textSize="@dimen/size_ll_30" />
 
             <EditText
-                android:id="@+id/editTextADXTMC"
+                android:id="@+id/editTextName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -92,7 +92,7 @@
                 android:textSize="@dimen/size_ll_30" />
 
             <EditText
-                android:id="@+id/editTextADXTXQ"
+                android:id="@+id/editTextDetial"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -131,7 +131,7 @@
                 android:textSize="@dimen/size_ll_30" />
 
             <EditText
-                android:id="@+id/editTextADOT"
+                android:id="@+id/editTextLinkman"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -170,7 +170,7 @@
                 android:textSize="@dimen/size_ll_30" />
 
             <EditText
-                android:id="@+id/editTextADUserid"
+                android:id="@+id/editTextPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -182,7 +182,6 @@
                 android:textColor="@color/color_black_light"
                 android:textColorHint="@color/color_gray"
                 android:textSize="@dimen/size_ll_30"
-                android:inputType="textPersonName"
                 android:phoneNumber="true"/>
 
             <View
@@ -213,7 +212,7 @@
             android:textSize="@dimen/size_ll_32" />
 
         <Button
-            android:id="@+id/buttonCanceS"
+            android:id="@+id/buttonCancelS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

@@ -2,7 +2,7 @@
 /**
  * @ProjectName: Inspection
  * @Package: com.demo.inspection
- * @ClassName: SystemFragment
+ * @ClassName: SystemDetailsActivity
  * @Description: 详细系统数据展示
  * @Author: 张文普
  * @CreateDate: 2019/11/6 9:37
@@ -42,16 +42,12 @@ public class SystemDetailsActivity extends AppCompatActivity {
 
     // 声明ListView控件
     private ListView mListView;
-    //设置对应选项
-    String str1 = "全部状态";
-    String str2 = "正常";
-    String str3 = "预警";
-    String str4 = "告警";
-    String str5 = "异常";
-    //定义状态
-    String[] Score = new String[]{str1,str2,str3,str4,str5};//1-正常，2-预警，3-告警,"null"-异常
-    String data1;
 
+    //设置状态
+    String str1 = "正常";
+    String str2= "预警";
+    String str3 = "告警";
+    String str4 = "异常";
     String string = "";
 
     @Override
@@ -74,14 +70,15 @@ public class SystemDetailsActivity extends AppCompatActivity {
         String id = bundle.getString("id");
         string = bundle.getString("sysName");
 
-        TextView editTextInput = findViewById(R.id.editTextInput);
-        TextView opttime = findViewById(R.id.editTextWeight);
-        TextView detial = findViewById(R.id.editTextOutput001);
+        TextView editTextSysName1 = findViewById(R.id.editTextSysName1);
+        editTextSysName1.setText(bundle.getString("sysName"));
 
-        TextView linkman = findViewById(R.id.editTextAmountExercise);
-        TextView phone = findViewById(R.id.editTextphone);
+        TextView editTextOptTime1 = findViewById(R.id.editTextOptTime1);
+        TextView editTextDetial1 = findViewById(R.id.editTextDetial1);
+        TextView editTextLinkMan1 = findViewById(R.id.editTextLinkMan1);
+        TextView editTextPhone1 = findViewById(R.id.editTextPhone1);
 
-        editTextInput.setText(bundle.getString("sysName"));
+
 
         /**
          *
@@ -95,24 +92,22 @@ public class SystemDetailsActivity extends AppCompatActivity {
         req.setMap(map);
         req.setUrl(ComDef.INTF_QUERYSYSDETAIL );//从查询系统详情查询数据
         new GetData(req) {
+
             @Override
             public void dealResult(String result) throws JSONException {
                 JSONArray array = new JSONArray(result);
                 for (int i = 0; i < array.length(); i++) {
                     JSONObject item = (JSONObject) array.get(i);
+
                     //将查询到的数据写入页面控件
-
                     String result1  = Tools.myDateFormat(item.getString("opttime"));
-
-                    opttime.setText (result1);
+                    editTextOptTime1.setText (result1);
                     Log.i("ccccccccccccsss", item.getString("opttime"));
-                    detial.setText(item.getString("detial"));
-                    linkman.setText (item.getString ("linkman"));
-                    phone.setText(item.getString("phone"));
+                    editTextDetial1.setText(item.getString("detial"));
+                    editTextLinkMan1.setText (item.getString ("linkman"));
+                    editTextPhone1.setText(item.getString("phone"));
 
                 }
-
-
             }
         };
 
@@ -128,9 +123,8 @@ public class SystemDetailsActivity extends AppCompatActivity {
         HashMap map1 = new HashMap<String, String>();
 
         //id作为查询条件，通过查询索引值接口查询设备列表
-
-        map1.put(ComDef.QUERY_INDEX, bundle.getString("id"));//用查询索引值作为条件
-        Log.i(ComDef.TAG, "查询条件---------:" + bundle.getString("id"));
+        map1.put(ComDef.QUERY_INDEX, id);//用查询索引值作为条件
+        Log.i(ComDef.TAG, "查询条件---------:" + id);
         req1.setMap(map1);
         req1.setUrl(ComDef.INTF_QUERYDEVICE );
 
@@ -144,28 +138,24 @@ public class SystemDetailsActivity extends AppCompatActivity {
                 for (int i = 0; i < arrayS.length(); i++) {
                     JSONObject item = (JSONObject) arrayS.get(i);
                     Map<String, String> map1 = new HashMap<>();
-                    map1.put("id", item.getString("id"));//获取你自己需要的字段
- //                   map1.put("score", item.getString("score"));//获取你自己需要的字段
-                    switch (item.getString("score")) {
+                    map1.put("id", item.getString("id"));//获取需要的字段id
+                    switch (item.getString("score")) {   //获取需要的字段score
                         case "1":
-                            map1.put("score", str2);
+                            map1.put("score", str1);
                             break;
                         case "2":
-                            map1.put("score", str3);
+                            map1.put("score", str2);
                             break;
                         case "3":
-                            map1.put("score", str4);
+                            map1.put("score", str3);
                             break;
                         case "":
-                            map1.put("score", str5);
+                            map1.put("score", str4);
                     }
+
                     Log.i("item----------", item.getString("score"));
                     map1.put("sysname", item.getString("sysname"));//获取你自己需要的字段
-                    Log.i("item----------", item.getString("detail"));
-                    map1.put("detial", item.getString("detail"));//获取你自己需要的字段
                     map1.put("ip", item.getString("ip"));//获取你自己需要的字段
-                    map1.put("opttime", item.getString("opttime"));//获取你自己需要的字段
-                    map1.put("userId", item.getString("userId"));//获取你自己需要的字段
                     listS.add(map1);
                 }
 
@@ -173,11 +163,11 @@ public class SystemDetailsActivity extends AppCompatActivity {
                 SystemDetailsActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-//                        String[] from = { "iP"};  //决定提取哪些值来生成列表项
-//                        int[] to = { R.id.textid}; //对应到xml里的名字
+
                         String[] from = { "ip", "score", "sysname"};  //决定提取哪些值来生成列表项
-                        int[] to = { R.id.textViewSBip1,
-                                R.id.textViewSBscore1, R.id.textViewSBsysname1,}; //对应到xml里的名字
+                        int[] to = { R.id.textViewIp1,
+                                R.id.textViewScore1, R.id.textViewSysname1,}; //对应到xml里的名字
+
                         SimpleAdapter adapter = new SimpleAdapter(SystemDetailsActivity.this, listS, R.layout.item_list1, from, to);
                         adapter.setViewBinder(new MyViewBinder());
                         mListView.setAdapter(adapter);
@@ -187,13 +177,16 @@ public class SystemDetailsActivity extends AppCompatActivity {
         };
 
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
         if (item.getItemId() == android.R.id.home) {//返回前一页
             finish();
         }
-        return true;
-    }
 
+        return true;
+
+    }
 }
 

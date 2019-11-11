@@ -32,7 +32,7 @@
                 android:textSize="@dimen/size_max_40"/>
 
             <TextView
-                android:id="@+id/textViewSBip1"
+                android:id="@+id/textViewIp1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
@@ -51,7 +51,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textViewSBscore1"
+                android:id="@+id/textViewScore1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
@@ -61,7 +61,7 @@
                 android:textSize="@dimen/size_ll_32" />
 
             <TextView
-                android:id="@+id/textViewSBsysname1"
+                android:id="@+id/textViewSysname1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
