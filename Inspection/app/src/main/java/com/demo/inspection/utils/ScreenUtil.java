@@ -105,7 +105,8 @@ public class ScreenUtil {
 
     public  int getScreenDPI(Fragment fragment) {
         DisplayMetrics metric =fragment.getContext().getApplicationContext().getResources().getDisplayMetrics();
-           int dp =metric.widthPixels;
+//           int dp =metric.widthPixels;
+        int dp = metric.heightPixels;
 //        int dpi = (int) (metric.densityDpi*1.2);
 //        return dpi;
         return dp;

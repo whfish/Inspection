@@ -28,8 +28,6 @@ public class NetBroadcastReceiver extends BroadcastReceiver {
         public void onNetChange(int netMobile);
     }
 
-    //实例
-
 
 
 }

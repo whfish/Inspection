@@ -1,17 +1,17 @@
 package com.demo.inspection.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.demo.inspection.R;
-import com.demo.inspection.utils.ComDef;
 import com.demo.inspection.bl.GetData;
 import com.demo.inspection.bl.ReqParam;
+import com.demo.inspection.utils.ComDef;
 import com.demo.inspection.utils.ScreenUtil;
 import com.demo.inspection.utils.ToastUtil;
 import com.demo.inspection.utils.Tools;
@@ -32,8 +32,12 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
 
+//        ScreenUtil screenUtil=new ScreenUtil();
+//        int dpi=screenUtil.getScreenDPI(this);
+//        screenUtil.adapterScreen(this,dpi,false);
+
+        setContentView(R.layout.activity_login);
         EditText account = findViewById(R.id.edt_login_account);
         EditText passwd = findViewById(R.id.edt_login_pwd);
         Button login = findViewById(R.id.tv_login);

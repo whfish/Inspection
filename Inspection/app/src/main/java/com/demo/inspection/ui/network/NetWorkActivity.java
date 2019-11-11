@@ -8,7 +8,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.ActionBar;
 
 import com.demo.inspection.R;
-
 import com.demo.inspection.utils.NetworkInformation;
 
 /**
@@ -48,7 +47,7 @@ public class NetWorkActivity extends BaseActivity {
         TextView ipaddress = findViewById(R.id.ipaddress);
         networkInformation.setContext(this);
 
-        if (networkInformation.getNetworkType() == null) {
+        if (networkInformation.getNetworkType().equals("NONE")) {
             textView.setText(R.string.nonetwork);
         } else {
             textView.setText(R.string.succnetwork);
