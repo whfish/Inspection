@@ -5,26 +5,32 @@
  */
 package com.demo.inspection.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.demo.inspection.R;
-import com.demo.inspection.utils.ComDef;
 import com.demo.inspection.bl.GetData;
 import com.demo.inspection.bl.ReqParam;
+import com.demo.inspection.utils.ComDef;
 import com.demo.inspection.utils.ToastUtil;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.HashMap;
 
 public class XgPwdActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView (R.layout.activity_xgpwd);
         ActionBar actionBar = getSupportActionBar();
@@ -90,7 +96,9 @@ public class XgPwdActivity extends AppCompatActivity {
             @Override
             public void dealResult(String result) throws JSONException {
                 XgPwdActivity.this.runOnUiThread(() -> {
-                    ToastUtil.toastCenter(XgPwdActivity.this, result);
+                    ToastUtil.toastCenter(XgPwdActivity.this, result + "请重新登陆！！！");
+                    Intent login = new Intent();
+                    login.setClass(XgPwdActivity.this, LoginActivity.class);
                 });
             }
         };
