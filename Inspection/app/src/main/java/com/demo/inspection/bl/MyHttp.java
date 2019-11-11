@@ -94,7 +94,6 @@ public class MyHttp {
          * @return void
          */
 
-//        OkHttpClient okHttpClient = new OkHttpClient();
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(ComDef.CONNECT_TIMEOUT, TimeUnit.SECONDS)
                 .readTimeout(ComDef.REQUEST_TIMEOUT, TimeUnit.SECONDS)
@@ -124,25 +123,6 @@ public class MyHttp {
         call.enqueue(callback);
 
     }
-
-    //将响应流转换成字符串
-    private String is2String(InputStream in) {
-        try {
-            InputStreamReader inr = new InputStreamReader(in, "utf-8");
-            BufferedReader br = new BufferedReader(inr);
-            String line = br.readLine();
-            StringBuffer sb = new StringBuffer();
-            while (line != null) {
-                sb.append(line);
-                line = br.readLine();
-            }
-            return sb.toString();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
 
     public List<Map<String, String>> string2List(String in) throws JSONException {
         List<Map<String, String>> list = new ArrayList<>();

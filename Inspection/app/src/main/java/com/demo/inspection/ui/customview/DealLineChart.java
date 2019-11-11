@@ -110,11 +110,7 @@ public class DealLineChart {
             }
         });
 
-        //自定义适配器，适配于Y轴
-//        IAxisValueFormatter custom = new MyAxisValueFormatter();
-
         YAxis leftAxis = lineChart.getAxisLeft();
-//        leftAxis.setTypeface(mTfLight);
         leftAxis.setLabelCount(8, false);
         leftAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
@@ -127,14 +123,6 @@ public class DealLineChart {
         leftAxis.setSpaceTop(15f);
         leftAxis.setAxisMinimum(0f);
         leftAxis.setTextSize(15f);//设置字体
-
-//        LimitLine limitLine = new LimitLine(75, "Limit"); //得到限制线
-//        limitLine.setLineWidth(2f); //宽度
-//        limitLine.setTextSize(15f);
-//        limitLine.setTextColor(Color.RED);  //颜色
-//        limitLine.setLineColor(Color.BLUE);
-//        leftAxis.addLimitLine(limitLine); //Y轴添加限制线
-
 
 
         lineChart.getAxisRight().setEnabled(false);
@@ -175,7 +163,6 @@ public class DealLineChart {
 
         lineDataSet.setDrawFilled(true); //设置折线图填充
         lineDataSet.setFormLineWidth(1f);
-//        lineDataSet.setFormSize(15.f);
 
         //设置曲线展示为圆滑曲线（如果不设置则默认折线）
         lineDataSet.setMode(LineDataSet.Mode.CUBIC_BEZIER);
