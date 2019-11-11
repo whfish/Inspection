@@ -65,13 +65,12 @@
     <string name="sys_people">维护人员</string>
 
     <!--系统增加-->
-    <string name="sys_add_txt">添加系统</string>
+    <string name="sys_add_txt">修改系统</string>
     <string name="sys_btn_ok">确定</string>
     <string name="sys_btn_cancle">取消</string>
 
     <!--系统修改-->
-    <string name="sys_change_txt">修改系统</string>
-
+    <string name="sys_change_txt">新增系统</string>
 
 
     <!--系统主页面列表-->
