@@ -73,7 +73,7 @@ public class PieChart extends Fragment {
         //文字样式设置
         data.setHasLabels (true);
         data.setValueLabelTextSize (18);
-        data.setValueLabelsTextColor (Color.BLUE);
+        data.setValueLabelsTextColor (Color.DKGRAY);
         data.setValueLabelBackgroundAuto (true);
         data.setValueLabelBackgroundEnabled (true);
 
@@ -82,7 +82,7 @@ public class PieChart extends Fragment {
         data.setCenterCircleColor (Color.WHITE);
         data.setCenterCircleScale (0.4f);
         data.setCenterText1 ("设备状态");
-        data.setCenterText1Color (Color.BLUE);
+        data.setCenterText1Color (Color.DKGRAY);
         data.setCenterText1FontSize (20);
         data.setSlicesSpacing (6);
         pieChartView.setCircleFillRatio (0.7f);
