@@ -31,9 +31,7 @@ import androidx.fragment.app.Fragment;
 
 import com.demo.inspection.R;
 import com.demo.inspection.bl.GetData;
-
 import com.demo.inspection.bl.ReqParam;
-
 import com.demo.inspection.ui.customview.MyViewBinder;
 import com.demo.inspection.ui.system.SystemAddActivity;
 import com.demo.inspection.ui.system.SystemDetailsActivity;
@@ -77,9 +75,7 @@ public class SystemFragment extends Fragment {
 
         bindAdapter();
 
-
         listView = view.findViewById(R.id.ListView);//绑定xml
-
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -95,12 +91,8 @@ public class SystemFragment extends Fragment {
                 String sysname = two.getText().toString();
                 bundle.putString("sysName", sysname);
 
-//                TextView four = view.findViewById(R.id.textViewSBsysname);
-//                String opttime = four.getText().toString();
-//                bundle.putString("opttime", opttime);
                 intent.putExtras(bundle);
                 getActivity().startActivity(intent); //这里一定要获取到所在Activity再startActivity()；
-
 
             }
         });
@@ -116,21 +108,11 @@ public class SystemFragment extends Fragment {
                                     if (which == 0) {//新增
 
                                         Intent intent = new Intent(getActivity(), SystemAddActivity.class); //参数1:Fragment所依存的Activity,参数2：要跳转的Activity
-
-
-                                        Bundle bundle = new Bundle();
-                                        TextView one = view.findViewById(R.id.textViewSysId);
-                                        String id = one.getText().toString();
-                                        bundle.putString("id", id);
-                                        intent.putExtras(bundle);
-
                                         getActivity().startActivity(intent); //这里一定要获取到所在Activity再startActivity()；
 
-
                                     } else if (which == 1) {// 修改
+
                                         Intent intent = new Intent(getActivity(), SystemModActivity.class); //参数1:Fragment所依存的Activity,参数2：要跳转的Activity
-
-
                                         Bundle bundle = new Bundle();
                                         TextView one = view.findViewById(R.id.textViewSysId);
                                         String id = one.getText().toString();
@@ -143,13 +125,9 @@ public class SystemFragment extends Fragment {
                                         ReqParam req = new ReqParam();
                                         req.setUrl(ComDef.INTF_SYSDEL);//从INTF_SYSDEL接口删除数据
                                         HashMap map1 = new HashMap<String, String>();
-
                                         TextView one = view.findViewById(R.id.textViewSysId);
                                         String id1 = one.getText().toString();
-
-
                                         map1.put(ComDef.QUERY_SYSINDEX, id1); //获取需要的字段：sysName, editTextXTMCInput.getText().toString()); //获取需要的字段：sysName
-
                                         req.setMap(map1);
 
                                         new GetData(req) {
@@ -162,9 +140,9 @@ public class SystemFragment extends Fragment {
                                         };
                                         bindAdapter();
 
-
                                     }
                                 }).show();
+
                 return true;
             }
         });
@@ -172,12 +150,12 @@ public class SystemFragment extends Fragment {
         return view;
     }
 
-
     private void bindAdapter() {
         ReqParam req = new ReqParam();
         req.setUrl(ComDef.INTF_QUERYSYS);//通过INTF_QUERYSYS接口查询系统列表详情
 
         new GetData(req) {
+
             @Override
             public void dealResult(String result) throws JSONException {
                 List<Map<String, String>> list = new ArrayList<>();
@@ -186,11 +164,9 @@ public class SystemFragment extends Fragment {
                     JSONObject item = (JSONObject) array.get(i);
                     Map<String, String> map = new HashMap<>();
 
-
                     System.out.println(item.getString("id"));
 
-                    map.put("id", item.getString("id"));//获取你自己需要的字段
-                    //                   map.put("score", item.getString("score"));//获取你自己需要的字段
+                    map.put("id", item.getString("id"));//获取需要的字段id
                     //判断状态
                     switch (item.getString("score")) {
                         case "1":
@@ -205,30 +181,27 @@ public class SystemFragment extends Fragment {
                         case "":
                             map.put("score", str4);
                     }
-                    map.put("sysName", item.getString("sysName"));//获取你自己需要的字段
-                    map.put("detial", item.getString("detial"));//获取你自己需要的字段
-                    map.put("opttime", item.getString("opttime"));//获取你自己需要的字段
-                    map.put("userId", item.getString("userId"));//获取你自己需要的字段
-                    map.put("phone", item.getString("phone"));//获取你自己需要的字段：userId
-                    map.put("linkman", item.getString("linkman"));//获取你自己需要的字段：userId
-                    //           //   map.put("imageId", String.valueOf(R.drawable.ic_launcher));
+                    map.put("sysName", item.getString("sysName"));//获取需要的字段sysName
+                    map.put("detial", item.getString("detial"));//获取需要的字段detial
+                    map.put("phone", item.getString("phone"));//获取你自己需要的字段phone
+                    map.put("linkman", item.getString("linkman"));//获取你自己需要的字段linkman
                     list.add(map);
                 }
 
                 //刷新主界面
                 getActivity().runOnUiThread(new Runnable() {
+
                     @Override
                     public void run() {
+
                         String[] from = {"id", "score", "sysName", "linkman", "phone"};  //决定提取哪些值来生成列表项
                         int[] to = {R.id.textViewSysId, R.id.textViewSysScore1,
                                 R.id.textViewSysName3, R.id.textViewLinkName2, R.id.textViewLinkNamePhone2}; //决定填充哪些组建
-                        SimpleAdapter adapter= new SimpleAdapter(getActivity(), list, R.layout.item_list, from, to);
+                        SimpleAdapter adapter = new SimpleAdapter(getActivity(), list, R.layout.item_list, from, to);
                         adapter.setViewBinder(new MyViewBinder());
                         listView.setAdapter(adapter);
                     }
                 });
-
-
             }
         };
     }

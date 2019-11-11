@@ -23,7 +23,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.demo.inspection.R;
 import com.demo.inspection.bl.GetData;
 import com.demo.inspection.ui.customview.MyViewBinder;
@@ -56,7 +55,6 @@ public class SystemDetailsActivity extends AppCompatActivity {
         this.setContentView(R.layout.activity_systemdetails);
 
         ActionBar actionBar = getSupportActionBar();
-
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
@@ -78,8 +76,6 @@ public class SystemDetailsActivity extends AppCompatActivity {
         TextView editTextLinkMan1 = findViewById(R.id.editTextLinkMan1);
         TextView editTextPhone1 = findViewById(R.id.editTextPhone1);
 
-
-
         /**
          *
          *系统详情数据查询
@@ -91,6 +87,7 @@ public class SystemDetailsActivity extends AppCompatActivity {
         Log.i(ComDef.TAG, "查询条件-------------------------------------------:" + bundle.getString("id"));
         req.setMap(map);
         req.setUrl(ComDef.INTF_QUERYSYSDETAIL );//从查询系统详情查询数据
+
         new GetData(req) {
 
             @Override
@@ -102,7 +99,6 @@ public class SystemDetailsActivity extends AppCompatActivity {
                     //将查询到的数据写入页面控件
                     String result1  = Tools.myDateFormat(item.getString("opttime"));
                     editTextOptTime1.setText (result1);
-                    Log.i("ccccccccccccsss", item.getString("opttime"));
                     editTextDetial1.setText(item.getString("detial"));
                     editTextLinkMan1.setText (item.getString ("linkman"));
                     editTextPhone1.setText(item.getString("phone"));
@@ -129,12 +125,11 @@ public class SystemDetailsActivity extends AppCompatActivity {
         req1.setUrl(ComDef.INTF_QUERYDEVICE );
 
         new GetData(req1) {
+
             @Override
             public void dealResult(String result) throws JSONException {
-
                 List<Map<String, String>> listS = new ArrayList<>();
                 JSONArray arrayS = new JSONArray(result);
-
                 for (int i = 0; i < arrayS.length(); i++) {
                     JSONObject item = (JSONObject) arrayS.get(i);
                     Map<String, String> map1 = new HashMap<>();
@@ -167,7 +162,6 @@ public class SystemDetailsActivity extends AppCompatActivity {
                         String[] from = { "ip", "score", "sysname"};  //决定提取哪些值来生成列表项
                         int[] to = { R.id.textViewIp1,
                                 R.id.textViewScore1, R.id.textViewSysname1,}; //对应到xml里的名字
-
                         SimpleAdapter adapter = new SimpleAdapter(SystemDetailsActivity.this, listS, R.layout.item_list1, from, to);
                         adapter.setViewBinder(new MyViewBinder());
                         mListView.setAdapter(adapter);
@@ -175,7 +169,6 @@ public class SystemDetailsActivity extends AppCompatActivity {
                 });
             }
         };
-
     }
 
     @Override
@@ -184,7 +177,6 @@ public class SystemDetailsActivity extends AppCompatActivity {
         if (item.getItemId() == android.R.id.home) {//返回前一页
             finish();
         }
-
         return true;
 
     }

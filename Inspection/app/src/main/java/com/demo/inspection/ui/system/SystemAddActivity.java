@@ -48,14 +48,13 @@ public class SystemAddActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-
         Button buttonOk = findViewById(R.id.buttonOKS);
         buttonOk.setOnClickListener((view) -> {
+
             ReqParam req1 = new ReqParam();
             req1.setUrl(ComDef.INTF_SYSADD);//从INTF_SYSMOD接口修改数据
             HashMap map1 = new HashMap<String, String>();
 
-            //通过SYS_NAME接口修改linkmanphone数据
             EditText editTextADXTMCInput = findViewById(R.id.editTextName);
             EditText editTextADXTXQInput = findViewById(R.id.editTextDetial);
             EditText editTextADOTInput = findViewById(R.id.editTextLinkman);
@@ -69,20 +68,17 @@ public class SystemAddActivity extends AppCompatActivity {
                 if (isPhoneNumberValid(s)) {
 
                     //通过SYS_NAME接口添加sysName数据
-
                     map1.put(ComDef.SYS_NAME, editTextADXTMCInput.getText().toString());
 
                     //通过SYS_DETIAL接口添加detail数据
-
                     map1.put(ComDef.SYS_DETIAL, editTextADXTXQInput.getText().toString());
 
                     //通过SYS_LINKMAN接口添加linkman数据
-
                     map1.put(ComDef.SYS_LINKMAN, editTextADOTInput.getText().toString());
 
                     //通过SYS_PHONE接口添加phone数据
-
                     map1.put(ComDef.SYS_PHONE, s);//获取需要的字段联系人电话
+
                     req1.setMap(map1);
                     new GetData(req1) {
 
@@ -129,7 +125,9 @@ public class SystemAddActivity extends AppCompatActivity {
         return true;
     }
 
+    //电话号码验证
     public static boolean isPhoneNumberValid(String phoneNumber) {
+
         boolean isValid = false;
 
         String expression01 = "^\\(?(\\d{3})\\)?[- ]?(\\d{4})[- ]?(\\d{4})$";
@@ -138,9 +136,12 @@ public class SystemAddActivity extends AppCompatActivity {
         Matcher m01 = p01.matcher(phoneNumber);//检查电话号码的格式是否正确
         Pattern p02 = Pattern.compile(expression02);
         Matcher m02 = p02.matcher(phoneNumber);
+
         if (m01.matches() || m02.matches()) {
             isValid = true;
         }
+
         return isValid;
+
     }
 }

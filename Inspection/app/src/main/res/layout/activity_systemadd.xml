@@ -126,7 +126,7 @@
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="@string/sys_time"
+                android:text="@string/sys_manager"
                 android:textColor="@color/color_black_light"
                 android:textSize="@dimen/size_ll_30" />
 
@@ -138,7 +138,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="16dp"
                 android:layout_toRightOf="@+id/tv_device_title"
-                android:hint="@string/sys_time"
+                android:hint="@string/sys_manager"
                 android:paddingTop="15dp"
                 android:textColor="@color/color_black_light"
                 android:textColorHint="@color/color_gray"
@@ -165,7 +165,7 @@
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="@string/sys_manager"
+                android:text="@string/sys_managerphone"
                 android:textColor="@color/color_black_light"
                 android:textSize="@dimen/size_ll_30" />
 
@@ -177,7 +177,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="16dp"
                 android:layout_toRightOf="@+id/tv__title4"
-                android:hint="@string/sys_manager"
+                android:hint="@string/sys_managerphone"
                 android:paddingTop="15dp"
                 android:textColor="@color/color_black_light"
                 android:textColorHint="@color/color_gray"
@@ -190,6 +190,44 @@
                 android:layout_alignParentBottom="true"
                 android:background="@color/color_line_gray" />
         </LinearLayout>
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_marginLeft="@dimen/activity_horizontal_margin"-->
+<!--            android:layout_marginRight="@dimen/activity_horizontal_margin"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv__title5"-->
+<!--                android:layout_width="70dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:text="@string/sys_time"-->
+<!--                android:textColor="@color/color_black_light"-->
+<!--                android:textSize="@dimen/size_ll_30" />-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/editTextSysTime"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:layout_marginLeft="15dp"-->
+<!--                android:layout_marginRight="16dp"-->
+<!--                android:layout_toRightOf="@+id/tv__title4"-->
+<!--                android:hint="@string/sys_time"-->
+<!--                android:inputType="date"-->
+<!--                android:paddingTop="15dp"-->
+<!--                android:textColor="@color/color_black_light"-->
+<!--                android:textColorHint="@color/color_gray"-->
+<!--                android:textSize="@dimen/size_ll_30" />-->
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="1dp"-->
+<!--                android:layout_alignParentBottom="true"-->
+<!--                android:background="@color/color_line_gray" />-->
+<!--        </LinearLayout>-->
     </LinearLayout>
 
     <LinearLayout
