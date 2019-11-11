@@ -83,9 +83,7 @@ public class MyListView extends ListView implements AbsListView.OnScrollListener
             Log.i(ComDef.TAG, "已滑到底部");
             showLoading();
             //新加载数量与承诺不一致则表示已经查询完记录，不继续加载
-            new Thread(() -> {
                 loadListener.onLoad();
-            }).start();
 
         }
 
@@ -105,9 +103,9 @@ public class MyListView extends ListView implements AbsListView.OnScrollListener
         /**
          * @method loadComplete
          * @description 加载结束
-         * @date: 2019/10/18 15:15
+         * @date: 2019/11/03 15:15
          * @author: 王欢
-         * @param [result] //本次加载数据
+         * @param [result] //本次加载数据条数
          * @return void
          */
         isLoading = false;
