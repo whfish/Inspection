@@ -29,6 +29,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.demo.inspection.utils.ComDef.TITLE_NAME;
+
 public class DevStateActivity extends AppCompatActivity implements View.OnClickListener {
     private LinearLayout mContainer;
     private LineChart lineChart;
@@ -43,6 +45,7 @@ public class DevStateActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dev_state);
+        setTitle ("七日详情");
         tvIp = findViewById(R.id.tv_devstateip);
         lineChart = findViewById(R.id.lineChart);
         mContainer = findViewById(R.id.container);

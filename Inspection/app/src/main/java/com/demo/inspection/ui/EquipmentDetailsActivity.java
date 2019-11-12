@@ -59,89 +59,105 @@ public class EquipmentDetailsActivity extends AppCompatActivity {
         HashMap map = new HashMap<String, String>();
         map.put(ComDef.QUERY_IP, ip);//修改为实际请求参数
         req.setMap(map);
-        //刷新主界面
-        EquipmentDetailsActivity.this.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-
-                new GetData(req) {
+        new GetData(req) {
                     @Override
                     public void dealResult(String result) throws JSONException {
-                        JSONArray array = new JSONArray(result);
-                        for (int i = 0; i < array.length(); i++) {
-                            JSONObject item = (JSONObject) array.get(i);
-                            //将查询到的数据写入页面控件
-                            textID.setText(item.getString("id"));
-                            String id = textID.getText().toString();//取到写入的id 值，给查询设备硬件状态和七日情况传参使用
-                            textName.setText(item.getString("devName"));
-                            textIP.setText(item.getString("ip"));
-                            textSystem.setText(item.getString("sysname"));
-                            //判断状态
-                            switch (item.getString("score")) {
-                                case "1":
-                                    textScore.setText("正常");
-                                    textScore.setTextColor(ComDef.STATE_COLORS[1]);
-                                    break;
-                                case "2":
-                                    textScore.setText("预警");
-                                    textScore.setTextColor(ComDef.STATE_COLORS[2]);
-                                    break;
-                                case "3":
-                                    textScore.setText("告警");
-                                    textScore.setTextColor(ComDef.STATE_COLORS[3]);
-                                    break;
-                                case "":
-                                    textScore.setText("异常");
-                                    textScore.setTextColor(ComDef.STATE_COLORS[4]);
-                            }
-                            textDetail.setText(item.getString("detail"));
 
-                            //以id为条件查询设备的硬件状态
-                            ReqParam req2 = new ReqParam();
-                            req2.setUrl(ComDef.INTF_QUERYDEVICEDETAIL);//修改为实际接口,查询设备详情
-                            HashMap map2 = new HashMap<String, String>();
-                            map2.put(ComDef.QUERY_INDEX, id);//修改为实际请求参数
-                            req2.setMap(map2);
-                            new GetData(req2) {
-                                @Override
-                                public void dealResult(String result) throws JSONException {
+                        //刷新主界面
+                        EquipmentDetailsActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try{
                                     JSONArray array = new JSONArray(result);
-                                    int data;
-                                    int rule;
                                     for (int i = 0; i < array.length(); i++) {
                                         JSONObject item = (JSONObject) array.get(i);
-                                        //判断硬件名称
-                                        switch (item.getString("name")) {
-                                            case "cpu":
-                                                Tools.changeColor(item, textCpu);
-                                                textCpu.setText(item.getString("detail") + item.getString("data") + item.getString("data_type"));
+                                        //将查询到的数据写入页面控件
+                                        textID.setText(item.getString("id"));
+                                        String id = textID.getText().toString();//取到写入的id 值，给查询设备硬件状态和七日情况传参使用
+                                        textName.setText(item.getString("devName"));
+                                        textIP.setText(item.getString("ip"));
+                                        textSystem.setText(item.getString("sysname"));
+                                        //判断状态
+                                        switch (item.getString("score")) {
+                                            case "1":
+                                                textScore.setText("正常");
+                                                textScore.setTextColor(ComDef.STATE_COLORS[1]);
                                                 break;
-                                            case "内存":
-                                                Tools.changeColor(item, textMemory);
-                                                textMemory.setText(item.getString("detail") + item.getString("data") + item.getString("data_type"));
+                                            case "2":
+                                                textScore.setText("预警");
+                                                textScore.setTextColor(ComDef.STATE_COLORS[2]);
                                                 break;
-                                            case "磁盘":
-                                                Tools.changeColor(item, textHard);
-                                                textHard.setText(item.getString("detail") + item.getString("data") + item.getString("data_type"));
+                                            case "3":
+                                                textScore.setText("告警");
+                                                textScore.setTextColor(ComDef.STATE_COLORS[3]);
                                                 break;
+                                            case "":
+                                                textScore.setText("异常");
+                                                textScore.setTextColor(ComDef.STATE_COLORS[4]);
                                         }
+                                        textDetail.setText(item.getString("detail"));
+
+                                        //以id为条件查询设备的硬件状态
+                                        ReqParam req2 = new ReqParam();
+                                        req2.setUrl(ComDef.INTF_QUERYDEVICEDETAIL);//修改为实际接口,查询设备详情
+                                        HashMap map2 = new HashMap<String, String>();
+                                        map2.put(ComDef.QUERY_INDEX, id);//修改为实际请求参数
+                                        req2.setMap(map2);
+                                        new GetData(req2) {
+                                            @Override
+                                            public void dealResult(String result) throws JSONException {
+                                                JSONArray array = new JSONArray(result);
+                                                int data;
+                                                int rule;
+                                                for (int i = 0; i < array.length(); i++) {
+                                                    JSONObject item = (JSONObject) array.get(i);
+                                                    //刷新主界面
+                                                    EquipmentDetailsActivity.this.runOnUiThread(new Runnable() {
+                                                        @Override
+                                                        public void run() {
+                                                            try{
+                                                                //判断硬件名称
+                                                                switch (item.getString("name")) {
+                                                                    case "cpu":
+                                                                        Tools.changeColor(item, textCpu);
+                                                                        textCpu.setText(item.getString("detail") + item.getString("data") + item.getString("data_type"));
+                                                                        break;
+                                                                    case "内存":
+                                                                        Tools.changeColor(item, textMemory);
+                                                                        textMemory.setText(item.getString("detail") + item.getString("data") + item.getString("data_type"));
+                                                                        break;
+                                                                    case "磁盘":
+                                                                        Tools.changeColor(item, textHard);
+                                                                        textHard.setText(item.getString("detail") + item.getString("data") + item.getString("data_type"));
+                                                                        break;
+                                                                }
+
+                                                            }catch (JSONException e){
+                                                                e.printStackTrace();
+                                                            }
+
+                                                        }
+                                                    });
+                                                }
+                                            }
+                                        };
+
+                                        //查询最近七日情况
+                                        textSevenDays.setOnClickListener((v) -> {
+                                            Intent intent = new Intent(EquipmentDetailsActivity.this, DevStateActivity.class);
+                                            intent.putExtra("ip", ip);
+                                            intent.putExtra("devId", id);
+                                            startActivity(intent);
+                                        });
                                     }
+                                }catch (JSONException e){
+                                    e.printStackTrace();
                                 }
-                            };
+                            }
+                        });
 
-                            //查询最近七日情况
-                            textSevenDays.setOnClickListener((v) -> {
-                                Intent intent = new Intent(EquipmentDetailsActivity.this, DevStateActivity.class);
-                                intent.putExtra("ip", ip);
-                                intent.putExtra("devId", id);
-                                startActivity(intent);
-                            });
-                        }
-                    }
+                    }//end dealresult
                 };
-
-            }
-        });
 
     }
 

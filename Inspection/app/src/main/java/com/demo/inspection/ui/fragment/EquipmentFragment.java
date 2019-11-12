@@ -75,7 +75,13 @@ public class EquipmentFragment extends Fragment {
         Button btnGO = view.findViewById(R.id.buttonGO);
         btnGO.setOnClickListener(v -> {
             String key = txt.getText().toString();//获取文本内容
-            if (Tools.CheckIP(key)) {
+            if(key.equals("")){
+                currPage = 1;
+                mListView.clearflag();
+                mListView.showLoading();
+                query(null, currPage);
+            }
+            else if (Tools.CheckIP(key)) {
                 currPage = 1;
                 mListView.clearflag();
                 mListView.showLoading();
